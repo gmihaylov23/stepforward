@@ -657,4 +657,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 (function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
 </script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body></html>
