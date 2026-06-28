@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Аксесоари - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  *{box-sizing:border-box;}
+  body{background:#f6faff;color:#141d23;font-family:'Inter',sans-serif;margin:0;}
+  @keyframes cRevealUp{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes cFadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes cLineGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  @keyframes cOrbDrift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(35px,-30px) scale(1.06);}}
+  .cw{display:inline-block;opacity:0;animation:cRevealUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
+  .pcard{text-decoration:none;display:block;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:transform 0.38s cubic-bezier(0.165,0.84,0.44,1),border-color 0.3s,box-shadow 0.38s;}
+  .pcard:hover{transform:translateY(-5px);border-color:#0040e0;box-shadow:0 24px 60px rgba(0,64,224,0.1);}
+  .pcard-img{padding-top:75%;position:relative;overflow:hidden;background:#f5f5f3;}
+  .pcard-overlay{position:absolute;inset:0;background:rgba(0,64,224,0);transition:background 0.3s;display:flex;align-items:flex-end;justify-content:flex-end;padding:16px;}
+  .pcard:hover .pcard-overlay{background:rgba(0,64,224,0.04);}
+  .pcard-arrow{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;opacity:0;transform:translateY(6px);transition:opacity 0.3s,transform 0.3s;}
+  .pcard:hover .pcard-arrow{opacity:1;transform:translateY(0);}
+  .pcard-num{position:absolute;bottom:12px;right:16px;font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;user-select:none;}
+  .pcard-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:40px;}
+  .pcard-badge{position:absolute;top:16px;left:16px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;}
+  .pcard-badge.blue{background:#0040e0;}
+  .pcard-info{padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);}
+  .pcard-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+  .pcard-sku{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);}
+  .pcard-price{font-size:17px;font-weight:700;color:#000;letter-spacing:-0.02em;}
+  .pcard-name{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;line-height:1.25;}
+  .pcard-cat{font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:18px;letter-spacing:0.3px;}
+  .pcard-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(0,0,0,0.12);font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#000;cursor:pointer;transition:all 0.25s;text-align:center;display:block;text-decoration:none;}
+  .pcard-btn:hover{background:#000;color:#fff;border-color:#000;}
+  #site-nav{position:sticky;top:0;z-index:30;background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);transition:background 0.3s,backdrop-filter 0.3s;}
+  #site-nav.scrolled{background:rgba(246,250,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  .shoe-s{stroke:#2a2a2a;stroke-width:1.2;fill:none;transition:stroke 0.3s;}
+  .pcard:hover .shoe-s{stroke:#0040e0;}
+  .nav-link{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;}
+  .nav-link:hover{color:#0040e0;}
+  .filter-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;border:1px solid rgba(0,0,0,0.12);background:transparent;color:rgba(0,0,0,0.45);cursor:pointer;transition:all 0.2s;}
+  .filter-btn.active{background:#000;color:#fff;border-color:#000;}
+  .filter-btn:hover:not(.active){border-color:#0040e0;color:#0040e0;}
+  .product-item.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<header id="site-nav">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav id="main-nav" style="display:none;">
+      <div style="display:flex;gap:36px;">
+        <a class="nav-link" href="code_1.html">Мъже</a>
+        <a class="nav-link" href="code_2.html">Жени</a>
+        <a class="nav-link" href="bags.html">Чанти</a>
+        <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#0040e0;text-decoration:none;border-bottom:1.5px solid #0040e0;padding-bottom:3px;" href="accessories.html">Аксесоари</a>
+        <a class="nav-link" href="about.html">За нас</a>
+      </div>
+    </nav>
+    <a href="order.html" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);text-decoration:none;padding:8px 16px;border:1px solid rgba(0,0,0,0.12);transition:all 0.2s;" onmouseover="this.style.borderColor='#0040e0';this.style.color='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)';this.style.color='rgba(0,0,0,0.45)'">Поръчай</a>
+  </div>
+</header>
+
+<!-- Collection Hero -->
+<section style="position:relative;background:#07070a;min-height:62vh;display:flex;align-items:center;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 512 512%22 xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cfilter id%3D%22n%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.75%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22/%3E%3C/filter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23n)%22/%3E%3C/svg%3E');background-size:180px;"></div>
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,64,224,0.14) 0%,transparent 65%);bottom:-100px;right:-80px;z-index:1;filter:blur(80px);animation:cOrbDrift 16s ease-in-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);transform-origin:left;animation:cLineGrow 1.2s ease 0.2s both;"></div>
+
+  <!-- Hero accessories illustration -->
+  <div style="position:absolute;right:80px;top:50%;transform:translateY(-50%);z-index:3;opacity:0;animation:cFadeIn 1.5s ease 1s forwards;" class="hidden lg:block">
+    <svg width="300" height="260" viewBox="0 0 300 260" fill="none">
+      <!-- Belt -->
+      <rect stroke="rgba(255,255,255,0.1)" stroke-width="1.5" x="30" y="50" width="240" height="30" rx="4"/>
+      <rect stroke="rgba(0,64,224,0.4)" stroke-width="1.5" x="120" y="42" width="60" height="46" rx="3" fill="none"/>
+      <line stroke="rgba(0,64,224,0.5)" stroke-width="1.5" x1="148" x2="152" y1="58" y2="74"/>
+      <!-- Wallet below -->
+      <rect stroke="rgba(255,255,255,0.08)" stroke-width="1.5" x="80" y="120" width="140" height="90" rx="6"/>
+      <line stroke="rgba(255,255,255,0.05)" stroke-width="1" x1="80" x2="220" y1="150" y2="150"/>
+      <rect stroke="rgba(0,64,224,0.2)" stroke-width="1" x="95" y="158" width="60" height="32" rx="3" fill="none"/>
+      <!-- Ground dash -->
+      <line stroke="rgba(0,64,224,0.35)" stroke-dasharray="8 5" stroke-width="1" x1="20" x2="280" y1="225" y2="225"/>
+    </svg>
+  </div>
+
+  <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:80px 64px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px;opacity:0;animation:cFadeIn 0.7s ease 0.3s forwards;">
+      <a href="code.html" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;">StepForward</a>
+      <span style="color:rgba(255,255,255,0.2);font-size:14px;">›</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Аксесоари</span>
+    </div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-0.025em;color:#fff;margin:0 0 28px;font-size:clamp(52px,7vw,88px);">
+      <span class="cw" style="animation-delay:0.45s;">Ръчно</span><br/>
+      <em class="cw" style="animation-delay:0.65s;font-style:italic;color:rgba(255,255,255,0.72);">изработени аксесоари</em>
+    </h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.4);max-width:420px;line-height:1.7;margin:0;opacity:0;animation:cFadeIn 0.8s ease 0.85s forwards;">
+      Колани, портфейли и не само — детайлите, които завършват твоя стил.
+    </p>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#f6faff);z-index:5;pointer-events:none;"></div>
+</section>
+
+<!-- Filter + Count strip -->
+<div style="max-width:1280px;margin:0 auto;padding:40px 64px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+  <span id="count-label" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">6 продукта</span>
+  <div style="display:flex;gap:8px;">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Всички</button>
+    <button class="filter-btn" data-filter="men" onclick="setFilter('men')">Мъже</button>
+    <button class="filter-btn" data-filter="women" onclick="setFilter('women')">Жени</button>
+  </div>
+  <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">SF — Аксесоари</span>
+</div>
+
+<!-- Product Grid -->
+<main style="max-width:1280px;margin:0 auto;padding:0 64px 120px;">
+  <div id="product-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+    <!-- Acc 01 — Men — Belt -->
+    <div class="product-item" data-gender="men">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-badge">Ново</div>
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:120px;" fill="none">
+              <!-- Belt -->
+              <rect class="shoe-s" x="10" y="38" width="180" height="24" rx="3"/>
+              <!-- Buckle -->
+              <rect class="shoe-s" x="82" y="30" width="36" height="40" rx="2"/>
+              <line class="shoe-s" x1="98" x2="102" y1="38" y2="70"/>
+              <!-- Holes -->
+              <circle class="shoe-s" cx="145" cy="50" r="3"/>
+              <circle class="shoe-s" cx="158" cy="50" r="3"/>
+              <circle class="shoe-s" cx="171" cy="50" r="3"/>
+              <line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="10" x2="190" y1="90" y2="90" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">01</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-01</span><span class="pcard-price">95 лв.</span></div>
+          <h2 class="pcard-name">Classic Belt</h2>
+          <p class="pcard-cat">Мъжки · Колан</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Acc 02 — Women — Scarf -->
+    <div class="product-item" data-gender="women" style="margin-top:28px;">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-badge blue">Топ</div>
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 120" style="max-height:120px;" fill="none">
+              <!-- Silk scarf / shawl wavy lines -->
+              <path class="shoe-s" d="M 15,30 Q 55,10 100,30 Q 145,50 185,30"/>
+              <path class="shoe-s" d="M 15,55 Q 55,35 100,55 Q 145,75 185,55"/>
+              <path class="shoe-s" d="M 15,80 Q 55,60 100,80 Q 145,100 185,80"/>
+              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="15" x2="185" y1="100" y2="100" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">02</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-01</span><span class="pcard-price">85 лв.</span></div>
+          <h2 class="pcard-name">Копринен Шал</h2>
+          <p class="pcard-cat">Дамски · Шал</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Acc 03 — Men — Wallet -->
+    <div class="product-item" data-gender="men">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
+              <!-- Bifold wallet -->
+              <rect class="shoe-s" x="30" y="30" width="140" height="85" rx="4"/>
+              <line class="shoe-s" x1="100" x2="100" y1="30" y2="115"/>
+              <!-- Card slots -->
+              <rect class="shoe-s" x="40" y="45" width="50" height="30" rx="2"/>
+              <rect class="shoe-s" x="40" y="82" width="50" height="22" rx="2"/>
+              <!-- Coin pocket -->
+              <circle class="shoe-s" cx="145" cy="72" r="22"/>
+              <line stroke="#0040e0" stroke-dasharray="4 3" stroke-width="0.8" x1="30" x2="170" y1="120" y2="120" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">03</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-02</span><span class="pcard-price">110 лв.</span></div>
+          <h2 class="pcard-name">Slim Wallet</h2>
+          <p class="pcard-cat">Мъжки · Портфейл</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Acc 04 — Women — Belt thin -->
+    <div class="product-item" data-gender="women">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:120px;" fill="none">
+              <!-- Thin women's belt -->
+              <rect class="shoe-s" x="10" y="44" width="180" height="12" rx="6"/>
+              <!-- Small oval buckle -->
+              <ellipse class="shoe-s" cx="100" cy="50" rx="18" ry="12"/>
+              <line class="shoe-s" x1="100" x2="100" y1="38" y2="62"/>
+              <!-- Tassel detail at end -->
+              <line class="shoe-s" x1="185" x2="185" y1="44" y2="60"/>
+              <line class="shoe-s" x1="188" x2="188" y1="50" y2="62"/>
+              <line class="shoe-s" x1="182" x2="182" y1="47" y2="63"/>
+              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="10" x2="190" y1="85" y2="85" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">04</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-02</span><span class="pcard-price">75 лв.</span></div>
+          <h2 class="pcard-name">Тънък Колан</h2>
+          <p class="pcard-cat">Дамски · Колан</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Acc 05 — Men — Card holder -->
+    <div class="product-item" data-gender="men" style="margin-top:28px;">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
+              <!-- Card holder -->
+              <rect class="shoe-s" x="50" y="25" width="100" height="70" rx="4"/>
+              <!-- Cards fanning out -->
+              <rect class="shoe-s" x="42" y="20" width="96" height="65" rx="4" style="transform:rotate(-5deg);transform-origin:50% 50%"/>
+              <rect class="shoe-s" x="58" y="28" width="96" height="65" rx="4" style="transform:rotate(5deg);transform-origin:50% 50%"/>
+              <!-- Emboss line -->
+              <line class="shoe-s" x1="60" x2="140" y1="60" y2="60" stroke-dasharray="3 2"/>
+              <line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="40" x2="160" y1="110" y2="110" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">05</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-03</span><span class="pcard-price">65 лв.</span></div>
+          <h2 class="pcard-name">Card Holder</h2>
+          <p class="pcard-cat">Мъжки · Картодържател</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Acc 06 — Women — Cardholder -->
+    <div class="product-item" data-gender="women">
+      <a href="order.html" class="pcard">
+        <div class="pcard-img">
+          <div class="pcard-badge">Лимитиран</div>
+          <div class="pcard-inner">
+            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
+              <!-- Zip pouch / coin purse -->
+              <path class="shoe-s" d="M 50,40 Q 50,22 100,20 Q 150,22 150,40 L 155,115 Q 155,128 100,128 Q 45,128 45,115 Z"/>
+              <!-- Zip line -->
+              <path class="shoe-s" d="M 52,42 Q 100,52 148,42"/>
+              <!-- Zip pull -->
+              <line class="shoe-s" x1="100" x2="100" y1="38" y2="55"/>
+              <circle class="shoe-s" cx="100" cy="58" r="5"/>
+              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="45" x2="155" y1="130" y2="130" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="pcard-num">06</span>
+          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+        </div>
+        <div class="pcard-info">
+          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-03</span><span class="pcard-price">90 лв.</span></div>
+          <h2 class="pcard-name">Zip Pouch</h2>
+          <p class="pcard-cat">Дамски · Портмоне</p>
+          <span class="pcard-btn">Поръчай</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;margin:0;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="order.html">Как да поръчаш</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="about.html">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="terms.html">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="gdpr.html">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="cookies.html">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{const h=document.getElementById('site-nav');h.classList.toggle('scrolled',window.scrollY>40);});
+document.addEventListener('DOMContentLoaded',()=>{document.getElementById('main-nav').style.display='flex';});
+
+function setFilter(gender) {
+  const items = document.querySelectorAll('.product-item');
+  const btns = document.querySelectorAll('.filter-btn');
+
+  btns.forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === gender);
+  });
+
+  let count = 0;
+  items.forEach(item => {
+    const show = gender === 'all' || item.dataset.gender === gender;
+    item.classList.toggle('hidden', !show);
+    if (show) count++;
+  });
+
+  let visIdx = 0;
+  items.forEach(item => {
+    if (!item.classList.contains('hidden')) {
+      item.style.marginTop = visIdx % 3 === 1 ? '28px' : '0';
+      visIdx++;
+    } else {
+      item.style.marginTop = '0';
+    }
+  });
+
+  document.getElementById('count-label').textContent = count + ' продукта';
+}
+</script>
+</body></html>

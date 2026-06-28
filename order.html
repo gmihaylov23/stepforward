@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Как да поръчаш - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#f6faff;color:#141d23;font-family:'Inter',sans-serif;}
+  @keyframes oRevealUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes oFadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes oLineGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  @keyframes oOrbDrift{0%,100%{transform:translate(0,0);}50%{transform:translate(-30px,25px);}}
+  .ow{display:inline-block;opacity:0;animation:oRevealUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
+  #site-nav{position:sticky;top:0;z-index:30;background:#f6faff;border-bottom:1px solid rgba(0,0,0,0.07);transition:background 0.3s,backdrop-filter 0.3s;}
+  #site-nav.scrolled{background:rgba(246,250,255,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  .step-card{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:48px 40px;display:flex;flex-direction:column;gap:20px;transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;}
+  .step-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,64,224,0.08);border-color:#0040e0;}
+  .info-box{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:36px;}
+  .nav-link{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;}
+  .nav-link:hover{color:#0040e0;}
+</style>
+</head>
+<body style="display:flex;flex-direction:column;min-height:100vh;">
+
+<!-- Nav -->
+<header id="site-nav">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav id="main-nav" style="display:none;">
+      <div style="display:flex;gap:36px;">
+        <a class="nav-link" href="code_1.html">Мъже</a>
+        <a class="nav-link" href="code_2.html">Жени</a>
+        <a class="nav-link" href="bags.html">Чанти</a>
+        <a class="nav-link" href="accessories.html">Аксесоари</a>
+        <a class="nav-link" href="about.html">За нас</a>
+      </div>
+    </nav>
+    <a href="order.html" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;text-decoration:none;padding:8px 16px;border:1px solid #0040e0;transition:all 0.2s;" onmouseover="this.style.background='#0040e0';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='#0040e0'">Поръчай</a>
+  </div>
+</header>
+
+<main style="flex-grow:1;">
+
+<!-- Hero -->
+<section style="position:relative;background:#07070a;min-height:52vh;display:flex;align-items:center;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 512 512%22 xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cfilter id%3D%22n%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.75%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22/%3E%3C/filter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23n)%22/%3E%3C/svg%3E');background-size:180px;"></div>
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,64,224,0.15) 0%,transparent 65%);top:-150px;right:-100px;z-index:1;filter:blur(80px);animation:oOrbDrift 14s ease-in-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);transform-origin:left;animation:oLineGrow 1.2s ease 0.2s both;"></div>
+
+  <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:80px 64px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px;opacity:0;animation:oFadeIn 0.7s ease 0.3s forwards;">
+      <a href="code.html" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;">StepForward</a>
+      <span style="color:rgba(255,255,255,0.2);font-size:14px;">›</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Как да поръчаш</span>
+    </div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-0.025em;color:#fff;margin:0 0 28px;font-size:clamp(46px,6vw,80px);">
+      <span class="ow" style="animation-delay:0.45s;">Поръчай</span><br/>
+      <em class="ow" style="animation-delay:0.65s;font-style:italic;color:rgba(255,255,255,0.72);">с лекота</em>
+    </h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.4);max-width:440px;line-height:1.7;margin:0;opacity:0;animation:oFadeIn 0.8s ease 0.85s forwards;">
+      Всеки продукт е ръчно изработен специално за теб. Разбери как работи процесът — от избора до доставката.
+    </p>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#f6faff);z-index:5;pointer-events:none;"></div>
+</section>
+
+<!-- Steps -->
+<section style="max-width:1280px;margin:0 auto;padding:100px 64px 80px;">
+  <div style="text-align:center;margin-bottom:72px;opacity:0;animation:oFadeIn 0.8s ease 0.2s forwards;">
+    <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);display:block;margin-bottom:10px;">Процесът</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#000;line-height:1.2;letter-spacing:-0.02em;">Три прости стъпки</h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+    <!-- Step 1 -->
+    <div class="step-card" style="opacity:0;animation:oRevealUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:48px;height:48px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#fff;line-height:1;">1</span>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(0,0,0,0.08);"></div>
+        <span class="material-symbols-outlined" style="font-size:20px;color:rgba(0,0,0,0.2);">search</span>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:#000;line-height:1.2;">Избери продукт</h3>
+      <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Разгледай нашите колекции от обувки, чанти и аксесоари. Намери модела, материала и размера, който ти отива.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card" style="margin-top:28px;opacity:0;animation:oRevealUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.45s forwards;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:48px;height:48px;background:#0040e0;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#fff;line-height:1;">2</span>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(0,0,0,0.08);"></div>
+        <span class="material-symbols-outlined" style="font-size:20px;color:rgba(0,0,0,0.2);">chat</span>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:#000;line-height:1.2;">Свържи се с нас</h3>
+      <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Пишни ни в Telegram, WhatsApp или на имейл с избрания модел. Ще потвърдим наличността и ще ти изпратим детайли за поръчката.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card" style="opacity:0;animation:oRevealUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:48px;height:48px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#fff;line-height:1;">3</span>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(0,0,0,0.08);"></div>
+        <span class="material-symbols-outlined" style="font-size:20px;color:rgba(0,0,0,0.2);">local_shipping</span>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:#000;line-height:1.2;">Изчакай доставката</h3>
+      <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">След потвърждение изработваме продукта специално за теб. Доставяме до 2–4 седмици от потвърждение на поръчката.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Info Sections -->
+<section style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:100px 64px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+      <!-- Left: Key info boxes -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <!-- Deposit -->
+        <div class="info-box" style="border-left:3px solid #0040e0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <span class="material-symbols-outlined" style="font-size:22px;color:#0040e0;">payments</span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.4);">Плащане</span>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#000;margin-bottom:12px;">20% депозит за потвърждение</h3>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);margin-bottom:12px;">За да потвърдим поръчката и да започнем изработката, изискваме <strong style="color:#000;">20% депозит</strong> от общата стойност. Останалите 80% се заплащат при получаване на продукта.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Депозитът се превежда по банков път или чрез платежна система по наша договорка.</p>
+        </div>
+
+        <!-- Handmade -->
+        <div class="info-box" style="border-left:3px solid #000;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <span class="material-symbols-outlined" style="font-size:22px;color:#000;">handyman</span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.4);">Изработка</span>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#000;margin-bottom:12px;">Ръчна изработка — 2 до 4 седмици</h3>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Всяка обувка, чанта и аксесоар са <strong style="color:#000;">ръчно изработени</strong> от наши майстори. Не използваме масово производство — всяко изделие е уникално и направено специално за теб.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);margin-top:8px;">Времето за изработка е <strong style="color:#000;">2 до 4 седмици</strong> в зависимост от модела и текущата натовареност.</p>
+        </div>
+
+      </div>
+
+      <!-- Right: Delivery + FAQ -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <!-- Delivery -->
+        <div class="info-box" style="border-left:3px solid #0040e0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <span class="material-symbols-outlined" style="font-size:22px;color:#0040e0;">local_shipping</span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.4);">Доставка</span>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#000;margin-bottom:12px;">Безплатна доставка до теб</h3>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Доставяме до всеки адрес в България. Доставката е <strong style="color:#000;">безплатна</strong> за всички поръчки. Изпращаме с куриер и ти предоставяме номер за проследяване.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);margin-top:8px;">При получаване можеш да прегледаш продукта и ако нещо не е наред — ще намерим решение заедно.</p>
+        </div>
+
+        <!-- Returns -->
+        <div class="info-box" style="border-left:3px solid #000;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <span class="material-symbols-outlined" style="font-size:22px;color:#000;">keyboard_return</span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.4);">Връщане</span>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#000;margin-bottom:12px;">14 дни право на връщане</h3>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);">Имаш <strong style="color:#000;">14 дни</strong> от получаването да върнеш продукта, ако не си доволен. Продуктът трябва да е в оригиналното му състояние без следи от употреба.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(0,0,0,0.5);margin-top:8px;">Свържи се с нас и ние ще организираме взимането без допълнителни разходи за теб.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline visual -->
+<section style="max-width:1280px;margin:0 auto;padding:100px 64px;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);display:block;margin-bottom:10px;">Хронология</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;color:#000;line-height:1.2;letter-spacing:-0.02em;">От поръчка до доставка</h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;">
+    <!-- Connecting line -->
+    <div style="position:absolute;top:24px;left:12.5%;right:12.5%;height:1px;background:rgba(0,0,0,0.1);z-index:0;"></div>
+
+    <!-- Day 0 -->
+    <div style="text-align:center;position:relative;z-index:1;padding:0 16px;">
+      <div style="width:48px;height:48px;background:#0040e0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+        <span class="material-symbols-outlined" style="font-size:20px;color:#fff;">chat</span>
+      </div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;margin-bottom:8px;">Ден 1</p>
+      <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:#000;margin-bottom:8px;">Свързваш се</p>
+      <p style="font-size:13px;color:rgba(0,0,0,0.45);line-height:1.6;">Пишеш ни с избрания модел</p>
+    </div>
+
+    <!-- Day 1-2 -->
+    <div style="text-align:center;position:relative;z-index:1;padding:0 16px;">
+      <div style="width:48px;height:48px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+        <span class="material-symbols-outlined" style="font-size:20px;color:#fff;">payments</span>
+      </div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:8px;">Ден 2</p>
+      <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:#000;margin-bottom:8px;">Депозит 20%</p>
+      <p style="font-size:13px;color:rgba(0,0,0,0.45);line-height:1.6;">Потвърждаваш поръчката с депозит</p>
+    </div>
+
+    <!-- Week 2-4 -->
+    <div style="text-align:center;position:relative;z-index:1;padding:0 16px;">
+      <div style="width:48px;height:48px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+        <span class="material-symbols-outlined" style="font-size:20px;color:#fff;">handyman</span>
+      </div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:8px;">2–4 седмици</p>
+      <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:#000;margin-bottom:8px;">Изработка</p>
+      <p style="font-size:13px;color:rgba(0,0,0,0.45);line-height:1.6;">Правим продукта ръчно само за теб</p>
+    </div>
+
+    <!-- Delivery -->
+    <div style="text-align:center;position:relative;z-index:1;padding:0 16px;">
+      <div style="width:48px;height:48px;background:#0040e0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+        <span class="material-symbols-outlined" style="font-size:20px;color:#fff;">local_shipping</span>
+      </div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;margin-bottom:8px;">Доставка</p>
+      <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:#000;margin-bottom:8px;">При теб!</p>
+      <p style="font-size:13px;color:rgba(0,0,0,0.45);line-height:1.6;">Получаваш и плащаш останалите 80%</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#07070a;padding:100px 64px;">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-bottom:16px;">Готов ли си?</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-0.02em;margin-bottom:24px;">Разгледай колекциите</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:48px;">Обувки, чанти и аксесоари — всичко ръчно изработено. Намери своя стил и се свържи с нас.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="code_1.html" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#07070a;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:background 0.3s,color 0.3s;" onmouseover="this.style.background='#0040e0';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#07070a'">
+        Обувки
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+      </a>
+      <a href="bags.html" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(255,255,255,0.55);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);transition:border-color 0.3s,color 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.45)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.55)'">
+        Чанти
+      </a>
+      <a href="accessories.html" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(255,255,255,0.55);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);transition:border-color 0.3s,color 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.45)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.55)'">
+        Аксесоари
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="order.html">Как да поръчаш</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="about.html">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="terms.html">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="gdpr.html">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="cookies.html">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{document.getElementById('main-nav').style.display='flex';});
+window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>40);});
+</script>
+</body></html>
