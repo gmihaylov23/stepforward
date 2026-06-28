@@ -2,10 +2,26 @@
 <html lang="bg">
 <head>
 <meta charset="utf-8"/>
-<meta http-equiv="refresh" content="0; url=code.html"/>
 <title>StepForward</title>
 </head>
 <body>
-<script>window.location.replace('code.html');</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+  // Only redirect if there is no identity token in the URL hash
+  if (!window.location.hash.includes('invite_token') &&
+      !window.location.hash.includes('recovery_token') &&
+      !window.location.hash.includes('confirmation_token')) {
+    window.location.replace('code.html');
+  }
+</script>
 </body>
 </html>
