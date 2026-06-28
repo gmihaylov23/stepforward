@@ -34,12 +34,37 @@
   .pcard-cat{font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:18px;letter-spacing:0.3px;}
   .pcard-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(0,0,0,0.12);font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#000;cursor:pointer;transition:all 0.25s;text-align:center;display:block;text-decoration:none;}
   .pcard-btn:hover{background:#000;color:#fff;border-color:#000;}
-  #site-nav{position:sticky;top:0;z-index:30;background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);transition:background 0.3s,backdrop-filter 0.3s;}
-  #site-nav.scrolled{background:rgba(246,250,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  /* ── Floating pill nav ── */
+  #site-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:1232px;z-index:100;background:rgba(246,250,255,0.82);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.45);border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,0.08),0 2px 8px rgba(0,0,0,0.04);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.35s;}
+  #site-nav.nav-hidden{transform:translateX(-50%) translateY(calc(-100% - 32px));opacity:0;pointer-events:none;}
+  .nav-inner{padding:14px 32px!important;max-width:none!important;}
+  @media(max-width:767px){#site-nav{top:12px;width:calc(100% - 24px);}.nav-inner{padding:12px 16px!important;}}
   .shoe-s{stroke:#2a2a2a;stroke-width:1.2;fill:none;transition:stroke 0.3s;}
   .pcard:hover .shoe-s{stroke:#0040e0;}
   .nav-link{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;}
   .nav-link:hover{color:#0040e0;}
+  html,body{overflow-x:hidden;}
+  /* ── Mobile nav ── */
+  #mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
+  @media(min-width:768px){#main-nav{display:flex!important;}}
+  @media(max-width:767px){
+    .nav-inner{padding:12px 16px!important;}
+    #desktop-cta{display:none!important;}
+    #mobile-toggle{display:flex!important;}
+    /* ── Mobile layout ── */
+    *[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+    *[style*=" 64px"]{padding-left:20px!important;padding-right:20px!important;}
+    *[style*=":64px"]{padding-left:20px!important;padding-right:20px!important;}
+    *[style*="padding:0 40px"]{padding:0 12px!important;}
+    *[style*="margin-top:28px"],*[style*="margin-top:32px"]{margin-top:0!important;}
+    section{overflow:hidden;}
+  }
+  #mobile-menu{position:fixed;inset:0;z-index:200;background:#07070a;display:flex;flex-direction:column;align-items:stretch;opacity:0;pointer-events:none;transition:opacity 0.35s cubic-bezier(0.22,1,0.36,1);}
+  #mobile-menu.open{opacity:1;pointer-events:all;}
+  .mob-link{display:block;width:100%;text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,7.5vw,48px);font-weight:400;color:rgba(255,255,255,0.72);text-decoration:none;line-height:1.35;transition:color 0.2s;}
+  .mob-link:hover{color:#fff;}
+  .mob-link.mob-active{color:#fff;font-style:italic;}
+  @media(max-width:767px){*[style*="margin-top:80px"]{margin-top:68px!important;}}
   .filter-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;border:1px solid rgba(0,0,0,0.12);background:transparent;color:rgba(0,0,0,0.45);cursor:pointer;transition:all 0.2s;}
   .filter-btn.active{background:#000;color:#fff;border-color:#000;}
   .filter-btn:hover:not(.active){border-color:#0040e0;color:#0040e0;}
@@ -50,7 +75,7 @@
 
 <!-- Nav -->
 <header id="site-nav">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
+  <div class="nav-inner" style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
     <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
     <nav id="main-nav" style="display:none;">
       <div style="display:flex;gap:36px;">
@@ -61,9 +86,32 @@
         <a class="nav-link" href="about.html">За нас</a>
       </div>
     </nav>
-    <a href="order.html" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);text-decoration:none;padding:8px 16px;border:1px solid rgba(0,0,0,0.12);transition:all 0.2s;" onmouseover="this.style.borderColor='#0040e0';this.style.color='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)';this.style.color='rgba(0,0,0,0.45)'">Поръчай</a>
+    <a id="desktop-cta" href="order.html" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);text-decoration:none;padding:8px 16px;border:1px solid rgba(0,0,0,0.12);transition:all 0.2s;" onmouseover="this.style.borderColor='#0040e0';this.style.color='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)';this.style.color='rgba(0,0,0,0.45)'">Поръчай</a>
+    <button id="mobile-toggle" aria-label="Меню">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><line x1="0" y1="1" x2="22" y2="1" stroke="#141d23" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="8" x2="22" y2="8" stroke="#141d23" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="15" x2="22" y2="15" stroke="#141d23" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </header>
+<!-- Mobile menu overlay -->
+<div id="mobile-menu">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);width:100%;flex-shrink:0;box-sizing:border-box;">
+    <a href="code.html" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-0.02em;">StepForward</a>
+    <button id="menu-close" style="background:none;border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;flex-shrink:0;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="2" y1="2" x2="14" y2="14" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="2" x2="2" y2="14" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:0 24px;box-sizing:border-box;gap:4px;">
+    <a href="code_1.html" class="mob-link">Мъже</a>
+    <a href="code_2.html" class="mob-link">Жени</a>
+    <a href="bags.html" class="mob-link">Чанти</a>
+    <a href="accessories.html" class="mob-link mob-active">Аксесоари</a>
+    <div style="width:32px;height:1px;background:rgba(255,255,255,0.08);margin:16px 0;"></div>
+    <a href="about.html" class="mob-link" style="font-size:clamp(18px,4.5vw,28px)!important;color:rgba(255,255,255,0.35)!important;">За нас</a>
+  </div>
+  <div style="padding:28px 24px;width:100%;display:flex;justify-content:center;flex-shrink:0;box-sizing:border-box;">
+    <a href="order.html" style="display:inline-block;background:#fff;color:#07070a;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:14px 40px;text-decoration:none;">Поръчай</a>
+  </div>
+</div>
 
 <!-- Collection Hero -->
 <section style="position:relative;background:#07070a;min-height:62vh;display:flex;align-items:center;overflow:hidden;">
@@ -87,7 +135,7 @@
     </svg>
   </div>
 
-  <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:80px 64px;">
+  <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:160px 64px;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px;opacity:0;animation:cFadeIn 0.7s ease 0.3s forwards;">
       <a href="code.html" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;">StepForward</a>
       <span style="color:rgba(255,255,255,0.2);font-size:14px;">›</span>
@@ -333,8 +381,13 @@
 </footer>
 
 <script>
-window.addEventListener('scroll',()=>{const h=document.getElementById('site-nav');h.classList.toggle('scrolled',window.scrollY>40);});
-document.addEventListener('DOMContentLoaded',()=>{document.getElementById('main-nav').style.display='flex';});
+(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.innerWidth>=768) document.getElementById('main-nav').style.display='flex';
+  const toggle=document.getElementById('mobile-toggle'),mmenu=document.getElementById('mobile-menu'),mclose=document.getElementById('menu-close');
+  toggle.addEventListener('click',()=>{mmenu.classList.add('open');document.body.style.overflow='hidden';});
+  mclose.addEventListener('click',()=>{mmenu.classList.remove('open');document.body.style.overflow='';});
+});
 
 function setFilter(gender) {
   const items = document.querySelectorAll('.product-item');

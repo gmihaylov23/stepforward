@@ -53,25 +53,77 @@
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
   body { background-color: #f6faff; color: #141d23; font-family: 'Inter', sans-serif; }
+  html,body{overflow-x:hidden;}
+  /* ── Mobile nav ── */
+  #mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
+  @media(min-width:768px){#about-nav{display:flex!important;}}
+  @media(max-width:767px){
+    #about-nav{display:none!important;}
+    #desktop-cta{display:none!important;}
+    #mobile-toggle{display:flex!important;}
+    /* ── Mobile layout ── */
+    *[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+    *[style*=" 64px"]{padding-left:20px!important;padding-right:20px!important;}
+    *[style*=":64px"]{padding-left:20px!important;padding-right:20px!important;}
+    *[style*="padding:0 40px"]{padding:0 12px!important;}
+    *[style*="margin-top:28px"],*[style*="margin-top:32px"]{margin-top:0!important;}
+    section{overflow:hidden;}
+  }
+  #mobile-menu{position:fixed;inset:0;z-index:200;background:#07070a;display:flex;flex-direction:column;align-items:stretch;opacity:0;pointer-events:none;transition:opacity 0.35s cubic-bezier(0.22,1,0.36,1);}
+  #mobile-menu.open{opacity:1;pointer-events:all;}
+  /* ── Floating pill nav ── */
+  #site-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:1232px;z-index:100;background:rgba(246,250,255,0.82);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.45);border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,0.08),0 2px 8px rgba(0,0,0,0.04);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.35s;}
+  #site-nav.nav-hidden{transform:translateX(-50%) translateY(calc(-100% - 32px));opacity:0;pointer-events:none;}
+  .nav-inner{padding:14px 32px!important;max-width:none!important;}
+  @media(max-width:767px){#site-nav{top:12px;width:calc(100% - 24px);}.nav-inner{padding:12px 16px!important;}}
+  .mob-link{display:block;width:100%;text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,7.5vw,48px);font-weight:400;color:rgba(255,255,255,0.72);text-decoration:none;line-height:1.35;transition:color 0.2s;}
+  .mob-link:hover{color:#fff;}
+  .mob-link.mob-active{color:#fff;font-style:italic;}
+  @media(max-width:767px){*[style*="margin-top:80px"]{margin-top:68px!important;}}
 </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
 
 <!-- Header -->
-<header class="w-full top-0 sticky z-30" style="background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);">
-  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+<header id="site-nav">
+  <div class="nav-inner flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
     <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
-    <nav style="display:flex;gap:36px;">
+    <nav id="about-nav" style="display:flex;gap:36px;">
       <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Мъже</a>
       <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_2.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Жени</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="bags.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Чанти</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="accessories.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Аксесоари</a>
       <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#0040e0;text-decoration:none;border-bottom:1.5px solid #0040e0;padding-bottom:3px;" href="about.html">За нас</a>
     </nav>
-    <div></div>
+    <div id="desktop-cta"></div>
+    <button id="mobile-toggle" aria-label="Меню">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><line x1="0" y1="1" x2="22" y2="1" stroke="#141d23" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="8" x2="22" y2="8" stroke="#141d23" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="15" x2="22" y2="15" stroke="#141d23" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </header>
+<!-- Mobile menu overlay -->
+<div id="mobile-menu">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);width:100%;flex-shrink:0;box-sizing:border-box;">
+    <a href="code.html" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-0.02em;">StepForward</a>
+    <button id="menu-close" style="background:none;border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;flex-shrink:0;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="2" y1="2" x2="14" y2="14" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="2" x2="2" y2="14" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:0 24px;box-sizing:border-box;gap:4px;">
+    <a href="code_1.html" class="mob-link">Мъже</a>
+    <a href="code_2.html" class="mob-link">Жени</a>
+    <a href="bags.html" class="mob-link">Чанти</a>
+    <a href="accessories.html" class="mob-link">Аксесоари</a>
+    <div style="width:32px;height:1px;background:rgba(255,255,255,0.08);margin:16px 0;"></div>
+    <a href="about.html" class="mob-link mob-active" style="font-size:clamp(18px,4.5vw,28px)!important;color:rgba(255,255,255,0.35)!important;">За нас</a>
+  </div>
+  <div style="padding:28px 24px;width:100%;display:flex;justify-content:center;flex-shrink:0;box-sizing:border-box;">
+    <a href="order.html" style="display:inline-block;background:#fff;color:#07070a;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:14px 40px;text-decoration:none;">Поръчай</a>
+  </div>
+</div>
 
-<main class="flex-grow">
+<main class="flex-grow" style="margin-top:80px;">
 
   <!-- Hero -->
   <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 md:pt-24 pb-section-gap">
@@ -256,5 +308,11 @@
 </footer>
 
 <script>
+(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
+document.addEventListener('DOMContentLoaded',()=>{
+  const toggle=document.getElementById('mobile-toggle'),mmenu=document.getElementById('mobile-menu'),mclose=document.getElementById('menu-close');
+  toggle.addEventListener('click',()=>{mmenu.classList.add('open');document.body.style.overflow='hidden';});
+  mclose.addEventListener('click',()=>{mmenu.classList.remove('open');document.body.style.overflow='';});
+});
 </script>
 </body></html>
