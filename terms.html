@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Общи условия - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary": "#0040e0", "primary": "#000000", "on-primary": "#ffffff",
+          "on-background": "#141d23", "surface": "#f6faff", "on-surface": "#141d23",
+          "on-surface-variant": "#45474a", "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#dbe4ed", "surface-container-high": "#e0e9f2",
+          "surface-container-low": "#ecf5fe", "surface-container": "#e6eff8",
+          "outline-variant": "#c5c6ca", "outline": "#75777a",
+          "tertiary-container": "#191c1d", "on-secondary": "#ffffff", "background": "#f6faff"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "gutter": "24px", "unit": "8px", "section-gap": "120px",
+          "margin-desktop": "64px", "margin-mobile": "16px", "container-max": "1280px"
+        },
+        "fontFamily": {
+          "body-lg": ["Inter"], "body-md": ["Inter"], "headline-md": ["Inter"],
+          "label-bold": ["Inter"], "headline-lg-mobile": ["Inter"],
+          "display-lg": ["Inter"], "button": ["Inter"], "headline-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+          "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+          "button": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+    font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none;
+    display: inline-block; white-space: nowrap; direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body { background-color: #f6faff; color: #141d23; font-family: 'Inter', sans-serif; }
+  .legal-section { border-top: 1px solid rgba(197,198,202,0.35); padding-top: 48px; margin-top: 48px; }
+  .legal-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .legal-h2 { font-family:'Playfair Display',Georgia,serif; font-size: 24px; font-weight: 400; color: #000; margin-bottom: 20px; }
+  .legal-h3 { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; margin-top: 28px; letter-spacing: 0.02em; }
+  .legal-p { font-size: 16px; line-height: 28px; color: #45474a; margin-bottom: 16px; }
+  .legal-ol { list-style: decimal; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ol li { margin-bottom: 10px; }
+  .legal-ul { list-style: disc; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ul li { margin-bottom: 8px; }
+  .toc-link { display: block; font-size: 14px; color: #45474a; text-decoration: none; padding: 6px 0; border-bottom: 1px solid rgba(197,198,202,0.2); transition: color 0.2s; }
+  .toc-link:hover { color: #0040e0; }
+  .highlight-box { background: #fff; border-left: 3px solid #0040e0; padding: 20px 24px; margin: 24px 0; }
+  .highlight-box p { margin-bottom: 0; }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+
+<!-- Header -->
+<header class="w-full top-0 sticky z-30" style="background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav style="display:flex;gap:36px;">
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Мъже</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_2.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Жени</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">За нас</a>
+    </nav>
+    <div></div>
+  </div>
+</header>
+
+<main class="flex-grow">
+
+  <!-- Page Header -->
+  <div style="background:#fff;border-bottom:1px solid rgba(197,198,202,0.35);">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+      <nav style="display:flex;align-items:center;gap:8px;font-size:14px;color:#45474a;margin-bottom:24px;">
+        <a href="code.html" style="color:#45474a;text-decoration:none;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#45474a'">StepForward</a>
+        <span class="material-symbols-outlined" style="font-size:16px;">chevron_right</span>
+        <span style="color:#000;font-weight:500;">Общи условия</span>
+      </nav>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,5vw,64px);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:#000;margin-bottom:16px;">Общи условия</h1>
+      <p style="font-size:14px;color:#45474a;">Последна актуализация: 01 януари 2025 г.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
+
+      <!-- Sidebar TOC -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <div style="position:sticky;top:100px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#45474a;margin-bottom:16px;">Съдържание</p>
+          <a class="toc-link" href="#s1">1. Данни за търговеца</a>
+          <a class="toc-link" href="#s2">2. Предмет и обхват</a>
+          <a class="toc-link" href="#s3">3. Поръчка и договор</a>
+          <a class="toc-link" href="#s4">4. Цени и плащане</a>
+          <a class="toc-link" href="#s5">5. Доставка</a>
+          <a class="toc-link" href="#s6">6. Право на отказ</a>
+          <a class="toc-link" href="#s7">7. Рекламации</a>
+          <a class="toc-link" href="#s8">8. Отговорност</a>
+          <a class="toc-link" href="#s9">9. Поверителност</a>
+          <a class="toc-link" href="#s10">10. Изменения</a>
+          <a class="toc-link" href="#s11">11. Приложимо право</a>
+          <a class="toc-link" href="#s12">12. Контакти</a>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="lg:col-span-3">
+
+        <div class="highlight-box" style="margin-bottom:48px;">
+          <p class="legal-p" style="margin-bottom:0;">Моля, прочетете внимателно настоящите Общи условия преди да използвате нашия уебсайт или да направите поръчка. С използването на сайта или извършването на поръчка вие потвърждавате, че сте прочели, разбрали и се съгласявате с тези условия.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="s1" class="legal-section">
+          <h2 class="legal-h2">1. Данни за търговеца</h2>
+          <p class="legal-p">Онлайн магазинът <strong>StepForward</strong> (достъпен на адрес: stepforward.bg) се управлява от физическо лице:</p>
+          <ul class="legal-ul">
+            <li><strong>Търговско наименование:</strong> StepForward</li>
+            <li><strong>Управител:</strong> [ИМЕ И ФАМИЛИЯ]</li>
+            <li><strong>Адрес за кореспонденция:</strong> [АДРЕС], България</li>
+            <li><strong>Електронна поща:</strong> [EMAIL]</li>
+            <li><strong>Телефон:</strong> [ТЕЛЕФОН]</li>
+          </ul>
+          <p class="legal-p">Настоящите общи условия уреждат отношенията между StepForward и потребителите на уебсайта в съответствие с разпоредбите на Закона за електронната търговия (ЗЕТ), Закона за защита на потребителите (ЗЗП) и приложимото европейско законодателство.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="s2" class="legal-section">
+          <h2 class="legal-h2">2. Предмет и обхват</h2>
+          <p class="legal-p">Настоящите Общи условия регулират:</p>
+          <ol class="legal-ol">
+            <li>Условията за ползване на уебсайта stepforward.bg;</li>
+            <li>Условията за сключване на договори за продажба от разстояние чрез уебсайта;</li>
+            <li>Правата и задълженията на StepForward и потребителите при поръчка, заплащане, доставка и рекламация на стоки;</li>
+            <li>Условията за упражняване на право на отказ.</li>
+          </ol>
+          <p class="legal-p">Тези условия се прилагат за всички покупки, осъществени чрез нашия уебсайт, освен ако изрично не е договорено друго в писмена форма.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="s3" class="legal-section">
+          <h2 class="legal-h2">3. Поръчка и сключване на договор</h2>
+          <h3 class="legal-h3">3.1 Процес на поръчка</h3>
+          <p class="legal-p">Поръчката се счита за направена след преминаването на следните стъпки:</p>
+          <ol class="legal-ol">
+            <li>Избиране на продукт(и) и добавянето им в количката;</li>
+            <li>Попълване на данни за доставка (три имена, адрес, телефон, имейл);</li>
+            <li>Избор на метод за плащане;</li>
+            <li>Преглед и потвърждение на поръчката;</li>
+            <li>Получаване на потвърдителен имейл от StepForward.</li>
+          </ol>
+          <h3 class="legal-h3">3.2 Сключване на договор</h3>
+          <p class="legal-p">Договорът за продажба от разстояние се счита за сключен от момента, в който потребителят получи потвърдителен имейл от StepForward, съдържащ номер на поръчката и подробности за поръчаните стоки.</p>
+          <h3 class="legal-h3">3.3 Наличност</h3>
+          <p class="legal-p">Всички предложени продукти са налични, доколкото не е обявено друго. В случай на изчерпване на наличност след потвърждение на поръчка, StepForward се задължава да уведоми потребителя незабавно и да предложи алтернативен продукт или пълно възстановяване на платената сума в срок до 7 работни дни.</p>
+          <h3 class="legal-h3">3.4 Минимална възраст</h3>
+          <p class="legal-p">За да направите поръчка, трябва да сте навършили 18 години или да разполагате с изричното съгласие на родител/настойник.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="s4" class="legal-section">
+          <h2 class="legal-h2">4. Цени и начини на плащане</h2>
+          <h3 class="legal-h3">4.1 Цени</h3>
+          <p class="legal-p">Всички цени на уебсайта са посочени в български лева (лв.) и включват приложимите данъци. StepForward си запазва правото да променя цените по всяко време, като промяната не засяга вече потвърдени поръчки.</p>
+          <h3 class="legal-h3">4.2 Начини на плащане</h3>
+          <p class="legal-p">Приемаме следните начини на плащане:</p>
+          <ul class="legal-ul">
+            <li>Банкова карта (Visa, Mastercard) чрез защитена платежна страница;</li>
+            <li>Наложен платеж при доставка (заплащане на куриера);</li>
+            <li>Банков превод по посочена сметка.</li>
+          </ul>
+          <h3 class="legal-h3">4.3 Сигурност на плащанията</h3>
+          <p class="legal-p">Всички онлайн плащания с карта се обработват чрез сертифициран доставчик на платежни услуги, използващ SSL криптиране. StepForward не съхранява данни за платежни карти.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="s5" class="legal-section">
+          <h2 class="legal-h2">5. Доставка</h2>
+          <h3 class="legal-h3">5.1 Срокове и условия</h3>
+          <p class="legal-p">Доставките се извършват на територията на Република България чрез лицензиран куриер. Стандартният срок за доставка е <strong>2–5 работни дни</strong> след потвърждение на поръчката.</p>
+          <h3 class="legal-h3">5.2 Разходи за доставка</h3>
+          <p class="legal-p">StepForward предлага <strong>безплатна доставка</strong> за всички поръчки, независимо от стойността им. Разходите за доставка при връщане на стока са за сметка на потребителя, освен ако стоката е дефектна или доставена в грешен вид.</p>
+          <h3 class="legal-h3">5.3 Отговорност при доставка</h3>
+          <p class="legal-p">Рискът от случайно погиване или повреждане на стоката преминава върху потребителя от момента на предаването й от куриера. При получаване на видимо повредена пратка, потребителят следва да откаже приемането й и незабавно да уведоми StepForward.</p>
+          <h3 class="legal-h3">5.4 Недоставена пратка</h3>
+          <p class="legal-p">В случай на недоставена пратка по вина на куриера, StepForward се ангажира да изпрати нова или да възстанови платената сума след проверка с куриерската фирма.</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="s6" class="legal-section">
+          <h2 class="legal-h2">6. Право на отказ (Връщане)</h2>
+          <div class="highlight-box">
+            <p class="legal-p" style="margin-bottom:0;"><strong>Съгласно чл. 50 от Закона за защита на потребителите и Директива 2011/83/ЕС, имате право да се откажете от направената поръчка без да посочвате причина в срок от 14 (четиринадесет) календарни дни.</strong></p>
+          </div>
+          <h3 class="legal-h3">6.1 Срок за отказ</h3>
+          <p class="legal-p">Срокът от 14 дни тече от датата, на която вие или посочено от вас трето лице (различно от превозвача) сте получили стоката. Ако не сме ви информирали за правото на отказ, срокът се удължава с 12 месеца.</p>
+          <h3 class="legal-h3">6.2 Начин на упражняване</h3>
+          <p class="legal-p">За да упражните правото си на отказ, трябва да ни уведомите преди изтичането на 14-дневния срок чрез:</p>
+          <ul class="legal-ul">
+            <li>Имейл до: [EMAIL] — с ясно заявление за отказ, номер на поръчка и данни за контакт;</li>
+            <li>Писмо на адрес: [АДРЕС].</li>
+          </ul>
+          <h3 class="legal-h3">6.3 Условия за връщане на стоката</h3>
+          <p class="legal-p">При упражнено право на отказ, стоката трябва да бъде върната без неоправдано забавяне и не по-късно от 14 дни след уведомлението. Стоката следва да бъде:</p>
+          <ul class="legal-ul">
+            <li>В оригиналното си състояние — неизносена, неизмита и без видими следи от употреба;</li>
+            <li>В оригиналната си опаковка с всички етикети;</li>
+            <li>Придружена от документ за покупка (касов бон или фактура).</li>
+          </ul>
+          <h3 class="legal-h3">6.4 Възстановяване на сумата</h3>
+          <p class="legal-p">При получаване и проверка на върнатата стока, StepForward се задължава да възстанови платената сума в срок до <strong>14 дни</strong> по същия начин, по който е направено плащането. Разходите за обратна доставка са за сметка на потребителя.</p>
+          <h3 class="legal-h3">6.5 Изключения</h3>
+          <p class="legal-p">Правото на отказ не се прилага за стоки, изработени по поръчка или ясно персонализирани за конкретен потребител.</p>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="s7" class="legal-section">
+          <h2 class="legal-h2">7. Рекламации и гаранция</h2>
+          <h3 class="legal-h3">7.1 Законова гаранция</h3>
+          <p class="legal-p">Съгласно Закона за защита на потребителите, всички стоки, закупени от StepForward, са покрити от <strong>законова гаранция от 2 (две) години</strong> от датата на получаване. Тази гаранция покрива производствени дефекти и несъответствия с описанието.</p>
+          <h3 class="legal-h3">7.2 Подаване на рекламация</h3>
+          <p class="legal-p">При установен дефект, рекламацията се подава чрез:</p>
+          <ul class="legal-ul">
+            <li>Имейл до: [EMAIL] с описание на проблема и снимки на дефекта;</li>
+            <li>Писмено на адрес: [АДРЕС].</li>
+          </ul>
+          <p class="legal-p">Рекламацията следва да бъде подадена в разумен срок след установяване на дефекта. StepForward ще разгледа рекламацията в срок до 30 дни от получаването й.</p>
+          <h3 class="legal-h3">7.3 Удовлетворяване на рекламация</h3>
+          <p class="legal-p">При основателна рекламация потребителят има право на: ремонт, замяна с идентична стока или намаление на цената. При невъзможност за удовлетворяване по горните начини — разваляне на договора и пълно възстановяване на сумата.</p>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="s8" class="legal-section">
+          <h2 class="legal-h2">8. Ограничение на отговорността</h2>
+          <p class="legal-p">StepForward не носи отговорност за:</p>
+          <ul class="legal-ul">
+            <li>Временна недостъпност на уебсайта поради технически причини или поддръжка;</li>
+            <li>Вреди, причинени от неправомерно използване на уебсайта от трети лица;</li>
+            <li>Непреки, случайни или последващи вреди, произтичащи от използването или невъзможността за използване на уебсайта;</li>
+            <li>Забавяния при доставка, причинени от форсмажорни обстоятелства (природни бедствия, стачки, пандемии и др.).</li>
+          </ul>
+          <p class="legal-p">Отговорността на StepForward при всички случаи е ограничена до стойността на конкретната поръчка.</p>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="s9" class="legal-section">
+          <h2 class="legal-h2">9. Поверителност и лични данни</h2>
+          <p class="legal-p">Обработката на лични данни се извършва в съответствие с Регламент (ЕС) 2016/679 (GDPR) и Закона за защита на личните данни. Подробна информация относно събирането, обработването и съхранението на лични данни е достъпна в нашата <a href="gdpr.html" style="color:#0040e0;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Политика за поверителност</a>.</p>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="s10" class="legal-section">
+          <h2 class="legal-h2">10. Изменения на Общите условия</h2>
+          <p class="legal-p">StepForward си запазва правото да изменя настоящите Общи условия по всяко време. Промените влизат в сила от момента на публикуването им на уебсайта. При съществени изменения ще уведомим регистрираните потребители по имейл.</p>
+          <p class="legal-p">Продължаването на използването на уебсайта след публикуване на изменения се счита за приемане на актуализираните условия.</p>
+        </section>
+
+        <!-- Section 11 -->
+        <section id="s11" class="legal-section">
+          <h2 class="legal-h2">11. Приложимо право и разрешаване на спорове</h2>
+          <p class="legal-p">За всички неуредени въпроси се прилага действащото законодателство на Република България.</p>
+          <h3 class="legal-h3">11.1 Извънсъдебно разрешаване</h3>
+          <p class="legal-p">Потребителите имат право да използват платформата за онлайн разрешаване на спорове (ОРС), достъпна на адрес: <strong>https://ec.europa.eu/consumers/odr</strong>. Препоръчваме прилагане на ОРС и медиация преди насочване към съд.</p>
+          <h3 class="legal-h3">11.2 Компетентен съд</h3>
+          <p class="legal-p">При невъзможност за доброволно уреждане на спора, той се отнася до компетентния съд в Република България. Потребителите — физически лица могат да се обърнат и към Комисията за защита на потребителите (КЗП) на адрес: гр. София, пл. „Славейков" 4А, тел.: 0700 111 22.</p>
+        </section>
+
+        <!-- Section 12 -->
+        <section id="s12" class="legal-section">
+          <h2 class="legal-h2">12. Контакти</h2>
+          <p class="legal-p">При въпроси, свързани с настоящите Общи условия, можете да се свържете с нас:</p>
+          <ul class="legal-ul">
+            <li><strong>Имейл:</strong> [EMAIL]</li>
+            <li><strong>Телефон:</strong> [ТЕЛЕФОН]</li>
+            <li><strong>Адрес:</strong> [АДРЕС], България</li>
+            <li><strong>Работно време:</strong> Понеделник – Петък, 09:00 – 18:00 ч.</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);margin-top:80px;">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;margin:0;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Моите поръчки</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">За нас</a>
+        <a style="font-size:14px;color:#0040e0;text-decoration:none;font-weight:600;" href="terms.html">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="gdpr.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="cookies.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+</script>
+</body></html>

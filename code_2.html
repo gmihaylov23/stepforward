@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Дамска колекция - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#0040e0","primary":"#000","on-primary":"#fff","surface":"#f6faff","on-surface":"#141d23","on-surface-variant":"#45474a","surface-container-lowest":"#fff","surface-container-highest":"#dbe4ed","outline-variant":"#c5c6ca","background":"#f6faff"},spacing:{"gutter":"24px","section-gap":"120px","margin-desktop":"64px","margin-mobile":"16px","container-max":"1280px"},fontFamily:{"body-md":["Inter"],"button":["Inter"]}}}}
+</script>
+<style>
+  .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  *{box-sizing:border-box;}
+  body{background:#f6faff;color:#141d23;font-family:'Inter',sans-serif;margin:0;}
+  @keyframes cRevealUp{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes cFadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes cLineGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  @keyframes cOrbDrift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-40px) scale(1.07);}}
+  .cw{display:inline-block;opacity:0;animation:cRevealUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
+  .pcard{text-decoration:none;display:block;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:transform 0.38s cubic-bezier(0.165,0.84,0.44,1),border-color 0.3s,box-shadow 0.38s;}
+  .pcard:hover{transform:translateY(-5px);border-color:#0040e0;box-shadow:0 24px 60px rgba(0,64,224,0.1);}
+  .pcard-img{padding-top:75%;position:relative;overflow:hidden;background:#f5f5f3;}
+  .pcard-overlay{position:absolute;inset:0;background:rgba(0,64,224,0);transition:background 0.3s;display:flex;align-items:flex-end;justify-content:flex-end;padding:16px;}
+  .pcard:hover .pcard-overlay{background:rgba(0,64,224,0.04);}
+  .pcard-arrow{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;opacity:0;transform:translateY(6px);transition:opacity 0.3s,transform 0.3s;}
+  .pcard:hover .pcard-arrow{opacity:1;transform:translateY(0);}
+  .pcard-num{position:absolute;bottom:12px;right:16px;font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;user-select:none;}
+  .pcard-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:40px;}
+  .pcard-badge{position:absolute;top:16px;left:16px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;}
+  .pcard-badge.blue{background:#0040e0;}
+  .pcard-info{padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);}
+  .pcard-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+  .pcard-sku{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);}
+  .pcard-price{font-size:17px;font-weight:700;color:#000;letter-spacing:-0.02em;}
+  .pcard-name{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;line-height:1.25;}
+  .pcard-cat{font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:18px;letter-spacing:0.3px;}
+  .pcard-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(0,0,0,0.12);font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#000;cursor:pointer;transition:all 0.25s;}
+  .pcard-btn:hover{background:#000;color:#fff;border-color:#000;}
+  #site-nav{position:sticky;top:0;z-index:30;background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);transition:background 0.3s,backdrop-filter 0.3s;}
+  #site-nav.scrolled{background:rgba(246,250,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  .shoe-s{stroke:#2a2a2a;stroke-width:1.2;fill:none;transition:stroke 0.3s;}
+  .pcard:hover .shoe-s{stroke:#0040e0;}
+</style>
+</head>
+<body>
+
+
+<!-- Nav -->
+<header id="site-nav">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav id="main-nav" style="display:none;">
+      <div style="display:flex;gap:36px;">
+        <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Мъже</a>
+        <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#0040e0;text-decoration:none;border-bottom:1.5px solid #0040e0;padding-bottom:3px;" href="code_2.html">Жени</a>
+        <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">За нас</a>
+      </div>
+    </nav>
+    <a href="about.html#contact" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);text-decoration:none;padding:8px 16px;border:1px solid rgba(0,0,0,0.12);transition:all 0.2s;" onmouseover="this.style.borderColor='#0040e0';this.style.color='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)';this.style.color='rgba(0,0,0,0.45)'">Поръчай</a>
+  </div>
+</header>
+
+<!-- Collection Hero -->
+<section style="position:relative;background:#07070a;min-height:62vh;display:flex;align-items:center;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 512 512%22 xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cfilter id%3D%22n%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.75%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22/%3E%3C/filter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23n)%22/%3E%3C/svg%3E');background-size:180px;"></div>
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,64,224,0.14) 0%,transparent 65%);bottom:-100px;right:-80px;z-index:1;filter:blur(80px);animation:cOrbDrift 16s ease-in-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);transform-origin:left;animation:cLineGrow 1.2s ease 0.2s both;"></div>
+  <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:80px 64px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px;opacity:0;animation:cFadeIn 0.7s ease 0.3s forwards;">
+      <a href="code.html" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;">StepForward</a>
+      <span style="color:rgba(255,255,255,0.2);font-size:14px;">›</span>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Жени</span>
+    </div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-0.025em;color:#fff;margin:0 0 28px;font-size:clamp(52px,7vw,88px);">
+      <span class="cw" style="animation-delay:0.45s;">Дамска</span><br/>
+      <em class="cw" style="animation-delay:0.65s;font-style:italic;color:rgba(255,255,255,0.72);">колекция</em>
+    </h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.4);max-width:420px;line-height:1.7;margin:0;opacity:0;animation:cFadeIn 0.8s ease 0.85s forwards;">
+      Елегантност и иновация в съвършен баланс. Изчистени линии, безкомпромисен комфорт.
+    </p>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#f6faff);z-index:5;pointer-events:none;"></div>
+</section>
+
+<!-- Count strip -->
+<div style="max-width:1280px;margin:0 auto;padding:40px 64px 32px;display:flex;align-items:center;gap:20px;">
+  <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">12 продукта</span>
+  <div style="flex:1;height:1px;background:rgba(0,0,0,0.06);"></div>
+  <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">SF — Жени</span>
+</div>
+
+<!-- Product Grid -->
+<main style="max-width:1280px;margin:0 auto;padding:0 64px 120px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+    <!-- 01 Елеганс 01 -->
+    <a href="product.html?id=SF-W-01" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-badge">Ново</div>
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line class="shoe-s" x1="20" x2="180" y1="85" y2="85"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.7" x1="20" x2="180" y1="93" y2="93" opacity="0.4"/></svg></div>
+        <span class="pcard-num">01</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-01</span><span class="pcard-price">189 лв.</span></div>
+        <h2 class="pcard-name">Елеганс 01</h2>
+        <p class="pcard-cat">Елегантни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-01',name:'Елеганс 01',price:189,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 02 Комфорт -->
+    <a href="product.html?id=SF-W-02" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><ellipse class="shoe-s" cx="100" cy="55" rx="75" ry="24"/><line class="shoe-s" x1="100" x2="100" y1="31" y2="79" stroke-dasharray="3 3"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.7" x1="25" x2="175" y1="88" y2="88" opacity="0.4"/></svg></div>
+        <span class="pcard-num">02</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-02</span><span class="pcard-price">145 лв.</span></div>
+        <h2 class="pcard-name">Комфорт</h2>
+        <p class="pcard-cat">Ежедневни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-02',name:'Комфорт',price:145,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 03 Урбан -->
+    <a href="product.html?id=SF-W-03" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,82 L 60,18 L 140,18 L 180,82 Z"/><line class="shoe-s" x1="40" x2="160" y1="53" y2="53" stroke-dasharray="4 3"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="60" x2="140" y1="33" y2="33" opacity="0.4"/></svg></div>
+        <span class="pcard-num">03</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-03</span><span class="pcard-price">220 лв.</span></div>
+        <h2 class="pcard-name">Урбан</h2>
+        <p class="pcard-cat">Градски</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-03',name:'Урбан',price:220,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 04 Стил 02 -->
+    <a href="product.html?id=SF-W-04" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 30,80 Q 80,8 130,48 Q 160,68 180,38"/><line class="shoe-s" x1="20" x2="180" y1="90" y2="90"/><circle class="shoe-s" cx="130" cy="48" r="6" stroke-dasharray="2 2"/></svg></div>
+        <span class="pcard-num">04</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-04</span><span class="pcard-price">195 лв.</span></div>
+        <h2 class="pcard-name">Стил 02</h2>
+        <p class="pcard-cat">Ежедневни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-04',name:'Стил 02',price:195,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 05 Минимал -->
+    <a href="product.html?id=SF-W-05" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><line class="shoe-s" x1="20" x2="180" y1="35" y2="35"/><line class="shoe-s" x1="20" x2="180" y1="55" y2="55"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.9" x1="20" x2="180" y1="78" y2="78" opacity="0.5"/></svg></div>
+        <span class="pcard-num">05</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-05</span><span class="pcard-price">130 лв.</span></div>
+        <h2 class="pcard-name">Минимал</h2>
+        <p class="pcard-cat">Минималистични</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-05',name:'Минимал',price:130,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 06 Класик -->
+    <a href="product.html?id=SF-W-06" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-badge blue">Топ</div>
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><rect class="shoe-s" x="25" y="22" width="150" height="52" rx="26"/><line class="shoe-s" x1="25" x2="175" y1="48" y2="48"/><circle class="shoe-s" cx="100" cy="48" r="12" stroke-dasharray="3 2"/></svg></div>
+        <span class="pcard-num">06</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-06</span><span class="pcard-price">245 лв.</span></div>
+        <h2 class="pcard-name">Класик</h2>
+        <p class="pcard-cat">Класически</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-06',name:'Класик',price:245,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 07 Силует -->
+    <a href="product.html?id=SF-W-07" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 100,12 Q 158,12 172,50 Q 158,88 100,88 Q 42,88 28,50 Q 42,12 100,12 Z"/><line class="shoe-s" x1="100" x2="100" y1="12" y2="88" stroke-dasharray="4 4"/></svg></div>
+        <span class="pcard-num">07</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-07</span><span class="pcard-price">210 лв.</span></div>
+        <h2 class="pcard-name">Силует</h2>
+        <p class="pcard-cat">Дизайнерски</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-07',name:'Силует',price:210,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 08 Авант -->
+    <a href="product.html?id=SF-W-08" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-badge">Лимитиран</div>
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,82 L 100,16 L 180,82"/><path class="shoe-s" d="M 40,82 L 100,40 L 160,82" stroke-dasharray="4 3"/><circle class="shoe-s" cx="100" cy="16" r="5"/></svg></div>
+        <span class="pcard-num">08</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-08</span><span class="pcard-price">265 лв.</span></div>
+        <h2 class="pcard-name">Авант</h2>
+        <p class="pcard-cat">Авангардни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-08',name:'Авант',price:265,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 09 Граца -->
+    <a href="product.html?id=SF-W-09" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,70 Q 50,18 100,28 Q 150,38 180,68"/><path class="shoe-s" d="M 20,82 L 180,82"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="60" x2="140" y1="48" y2="48" opacity="0.4"/></svg></div>
+        <span class="pcard-num">09</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-09</span><span class="pcard-price">175 лв.</span></div>
+        <h2 class="pcard-name">Граца</h2>
+        <p class="pcard-cat">Грациозни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-09',name:'Граца',price:175,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 10 Нюанс -->
+    <a href="product.html?id=SF-W-10" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><line class="shoe-s" x1="20" x2="180" y1="28" y2="28"/><line class="shoe-s" x1="20" x2="180" y1="50" y2="50" stroke-dasharray="5 3"/><line class="shoe-s" x1="20" x2="180" y1="72" y2="72"/><circle class="shoe-s" cx="100" cy="50" r="14" stroke-dasharray="4 2"/></svg></div>
+        <span class="pcard-num">10</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-10</span><span class="pcard-price">155 лв.</span></div>
+        <h2 class="pcard-name">Нюанс</h2>
+        <p class="pcard-cat">Ежедневни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-10',name:'Нюанс',price:155,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 11 Форма -->
+    <a href="product.html?id=SF-W-11" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 30,88 Q 30,14 100,14 Q 170,14 170,88"/><line class="shoe-s" x1="30" x2="170" y1="88" y2="88"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="100" x2="100" y1="14" y2="88" opacity="0.4"/></svg></div>
+        <span class="pcard-num">11</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-11</span><span class="pcard-price">230 лв.</span></div>
+        <h2 class="pcard-name">Форма</h2>
+        <p class="pcard-cat">Архитектурни</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-11',name:'Форма',price:230,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+    <!-- 12 Линия -->
+    <a href="product.html?id=SF-W-12" class="pcard">
+      <div class="pcard-img">
+        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,60 L 60,24 L 100,60 L 140,24 L 180,60"/><line class="shoe-s" x1="20" x2="180" y1="80" y2="80"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.7" x1="20" x2="180" y1="90" y2="90" opacity="0.4"/></svg></div>
+        <span class="pcard-num">12</span>
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <div class="pcard-meta"><span class="pcard-sku">SF-W-12</span><span class="pcard-price">195 лв.</span></div>
+        <h2 class="pcard-name">Линия</h2>
+        <p class="pcard-cat">Минималистични</p>
+        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-W-12',name:'Линия',price:195,size:'38'})">Добави в количка</button>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;margin:0;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Моите поръчки</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="terms.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="gdpr.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="cookies.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>40);});
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('main-nav').style.display='flex';
+  document.querySelectorAll('.pcard-btn').forEach(btn=>{
+    btn.removeAttribute('onclick');
+    btn.textContent='Виж продукта';
+  });
+});
+</script>
+</body></html>

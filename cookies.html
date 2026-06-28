@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Политика за бисквитки - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary": "#0040e0", "primary": "#000000", "on-primary": "#ffffff",
+          "on-background": "#141d23", "surface": "#f6faff", "on-surface": "#141d23",
+          "on-surface-variant": "#45474a", "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#dbe4ed", "surface-container-high": "#e0e9f2",
+          "surface-container-low": "#ecf5fe", "surface-container": "#e6eff8",
+          "outline-variant": "#c5c6ca", "outline": "#75777a",
+          "tertiary-container": "#191c1d", "on-secondary": "#ffffff", "background": "#f6faff"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "gutter": "24px", "unit": "8px", "section-gap": "120px",
+          "margin-desktop": "64px", "margin-mobile": "16px", "container-max": "1280px"
+        },
+        "fontFamily": {
+          "body-lg": ["Inter"], "body-md": ["Inter"], "headline-md": ["Inter"],
+          "label-bold": ["Inter"], "headline-lg-mobile": ["Inter"],
+          "display-lg": ["Inter"], "button": ["Inter"], "headline-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+          "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+          "button": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+    font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none;
+    display: inline-block; white-space: nowrap; direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body { background-color: #f6faff; color: #141d23; font-family: 'Inter', sans-serif; }
+  .legal-section { border-top: 1px solid rgba(197,198,202,0.35); padding-top: 48px; margin-top: 48px; }
+  .legal-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .legal-h2 { font-family:'Playfair Display',Georgia,serif; font-size: 24px; font-weight: 400; color: #000; margin-bottom: 20px; }
+  .legal-h3 { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; margin-top: 28px; letter-spacing: 0.02em; }
+  .legal-p { font-size: 16px; line-height: 28px; color: #45474a; margin-bottom: 16px; }
+  .legal-ol { list-style: decimal; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ol li { margin-bottom: 10px; }
+  .legal-ul { list-style: disc; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ul li { margin-bottom: 8px; }
+  .toc-link { display: block; font-size: 14px; color: #45474a; text-decoration: none; padding: 6px 0; border-bottom: 1px solid rgba(197,198,202,0.2); transition: color 0.2s; }
+  .toc-link:hover { color: #0040e0; }
+  .highlight-box { background: #fff; border-left: 3px solid #0040e0; padding: 20px 24px; margin: 24px 0; }
+  .cookie-card { background: #fff; border: 1px solid rgba(197,198,202,0.3); padding: 24px; margin-bottom: 16px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: flex-start; }
+  .cookie-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px; white-space: nowrap; }
+  .badge-required { background: #000; color: #fff; }
+  .badge-functional { background: #e6eff8; color: #141d23; }
+  .badge-analytics { background: #dde1ff; color: #001356; }
+  .badge-marketing { background: #ffdad6; color: #93000a; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  .data-table th { background: #000; color: #fff; padding: 10px 14px; text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .data-table td { padding: 12px 14px; border-bottom: 1px solid rgba(197,198,202,0.3); color: #45474a; vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: rgba(246,250,255,0.6); }
+  .browser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 640px) { .browser-grid { grid-template-columns: 1fr; } .cookie-card { grid-template-columns: 1fr; } }
+  .browser-card { background: #fff; border: 1px solid rgba(197,198,202,0.3); padding: 16px 20px; display: flex; align-items: center; gap: 12px; text-decoration: none; transition: border-color 0.2s; }
+  .browser-card:hover { border-color: #0040e0; }
+  .browser-card span.label { font-size: 15px; font-weight: 600; color: #000; }
+  .browser-card span.sub { font-size: 13px; color: #45474a; display: block; margin-top: 2px; }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+
+<!-- Header -->
+<header class="w-full top-0 sticky z-30" style="background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav style="display:flex;gap:36px;">
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Мъже</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_2.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Жени</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">За нас</a>
+    </nav>
+    <div></div>
+  </div>
+</header>
+
+<main class="flex-grow">
+
+  <!-- Page Header -->
+  <div style="background:#fff;border-bottom:1px solid rgba(197,198,202,0.35);">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+      <nav style="display:flex;align-items:center;gap:8px;font-size:14px;color:#45474a;margin-bottom:24px;">
+        <a href="code.html" style="color:#45474a;text-decoration:none;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#45474a'">StepForward</a>
+        <span class="material-symbols-outlined" style="font-size:16px;">chevron_right</span>
+        <span style="color:#000;font-weight:500;">Политика за бисквитки</span>
+      </nav>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,5vw,64px);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:#000;margin-bottom:16px;">Политика за бисквитки</h1>
+      <p style="font-size:14px;color:#45474a;">Последна актуализация: 01 януари 2025 г. · Приложимо законодателство: ePrivacy Директива 2002/58/ЕО и GDPR</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
+
+      <!-- Sidebar TOC -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <div style="position:sticky;top:100px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#45474a;margin-bottom:16px;">Съдържание</p>
+          <a class="toc-link" href="#c1">1. Какво са бисквитките</a>
+          <a class="toc-link" href="#c2">2. Как ги използваме</a>
+          <a class="toc-link" href="#c3">3. Видове бисквитки</a>
+          <a class="toc-link" href="#c4">4. Конкретни бисквитки</a>
+          <a class="toc-link" href="#c5">5. Съгласие</a>
+          <a class="toc-link" href="#c6">6. Управление</a>
+          <a class="toc-link" href="#c7">7. Трети страни</a>
+          <a class="toc-link" href="#c8">8. Промени</a>
+          <a class="toc-link" href="#c9">9. Контакт</a>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="lg:col-span-3">
+
+        <div class="highlight-box" style="margin-bottom:48px;">
+          <p class="legal-p" style="margin-bottom:0;">Настоящата Политика за бисквитки обяснява какво са бисквитките, как ги използваме на уебсайта stepforward.bg и как можете да управлявате предпочитанията си. Тя е неразделна част от нашата <a href="gdpr.html" style="color:#0040e0;text-decoration:none;">Политика за поверителност</a>.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="c1" class="legal-section">
+          <h2 class="legal-h2">1. Какво са бисквитките (cookies)?</h2>
+          <p class="legal-p">Бисквитките са малки текстови файлове, които се записват на вашето устройство (компютър, таблет, смартфон) при посещение на уебсайт. Те позволяват на сайта да запомни вашите действия и предпочитания за определен период от време, така че да не се налага да ги въвеждате отново при следващо посещение.</p>
+          <p class="legal-p">Бисквитките <strong>не са вируси</strong> и не могат да изпълняват програмен код. Те не събират информация от вашето устройство и не могат да бъдат използвани за идентифицирането ви без ваше знание — при условие, че са правилно конфигурирани.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;">
+            <div style="background:#fff;border:1px solid rgba(197,198,202,0.3);padding:20px;">
+              <p style="font-weight:700;color:#000;margin-bottom:8px;font-size:15px;">Сесийни бисквитки</p>
+              <p style="font-size:14px;color:#45474a;margin:0;line-height:22px;">Временни — изтриват се автоматично при затваряне на браузъра. Пазят информация само за текущата сесия.</p>
+            </div>
+            <div style="background:#fff;border:1px solid rgba(197,198,202,0.3);padding:20px;">
+              <p style="font-weight:700;color:#000;margin-bottom:8px;font-size:15px;">Постоянни бисквитки</p>
+              <p style="font-size:14px;color:#45474a;margin:0;line-height:22px;">Остават на устройството ви след затваряне на браузъра за определен период или до ръчно изтриване.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="c2" class="legal-section">
+          <h2 class="legal-h2">2. Как използваме бисквитките</h2>
+          <p class="legal-p">Уебсайтът stepforward.bg използва бисквитки за следните основни цели:</p>
+          <ul class="legal-ul">
+            <li><strong>Осигуряване на функционалността на сайта</strong> — запазване на съдържанието на количката, управление на сесията;</li>
+            <li><strong>Подобряване на потребителското изживяване</strong> — запомняне на предпочитания (език, размер на шрифта и др.);</li>
+            <li><strong>Анализиране на трафика</strong> — разбиране как посетителите използват сайта с цел подобряване на съдържанието и структурата;</li>
+            <li><strong>Сигурност</strong> — защита срещу злонамерени заявки и измами.</li>
+          </ul>
+          <p class="legal-p">Ние <strong>не използваме</strong> бисквитки за автоматично вземане на решения, засягащи потребителите, нито за изграждане на профили с цел дискриминация.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="c3" class="legal-section">
+          <h2 class="legal-h2">3. Видове бисквитки, които използваме</h2>
+
+          <!-- Strictly necessary -->
+          <div class="cookie-card">
+            <div>
+              <span class="cookie-badge badge-required">
+                <span class="material-symbols-outlined" style="font-size:14px;">lock</span>
+                Задължителни
+              </span>
+            </div>
+            <div>
+              <h3 style="font-size:17px;font-weight:700;color:#000;margin:0 0 10px 0;">Строго необходими бисквитки</h3>
+              <p class="legal-p">Тези бисквитки са абсолютно необходими за правилното функциониране на уебсайта. Без тях определени функции — като количката за пазаруване или защитените зони — не биха работили. Те не събират информация, която може да бъде използвана за маркетингови цели.</p>
+              <p class="legal-p" style="margin-bottom:0;"><strong>Изискват ли съгласие?</strong> Не — тези бисквитки са изключени от изискването за съгласие съгласно чл. 5, ал. 3 от ePrivacy Директивата.</p>
+            </div>
+          </div>
+
+          <!-- Functional -->
+          <div class="cookie-card">
+            <div>
+              <span class="cookie-badge badge-functional">
+                <span class="material-symbols-outlined" style="font-size:14px;">settings</span>
+                Функционални
+              </span>
+            </div>
+            <div>
+              <h3 style="font-size:17px;font-weight:700;color:#000;margin:0 0 10px 0;">Функционални бисквитки</h3>
+              <p class="legal-p">Позволяват на уебсайта да запомни направените от вас избори (като предпочитан език или регион) и да предостави подобрени, по-персонализирани функции. Информацията, събирана от тези бисквитки, може да бъде анонимизирана и не може да проследява дейността ви в други уебсайтове.</p>
+              <p class="legal-p" style="margin-bottom:0;"><strong>Изискват ли съгласие?</strong> Да — активират се само след ваше съгласие.</p>
+            </div>
+          </div>
+
+          <!-- Analytics -->
+          <div class="cookie-card">
+            <div>
+              <span class="cookie-badge badge-analytics">
+                <span class="material-symbols-outlined" style="font-size:14px;">bar_chart</span>
+                Аналитични
+              </span>
+            </div>
+            <div>
+              <h3 style="font-size:17px;font-weight:700;color:#000;margin:0 0 10px 0;">Аналитични бисквитки</h3>
+              <p class="legal-p">Помагат ни да разберем как посетителите взаимодействат с уебсайта — кои страници се посещават най-често, колко дълго се задържат и откъде идват. Всички данни са агрегирани и анонимизирани — не позволяват идентификация на конкретни лица.</p>
+              <p class="legal-p" style="margin-bottom:0;"><strong>Изискват ли съгласие?</strong> Да — активират се само след ваше съгласие.</p>
+            </div>
+          </div>
+
+          <!-- Marketing -->
+          <div class="cookie-card">
+            <div>
+              <span class="cookie-badge badge-marketing">
+                <span class="material-symbols-outlined" style="font-size:14px;">campaign</span>
+                Маркетингови
+              </span>
+            </div>
+            <div>
+              <h3 style="font-size:17px;font-weight:700;color:#000;margin:0 0 10px 0;">Маркетингови бисквитки</h3>
+              <p class="legal-p">Използват се за показване на персонализирани реклами и проследяване на ефективността на рекламните кампании. Понастоящем StepForward използва минимален брой маркетингови бисквитки само за вградено социално съдържание.</p>
+              <p class="legal-p" style="margin-bottom:0;"><strong>Изискват ли съгласие?</strong> Да — активират се само след ваше изрично съгласие.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="c4" class="legal-section">
+          <h2 class="legal-h2">4. Конкретни бисквитки, използвани на нашия сайт</h2>
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Бисквитка</th>
+                  <th>Тип</th>
+                  <th>Цел</th>
+                  <th>Срок</th>
+                  <th>Изпращач</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">sf_cart</code></td>
+                  <td><span class="cookie-badge badge-required" style="font-size:11px;padding:2px 8px;">Задължителна</span></td>
+                  <td>Запазва съдържанието на количката между сесии</td>
+                  <td>localStorage (без срок)</td>
+                  <td>StepForward</td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">session_id</code></td>
+                  <td><span class="cookie-badge badge-required" style="font-size:11px;padding:2px 8px;">Задължителна</span></td>
+                  <td>Идентификатор на текущата сесия за сигурност</td>
+                  <td>Сесия (изтрива се при затваряне)</td>
+                  <td>StepForward</td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">cookie_consent</code></td>
+                  <td><span class="cookie-badge badge-required" style="font-size:11px;padding:2px 8px;">Задължителна</span></td>
+                  <td>Запазва вашия избор относно бисквитките</td>
+                  <td>12 месеца</td>
+                  <td>StepForward</td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">_ga</code></td>
+                  <td><span class="cookie-badge badge-analytics" style="font-size:11px;padding:2px 8px;">Аналитична</span></td>
+                  <td>Google Analytics — разграничава потребителите</td>
+                  <td>2 години</td>
+                  <td>Google LLC</td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">_ga_*</code></td>
+                  <td><span class="cookie-badge badge-analytics" style="font-size:11px;padding:2px 8px;">Аналитична</span></td>
+                  <td>Google Analytics — запазва статуса на сесията</td>
+                  <td>2 години</td>
+                  <td>Google LLC</td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:13px;background:#f6faff;padding:2px 6px;">user_lang</code></td>
+                  <td><span class="cookie-badge badge-functional" style="font-size:11px;padding:2px 8px;">Функционална</span></td>
+                  <td>Запомня предпочитан език на сайта</td>
+                  <td>6 месеца</td>
+                  <td>StepForward</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="legal-p">Актуализираме тази таблица при всяка промяна в използваните бисквитки. Ако забележите несъответствие, моля, уведомете ни на [EMAIL].</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="c5" class="legal-section">
+          <h2 class="legal-h2">5. Вашето съгласие</h2>
+          <p class="legal-p">В съответствие с изискванията на ePrivacy Директивата (2002/58/ЕО) и GDPR, при първото ви посещение на нашия сайт ще ви бъде показан <strong>банер за бисквитки</strong>, чрез който можете да:</p>
+          <ul class="legal-ul">
+            <li><strong>Приемете всички бисквитки</strong> — включително функционални, аналитични и маркетингови;</li>
+            <li><strong>Откажете незадължителните бисквитки</strong> — само задължителните ще останат активни;</li>
+            <li><strong>Персонализирате избора си</strong> — включите или изключите отделни категории.</li>
+          </ul>
+          <div class="highlight-box">
+            <p class="legal-p" style="margin-bottom:8px;"><strong>Важно:</strong> Съгласието ви е изцяло доброволно.</p>
+            <p class="legal-p" style="margin-bottom:0;">Отказът от незадължителни бисквитки не ограничава достъпа ви до основните функции на сайта. Можете да промените предпочитанията си по всяко време, като изтриете бисквитката <code style="background:#e6eff8;padding:2px 6px;font-size:13px;">cookie_consent</code> от браузъра си.</p>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="c6" class="legal-section">
+          <h2 class="legal-h2">6. Как да управлявате бисквитките</h2>
+          <p class="legal-p">Можете да контролирате и/или изтривате бисквитките по всяко време чрез настройките на вашия браузър. Имайте предвид, че деактивирането на определени бисквитки може да повлияе на функционалността на сайта.</p>
+
+          <h3 class="legal-h3">Инструкции за популярните браузъри:</h3>
+          <div class="browser-grid">
+            <a class="browser-card" href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined" style="color:#0040e0;font-size:28px;flex-shrink:0;">open_in_new</span>
+              <div>
+                <span class="label">Google Chrome</span>
+                <span class="sub">Настройки → Поверителност → Бисквитки</span>
+              </div>
+            </a>
+            <a class="browser-card" href="https://support.mozilla.org/bg/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined" style="color:#0040e0;font-size:28px;flex-shrink:0;">open_in_new</span>
+              <div>
+                <span class="label">Mozilla Firefox</span>
+                <span class="sub">Опции → Поверителност и сигурност</span>
+              </div>
+            </a>
+            <a class="browser-card" href="https://support.microsoft.com/bg-bg/windows/изтриване-и-управление-на-бисквитки-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined" style="color:#0040e0;font-size:28px;flex-shrink:0;">open_in_new</span>
+              <div>
+                <span class="label">Microsoft Edge</span>
+                <span class="sub">Настройки → Бисквитки и разрешения</span>
+              </div>
+            </a>
+            <a class="browser-card" href="https://support.apple.com/bg-bg/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined" style="color:#0040e0;font-size:28px;flex-shrink:0;">open_in_new</span>
+              <div>
+                <span class="label">Apple Safari</span>
+                <span class="sub">Предпочитания → Поверителност</span>
+              </div>
+            </a>
+          </div>
+
+          <h3 class="legal-h3">Отказ от Google Analytics</h3>
+          <p class="legal-p">За да се откажете от проследяването от Google Analytics в целия уеб, можете да инсталирате официалната добавка: <a href="https://tools.google.com/dlpage/gaoptout" style="color:#0040e0;" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+          <h3 class="legal-h3">Последствия от деактивиране</h3>
+          <p class="legal-p">При деактивиране на бисквитки е възможно:</p>
+          <ul class="legal-ul">
+            <li>Количката за пазаруване да не запазва съдържанието си между сесии;</li>
+            <li>Предпочитанията ви да не се запомнят;</li>
+            <li>Определени интерактивни функции на сайта да не работят оптимално.</li>
+          </ul>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="c7" class="legal-section">
+          <h2 class="legal-h2">7. Бисквитки от трети страни</h2>
+          <p class="legal-p">Нашият уебсайт може да включва съдържание или инструменти от трети страни, които поставят собствени бисквитки на вашето устройство. Ние нямаме контрол върху тези бисквитки. Основните трети страни са:</p>
+          <ul class="legal-ul">
+            <li><strong>Google LLC</strong> (Google Analytics) — политика за поверителност: <a href="https://policies.google.com/privacy" style="color:#0040e0;" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+            <li><strong>Meta Platforms (Facebook/Instagram)</strong> — при вградени „Харесай" бутони или пикселно проследяване: <a href="https://www.facebook.com/privacy/policy/" style="color:#0040e0;" target="_blank" rel="noopener">facebook.com/privacy/policy</a></li>
+          </ul>
+          <p class="legal-p">Бисквитките от трети страни се активират само ако сте дали съответното съгласие за категорията им.</p>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="c8" class="legal-section">
+          <h2 class="legal-h2">8. Промени в Политиката за бисквитки</h2>
+          <p class="legal-p">Можем да актуализираме настоящата политика периодично при промени в използваните технологии, законодателни изисквания или нашите практики. При съществени промени ще:</p>
+          <ul class="legal-ul">
+            <li>Публикуваме актуализирана версия на тази страница с нова дата;</li>
+            <li>При необходимост — поискаме ново съгласие чрез банера за бисквитки.</li>
+          </ul>
+          <p class="legal-p">Препоръчваме да проверявате тази страница периодично.</p>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="c9" class="legal-section">
+          <h2 class="legal-h2">9. Контакт</h2>
+          <p class="legal-p">При въпроси относно нашата употреба на бисквитки или ако желаете да упражните правата си съгласно GDPR, свържете се с нас:</p>
+          <ul class="legal-ul">
+            <li><strong>Имейл:</strong> [EMAIL]</li>
+            <li><strong>Адрес:</strong> [АДРЕС], България</li>
+          </ul>
+          <p class="legal-p">За жалби до надзорния орган — <strong>Комисия за защита на личните данни (КЗЛД)</strong>: <a href="https://cpdp.bg" style="color:#0040e0;" target="_blank" rel="noopener">cpdp.bg</a>, тел. 02 915 3 518.</p>
+
+          <div style="margin-top:40px;padding:32px;background:#000;display:flex;flex-direction:column;align-items:flex-start;gap:20px;">
+            <p style="color:#fff;font-size:20px;font-weight:700;margin:0;">Искате да промените предпочитанията си?</p>
+            <p style="color:rgba(255,255,255,0.6);font-size:16px;margin:0;">Изтрийте бисквитката <code style="background:rgba(255,255,255,0.1);padding:2px 8px;color:#fff;">cookie_consent</code> от настройките на браузъра ви — при следващото посещение банерът ще се покаже отново.</p>
+            <a href="https://www.allaboutcookies.org/manage-cookies/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#0040e0;color:#fff;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding:12px 24px;text-decoration:none;" onmouseover="this.style.background='#fff';this.style.color='#000'" onmouseout="this.style.background='#0040e0';this.style.color='#fff'">
+              <span class="material-symbols-outlined" style="font-size:18px;">open_in_new</span>
+              Как да управлявам бисквитки
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);margin-top:80px;">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;margin:0;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Моите поръчки</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="terms.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="gdpr.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">GDPR</a>
+        <a style="font-size:14px;color:#0040e0;text-decoration:none;font-weight:600;" href="cookies.html">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+</script>
+</body></html>

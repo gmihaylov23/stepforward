@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Продукт - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#f6faff;color:#141d23;font-family:'Inter',sans-serif;}
+
+  @keyframes pFadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes pRevealUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pLineGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  @keyframes pShoeDrawIn{to{stroke-dashoffset:0;}}
+  @keyframes pFloat{0%,100%{transform:translateY(0) rotate(-0.5deg);}50%{transform:translateY(-14px) rotate(0.5deg);}}
+
+  #site-nav{position:sticky;top:0;z-index:30;background:#f6faff;border-bottom:1px solid rgba(0,0,0,0.07);transition:background 0.3s,backdrop-filter 0.3s;}
+  #site-nav.scrolled{background:rgba(246,250,255,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+
+  /* Size buttons */
+  .size-btn{border:1px solid rgba(0,0,0,0.12);padding:10px 0;min-width:54px;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#000;background:#fff;cursor:pointer;transition:all 0.2s;}
+  .size-btn:hover{border-color:#0040e0;color:#0040e0;}
+  .size-btn.active{background:#000;color:#fff;border-color:#000;}
+
+  /* Related product cards */
+  .rcard{text-decoration:none;display:block;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:transform 0.35s cubic-bezier(0.165,0.84,0.44,1),border-color 0.3s,box-shadow 0.35s;}
+  .rcard:hover{transform:translateY(-4px);border-color:#0040e0;box-shadow:0 20px 50px rgba(0,64,224,0.09);}
+  .rcard-img{padding-top:70%;position:relative;background:#f5f5f3;}
+  .rcard-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;}
+  .shoe-s{stroke:#2a2a2a;stroke-width:1.2;fill:none;transition:stroke 0.3s;}
+  .rcard:hover .shoe-s{stroke:#0040e0;}
+</style>
+</head>
+<body style="display:flex;flex-direction:column;min-height:100vh;">
+
+
+<!-- Nav -->
+<header id="site-nav">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 64px;max-width:1280px;margin:0 auto;">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav id="main-nav" style="display:none;">
+      <div style="display:flex;gap:36px;" id="nav-links">
+        <a id="nav-men" style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html">Мъже</a>
+        <a id="nav-women" style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_2.html">Жени</a>
+        <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">За нас</a>
+      </div>
+    </nav>
+    <a href="about.html" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.4);text-decoration:none;display:none;" class="md:flex" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">Свържи се</a>
+  </div>
+</header>
+
+<main style="flex-grow:1;max-width:1280px;margin:0 auto;width:100%;padding:0 64px;">
+
+  <!-- Breadcrumb -->
+  <nav id="breadcrumb" style="display:flex;align-items:center;gap:10px;padding:36px 0 0;opacity:0;animation:pFadeIn 0.6s ease 0.1s forwards;">
+    <a href="code.html" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);text-decoration:none;">StepForward</a>
+    <span style="color:rgba(0,0,0,0.2);font-size:14px;">›</span>
+    <a id="bc-collection" href="#" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);text-decoration:none;"></a>
+    <span style="color:rgba(0,0,0,0.2);font-size:14px;">›</span>
+    <span id="bc-name" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#000;"></span>
+  </nav>
+
+  <!-- Product detail -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:48px 0 100px;align-items:start;" id="product-detail">
+
+    <!-- Left: Visual -->
+    <div style="position:sticky;top:100px;">
+      <div id="product-visual" style="background:#f5f5f3;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:64px;position:relative;overflow:hidden;opacity:0;animation:pFadeIn 0.8s ease 0.2s forwards;">
+        <!-- SVG injected by JS, with float animation wrapper -->
+      </div>
+      <!-- Badge -->
+      <div id="product-badge" style="display:none;position:absolute;top:20px;left:20px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;z-index:5;"></div>
+    </div>
+
+    <!-- Right: Info -->
+    <div>
+      <!-- SKU + Category -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;opacity:0;animation:pFadeIn 0.7s ease 0.3s forwards;">
+        <span id="product-sku" style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);"></span>
+        <div style="height:1px;flex:1;background:rgba(0,0,0,0.08);"></div>
+        <span id="product-category-label" style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);"></span>
+      </div>
+
+      <!-- Name -->
+      <h1 id="product-name" style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,5vw,60px);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:#000;margin-bottom:20px;opacity:0;animation:pRevealUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;"></h1>
+
+      <!-- Price -->
+      <p id="product-price" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#000;margin-bottom:28px;opacity:0;animation:pFadeIn 0.7s ease 0.55s forwards;"></p>
+
+      <!-- Divider -->
+      <div style="height:1px;background:rgba(0,0,0,0.08);margin-bottom:28px;transform-origin:left;animation:pLineGrow 0.8s ease 0.6s both;"></div>
+
+      <!-- Description -->
+      <p id="product-desc" style="font-size:15px;line-height:1.75;color:rgba(0,0,0,0.55);margin-bottom:28px;opacity:0;animation:pFadeIn 0.7s ease 0.65s forwards;"></p>
+
+      <!-- Features -->
+      <ul id="product-features" style="margin-bottom:36px;display:flex;flex-direction:column;gap:10px;opacity:0;animation:pFadeIn 0.7s ease 0.75s forwards;"></ul>
+
+      <!-- Delivery Window -->
+      <div style="background:#f5f5f3;padding:20px 22px;margin-bottom:16px;opacity:0;animation:pFadeIn 0.7s ease 0.85s forwards;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <span class="material-symbols-outlined" style="font-size:18px;color:#0040e0;">schedule</span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.4);">Очаквана доставка</span>
+        </div>
+        <p id="delivery-window" style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:#000;margin:0 0 4px;letter-spacing:-0.01em;"></p>
+        <p style="font-size:12px;color:rgba(0,0,0,0.38);margin:0;">Ръчна изработка · 2–3 седмици изчакване</p>
+      </div>
+
+      <!-- Deposit note -->
+      <div style="border:1px solid rgba(0,64,224,0.18);padding:14px 18px;margin-bottom:28px;display:flex;align-items:flex-start;gap:10px;opacity:0;animation:pFadeIn 0.7s ease 0.9s forwards;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:#0040e0;flex-shrink:0;margin-top:1px;">info</span>
+        <p style="font-size:13px;color:#0040e0;margin:0;line-height:1.5;">Необходим е <strong>20% депозит</strong> за потвърждение на поръчката. Свържете се с нас за детайли.</p>
+      </div>
+
+      <!-- Contact divider -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;opacity:0;animation:pFadeIn 0.7s ease 0.95s forwards;">
+        <div style="flex:1;height:1px;background:rgba(0,0,0,0.08);"></div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);">Свържи се с нас</span>
+        <div style="flex:1;height:1px;background:rgba(0,0,0,0.08);"></div>
+      </div>
+
+      <!-- Contact buttons -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;opacity:0;animation:pFadeIn 0.7s ease 1s forwards;">
+        <!-- Telegram -->
+        <a id="contact-telegram" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid rgba(0,0,0,0.08);background:#fff;text-decoration:none;transition:all 0.25s;" onmouseover="this.style.borderColor='#0040e0';this.style.background='#f6faff'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)';this.style.background='#fff'">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+            <circle cx="12" cy="12" r="12" fill="#229ED9"/>
+            <path fill="#fff" d="M17.562 8.196L15.525 17.79c-.152.67-.55.833-1.115.518l-3.073-2.265-1.484 1.427c-.165.165-.302.302-.616.302l.22-3.103 5.647-5.102c.245-.22-.054-.34-.382-.12L7.04 14.293l-2.9-.904c-.63-.197-.642-.63.132-.931l11.323-4.365c.524-.19.985.128.967.103z"/>
+          </svg>
+          <div style="flex-grow:1;">
+            <p style="font-size:14px;font-weight:700;color:#000;margin:0 0 2px;">Telegram</p>
+            <p style="font-size:11px;color:rgba(0,0,0,0.4);margin:0;letter-spacing:0.3px;" id="tg-handle">[TELEGRAM_USERNAME]</p>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:16px;color:rgba(0,0,0,0.2);">arrow_forward</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="contact-whatsapp" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid rgba(0,0,0,0.08);background:#fff;text-decoration:none;transition:all 0.25s;" onmouseover="this.style.borderColor='#0040e0';this.style.background='#f6faff'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)';this.style.background='#fff'">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+            <circle cx="12" cy="12" r="12" fill="#25D366"/>
+            <path fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <div style="flex-grow:1;">
+            <p style="font-size:14px;font-weight:700;color:#000;margin:0 0 2px;">WhatsApp</p>
+            <p style="font-size:11px;color:rgba(0,0,0,0.4);margin:0;letter-spacing:0.3px;">[ТЕЛЕФОНЕН_НОМЕР]</p>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:16px;color:rgba(0,0,0,0.2);">arrow_forward</span>
+        </a>
+
+        <!-- Email -->
+        <a id="contact-email" href="#" style="display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid rgba(0,0,0,0.08);background:#fff;text-decoration:none;transition:all 0.25s;" onmouseover="this.style.borderColor='#0040e0';this.style.background='#f6faff'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)';this.style.background='#fff'">
+          <div style="width:22px;height:22px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span class="material-symbols-outlined" style="font-size:13px;color:#fff;">mail</span>
+          </div>
+          <div style="flex-grow:1;">
+            <p style="font-size:14px;font-weight:700;color:#000;margin:0 0 2px;">Имейл</p>
+            <p style="font-size:11px;color:rgba(0,0,0,0.4);margin:0;letter-spacing:0.3px;">[EMAIL]</p>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:16px;color:rgba(0,0,0,0.2);">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Back -->
+      <a id="back-link" href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.35);text-decoration:none;transition:color 0.2s;opacity:0;animation:pFadeIn 0.7s ease 1.05s forwards;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.35)'">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+        Обратно
+      </a>
+    </div>
+  </div>
+
+  <!-- Related products -->
+  <section style="padding-bottom:120px;">
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:48px;">
+      <div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);display:block;margin-bottom:6px;">Открийте още</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#000;line-height:1.2;">Подобни модели</h2>
+      </div>
+      <div style="flex:1;height:1px;background:rgba(0,0,0,0.07);"></div>
+    </div>
+    <div id="related-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Моите поръчки</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="about.html">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="terms.html">Общи условия</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="gdpr.html">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="cookies.html">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;" href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Products DB ──────────────────────────────────────────────────────────────
+const PRODUCTS={
+  'SF-M-01':{id:'SF-M-01',name:'City Runner',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:240,badge:'Ново',desc:'Перфектната обувка за динамичния градски живот. Леко тегло, изключителен комфорт за всеки ден.',features:['Технология за амортизация CloudStep','Дишаща мрежеста горна часта','Гумена противохлъзгаща подметка','Тегло: 285г'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 50,80 L 70,50"/><path stroke="#141d23" stroke-width="1.2" d="M 80,80 L 100,40"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="1" x1="0" x2="200" y1="90" y2="90"/></svg>`},
+  'SF-M-02':{id:'SF-M-02',name:'Urban Oxford',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:320,badge:'',desc:'Класическа елегантност в модерна интерпретация. Идеален за делови срещи и официални поводи.',features:['Естествена телешка кожа','Ръчно зашити детайли','Кожена стелка с памет','Микрофибърна подплата'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:280px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 120 160" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 25,25 L 95,25 L 105,145 L 15,145 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 22,65 L 98,65"/><path stroke="#141d23" stroke-width="1.2" d="M 18,130 L 102,130"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="25" x2="95" y1="44" y2="44"/></svg>`},
+  'SF-M-03':{id:'SF-M-03',name:'Horizon Trek',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:280,badge:'',desc:'Стабилност и издръжливост за дълги разходки. Создадена за хора, покоряващи нови хоризонти.',features:['Водоустойчива мембрана','Подсилена пета и нос','GripTech подметка','Ortholite стелка'],sizes:[40,41,42,43,44,45,46],svg:`<svg style="width:100%;max-width:360px;animation:pFloat 10s ease-in-out infinite;" viewBox="0 0 300 110" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path stroke="#0040e0" stroke-width="1" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.5"/><line stroke="#141d23" stroke-dasharray="5 4" stroke-width="0.8" x1="12" x2="285" y1="105" y2="105"/></svg>`},
+  'SF-M-04':{id:'SF-M-04',name:'Velocity Knit',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:210,badge:'',desc:'Максимална скорост, минимални ограничения. Едноцветна трикотажна тъкан за перфектно прилягане.',features:['Едноцветна трикотажна горна часта','Реактивна EVA пяна','Безшевна конструкция','Машинно миеща се'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;transform:scaleX(-1);animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 50,80 L 70,50"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="1" x1="0" x2="200" y1="90" y2="90"/></svg>`},
+  'SF-M-05':{id:'SF-M-05',name:'Classic Derby',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:340,badge:'Топ',desc:'Безвременна класика, прецизно изработена. Символ на елегантност и финес.',features:['Пълнозърнеста телешка кожа','Goodyear welt конструкция','Дъбова кожена подметка','Ортопедична вложка'],sizes:[39,40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:280px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 120 160" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 32,22 L 88,22 L 98,148 L 22,148 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 22,72 L 98,72"/><path stroke="#141d23" stroke-width="1.2" d="M 18,125 L 102,125"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="32" x2="88" y1="44" y2="44"/></svg>`},
+  'SF-M-06':{id:'SF-M-06',name:'Aero Dash',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:260,badge:'',desc:'Скорост и стил в едно. Аеродинамичен профил за максимална производителност.',features:['Аеродинамичен профил','Carbon fiber плоча','Дишащи вентилационни канали','Рефлективни детайли'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:360px;transform:scaleX(-1);animation:pFloat 10s ease-in-out infinite;" viewBox="0 0 300 110" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path stroke="#0040e0" stroke-width="1" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.5"/></svg>`},
+  'SF-M-07':{id:'SF-M-07',name:'Street Pulse',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:225,badge:'',desc:'Ритъмът на улицата в твоите крака. Енергията на града превърната в комфорт.',features:['Градски дизайн','Амортизационна зона в петата','Издръжлива външна подметка','Лесно обуване'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 10,68 Q 40,20 90,40 Q 140,60 190,28"/><path stroke="#141d23" stroke-width="1.2" d="M 10,80 L 190,80"/><line stroke="#0040e0" stroke-dasharray="2 3" stroke-width="0.8" x1="10" x2="190" y1="90" y2="90"/></svg>`},
+  'SF-M-08':{id:'SF-M-08',name:'Terra Flow',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:295,badge:'',desc:'Следвай пътя независимо от терена. Terra Flow се адаптира към всяка повърхност.',features:['Multi-terrain подметка','Усилена мезоподметка','Защита от отломки','Бързосъхнеща тъкан'],sizes:[40,41,42,43,44,45,46],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 15,75 L 50,28 L 100,53 L 150,18 L 185,48"/><path stroke="#141d23" stroke-width="1.2" d="M 15,87 L 185,87"/><circle stroke="#141d23" stroke-width="1" cx="50" cy="28" r="4" stroke-dasharray="2 2"/><circle stroke="#141d23" stroke-width="1" cx="150" cy="18" r="4" stroke-dasharray="2 2"/></svg>`},
+  'SF-M-09':{id:'SF-M-09',name:'Night Stride',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:310,badge:'Лимитиран',desc:'Проектирана за нощния град. Стелт естетика с видимост и безопасност.',features:['360° рефлективни панели','Светлопоглъщащо покритие','Премиум EVA пяна','Лимитирана серия'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><rect stroke="#141d23" stroke-width="1.5" x="20" y="15" width="160" height="65" rx="8"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="47" y2="47"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="15" y2="80"/><circle cx="60" cy="32" r="4" fill="#0040e0" opacity="0.6"/><circle cx="140" cy="63" r="4" fill="#0040e0" opacity="0.6"/></svg>`},
+  'SF-M-10':{id:'SF-M-10',name:'Metro Glide',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:235,badge:'',desc:'Плавно движение из метрополиса. Вашият ежедневен спътник за безпроблемно придвижване.',features:['Slip-on дизайн','Memory foam стелка','Flex-groove подметка','Еластична горна тъкан'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,58 Q 60,8 100,48 Q 140,88 180,38"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="76" y2="76" stroke-dasharray="6 3"/></svg>`},
+  'SF-M-11':{id:'SF-M-11',name:'Peak Runner',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:275,badge:'',desc:'Достигни върха. Peak Runner за тези, които не приемат компромиси в представянето.',features:['Race-proven технология','Ultra-light конструкция','Асиметрична горна часта','Precision fit ласет'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><polygon stroke="#141d23" stroke-width="1.5" points="100,10 185,88 15,88"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="10" y2="88" stroke-dasharray="3 3"/><line stroke="#141d23" stroke-width="1" x1="15" x2="185" y1="60" y2="60" stroke-dasharray="3 3"/></svg>`},
+  'SF-M-12':{id:'SF-M-12',name:'Urban Step',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:190,badge:'',desc:'Стъпете в новия градски живот. Достъпна, функционална и стилна — без компромиси.',features:['Ежедневен комфорт','Издръжлива синтетична горна часта','Cushioned подметка','Лесна поддръжка'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 180,80"/><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 40,40 L 100,50 L 160,28 L 180,80"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="50" r="9" stroke-dasharray="3 3"/></svg>`},
+  'SF-W-01':{id:'SF-W-01',name:'Елеганс 01',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:189,badge:'Ново',desc:'Елегантност, превърната в движение. Въплъщение на изчистен минималистичен дизайн.',features:['Финна телешка кожа','Извит ток 5 см','Противохлъзгаща подметка','Мека кожена стелка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line stroke="#141d23" stroke-width="1.2" x1="20" x2="180" y1="85" y2="85"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="20" x2="180" y1="93" y2="93"/></svg>`},
+  'SF-W-02':{id:'SF-W-02',name:'Комфорт',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:145,badge:'',desc:'Ден след ден, крачка след крачка. Ежедневната обувка, която никога не разочарова.',features:['Memory foam стелка','Широко ходило','Анти-умора технология','Лека конструкция'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><ellipse stroke="#141d23" stroke-width="1.5" cx="100" cy="55" rx="75" ry="24"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="31" y2="79" stroke-dasharray="3 3"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="25" x2="175" y1="88" y2="88"/></svg>`},
+  'SF-W-03':{id:'SF-W-03',name:'Урбан',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:220,badge:'',desc:'Градски дух в женска форма. Остри линии и безкомпромисен стил.',features:['Геометричен дизайн','Платформена подметка 3 см','Естествен велур','Side-zip закопчаване'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,82 L 60,18 L 140,18 L 180,82 Z"/><line stroke="#141d23" stroke-width="1" x1="40" x2="160" y1="53" y2="53" stroke-dasharray="4 3"/></svg>`},
+  'SF-W-04':{id:'SF-W-04',name:'Стил 02',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:195,badge:'',desc:'Стилът не е опция, той е начин на живот. Ежедневна обувка с характер.',features:['Смесена тъкан и кожа','Мек ток 4 см','Дишаща стелка','Омекотена яка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 30,80 Q 80,8 130,48 Q 160,68 180,38"/><line stroke="#141d23" stroke-width="1.2" x1="20" x2="180" y1="90" y2="90"/><circle stroke="#141d23" stroke-width="1" cx="130" cy="48" r="6" stroke-dasharray="2 2"/></svg>`},
+  'SF-W-05':{id:'SF-W-05',name:'Минимал',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:130,badge:'',desc:'По-малкото е повече. Чистата есенция на дизайна — само функция и форма.',features:['Zero-distraction дизайн','Тъкана горна часта','Плоска подметка','Ежедневен комфорт'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="35" y2="35"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="55" y2="55"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="1" x1="20" x2="180" y1="78" y2="78"/></svg>`},
+  'SF-W-06':{id:'SF-W-06',name:'Класик',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:245,badge:'Топ',desc:'Класиката никога не остарява. Дамската обувка, която ще носите десетилетия.',features:['Телешка кожа от Тоскана','Ритуален ток 6 см','Кожена стелка','Ръчна изработка'],sizes:[35,36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><rect stroke="#141d23" stroke-width="1.5" x="25" y="22" width="150" height="52" rx="26"/><line stroke="#141d23" stroke-width="1" x1="25" x2="175" y1="48" y2="48"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="48" r="12" stroke-dasharray="3 2"/></svg>`},
+  'SF-W-07':{id:'SF-W-07',name:'Силует',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:210,badge:'',desc:'Откроете се с силует, достоен за вниманието. Всяка крачка е изявление.',features:['Контрастен дизайн','Формовано ходило','Прецизна кройка','Лека подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 100,12 Q 158,12 172,50 Q 158,88 100,88 Q 42,88 28,50 Q 42,12 100,12 Z"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="12" y2="88" stroke-dasharray="4 4"/></svg>`},
+  'SF-W-08':{id:'SF-W-08',name:'Авант',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:265,badge:'Лимитиран',desc:'За жените, вървящи пред времето. Авангарден дизайн за дързостта да бъдеш различна.',features:['Авангарден дизайн','Ток скулптура 7 см','Лимитирани бои','Ексклузивна кожа'],sizes:[36,37,38,39,40],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,82 L 100,16 L 180,82"/><path stroke="#141d23" stroke-width="1" d="M 40,82 L 100,40 L 160,82" stroke-dasharray="4 3"/><circle stroke="#141d23" stroke-width="1.5" cx="100" cy="16" r="5"/></svg>`},
+  'SF-W-09':{id:'SF-W-09',name:'Граца',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:175,badge:'',desc:'Грация в движение. Балансът между женственост и съвременен минимализъм.',features:['Мека ламбска кожа','Нисък ток 3 см','Подплатена стелка','Закопчаване с катарама'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,70 Q 50,18 100,28 Q 150,38 180,68"/><path stroke="#141d23" stroke-width="1.2" d="M 20,82 L 180,82"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="60" x2="140" y1="48" y2="48"/></svg>`},
+  'SF-W-10':{id:'SF-W-10',name:'Нюанс',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:155,badge:'',desc:'Нюансите правят разликата. За жената с изтънчен вкус към детайла.',features:['Суед горна часта','Контрастна шевка','Подвижна стелка','Равна подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="28" y2="28"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="50" y2="50" stroke-dasharray="5 3"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="72" y2="72"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="50" r="14" stroke-dasharray="4 2"/></svg>`},
+  'SF-W-11':{id:'SF-W-11',name:'Форма',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:230,badge:'',desc:'Формата следва функцията, а функцията — красотата. Архитектурата на женската обувка.',features:['Скулптурна форма','Стабилизираща конструкция','Мека вътрешност','Издръжлива подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 30,88 Q 30,14 100,14 Q 170,14 170,88"/><line stroke="#141d23" stroke-width="1.5" x1="30" x2="170" y1="88" y2="88"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="100" x2="100" y1="14" y2="88"/></svg>`},
+  'SF-W-12':{id:'SF-W-12',name:'Линия',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:195,badge:'',desc:'Чистата линия е основата на красотата. Дефиниция на минималистичния женски стил.',features:['Геометричен акцент','Нисък профил','Двуцветна подметка','Тесен нос'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,60 L 60,24 L 100,60 L 140,24 L 180,60"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="80" y2="80"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="20" x2="180" y1="90" y2="90"/></svg>`}
+};
+
+// ── Contact config — fill these in ───────────────────────────────────────────
+const CONTACT = {
+  telegram:  '[TELEGRAM_USERNAME]',         // e.g. stepforward_bg
+  whatsapp:  '[WHATSAPP_NUMBER]',           // e.g. 359888123456 (no + or spaces)
+  email:     '[EMAIL]'                      // e.g. contact@stepforward.bg
+};
+
+// ── Delivery window (today + 14–21 days) ─────────────────────────────────────
+function getDeliveryWindow() {
+  const today = new Date();
+  const start = new Date(today); start.setDate(start.getDate() + 14);
+  const end   = new Date(today); end.setDate(end.getDate() + 21);
+  const fmt = d => String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth()+1).padStart(2,'0');
+  return fmt(start) + ' – ' + fmt(end);
+}
+
+// ── Setup contact links with pre-filled product context ───────────────────────
+function setupContactLinks(product) {
+  const msg = `Здравейте! Интересувам се от "${product.name}" (${product.id}) на цена ${product.price} лв. Бихте ли ми дали повече информация?`;
+  const enc = encodeURIComponent(msg);
+
+  const tg = document.getElementById('contact-telegram');
+  if (tg) {
+    tg.href = 'https://t.me/' + CONTACT.telegram;
+    const handle = tg.querySelector('#tg-handle');
+    if (handle) handle.textContent = '@' + CONTACT.telegram;
+  }
+
+  const wa = document.getElementById('contact-whatsapp');
+  if (wa) wa.href = 'https://wa.me/' + CONTACT.whatsapp + '?text=' + enc;
+
+  const em = document.getElementById('contact-email');
+  if (em) {
+    const subj = encodeURIComponent('Запитване: ' + product.name + ' (' + product.id + ')');
+    em.href = 'mailto:' + CONTACT.email + '?subject=' + subj + '&body=' + enc;
+    const label = em.querySelector('p:last-of-type');
+    if (label) label.textContent = CONTACT.email;
+  }
+
+  // Delivery window
+  const dw = document.getElementById('delivery-window');
+  if (dw) dw.textContent = getDeliveryWindow();
+}
+
+// ── Page ─────────────────────────────────────────────────────────────────────
+let currentProduct = null;
+
+function renderRelated(product){
+  const all=Object.values(PRODUCTS).filter(p=>p.category===product.category&&p.id!==product.id);
+  const related=all.sort(()=>0.5-Math.random()).slice(0,3);
+  const svgs=[
+    `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 200 100" fill="none"><path class="shoe-s" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/></svg>`,
+    `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 200 100" fill="none"><path class="shoe-s" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line class="shoe-s" x1="20" x2="180" y1="85" y2="85"/></svg>`,
+    `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 300 110" fill="none"><path class="shoe-s" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/></svg>`
+  ];
+  document.getElementById('related-grid').innerHTML=related.map((p,i)=>`
+    <a href="product.html?id=${p.id}" class="rcard">
+      <div class="rcard-img">
+        <div class="rcard-inner">${svgs[i%3]}</div>
+        <span style="position:absolute;bottom:10px;right:14px;font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;">${p.id.slice(-2)}</span>
+      </div>
+      <div style="padding:18px 20px 20px;border-top:1px solid rgba(0,0,0,0.04);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.25);">${p.id}</span>
+          <span style="font-size:15px;font-weight:700;color:#000;">${p.price} лв.</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:#000;margin:4px 0 14px;">${p.name}</h3>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);border:1px solid rgba(0,0,0,0.1);padding:11px;text-align:center;transition:all 0.25s;" onmouseover="this.style.background='#000';this.style.color='#fff';this.style.borderColor='#000'" onmouseout="this.style.background='';this.style.color='rgba(0,0,0,0.45)';this.style.borderColor='rgba(0,0,0,0.1)'">Виж продукта</div>
+      </div>
+    </a>`).join('');
+}
+
+function initPage(){
+  document.getElementById('main-nav').style.display='flex';
+  const id=new URLSearchParams(window.location.search).get('id');
+  const product=id?PRODUCTS[id]:null;
+  if(!product){
+    document.getElementById('product-detail').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:80px 0;"><p style="font-family:Playfair Display,serif;font-size:48px;color:#000;margin-bottom:12px;">404</p><p style="color:rgba(0,0,0,0.4);margin-bottom:32px;">Продуктът не е намерен.</p><a href="code.html" style="color:#0040e0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">← Начало</a></div>';return;
+  }
+  currentProduct=product;
+  document.title=product.name+' - StepForward';
+
+  // Breadcrumb
+  document.getElementById('bc-collection').textContent=product.categoryLabel;
+  document.getElementById('bc-collection').href=product.categoryUrl;
+  document.getElementById('bc-name').textContent=product.name;
+
+  // Active nav link
+  if(product.category==='men'){const el=document.getElementById('nav-men');el.style.color='#0040e0';el.style.borderBottom='1.5px solid #0040e0';el.style.paddingBottom='3px';}
+  else{const el=document.getElementById('nav-women');el.style.color='#0040e0';el.style.borderBottom='1.5px solid #0040e0';el.style.paddingBottom='3px';}
+
+  // Visual
+  const vis=document.getElementById('product-visual');
+  vis.innerHTML=`<div style="width:100%;display:flex;align-items:center;justify-content:center;">${product.svg}</div>`;
+  if(product.badge){const b=document.getElementById('product-badge');b.textContent=product.badge;b.style.display='block';b.style.background=product.badge==='Топ'?'#0040e0':'#000';}
+
+  // Info
+  document.getElementById('product-sku').textContent=product.id;
+  document.getElementById('product-category-label').textContent=product.categoryLabel;
+  document.getElementById('product-name').textContent=product.name;
+  document.getElementById('product-price').textContent=product.price+' лв.';
+  document.getElementById('product-desc').textContent=product.desc;
+
+  document.getElementById('product-features').innerHTML=product.features.map(f=>`
+    <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(0,0,0,0.55);">
+      <div style="width:5px;height:5px;background:#0040e0;border-radius:50%;flex-shrink:0;"></div>${f}
+    </li>`).join('');
+
+  document.getElementById('back-link').href=product.categoryUrl;
+  setupContactLinks(product);
+
+  renderRelated(product);
+}
+
+window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>40);});
+document.addEventListener('DOMContentLoaded',initPage);
+</script>
+</body></html>

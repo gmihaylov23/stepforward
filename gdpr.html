@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="bg"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Политика за поверителност (GDPR) - StepForward</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary": "#0040e0", "primary": "#000000", "on-primary": "#ffffff",
+          "on-background": "#141d23", "surface": "#f6faff", "on-surface": "#141d23",
+          "on-surface-variant": "#45474a", "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#dbe4ed", "surface-container-high": "#e0e9f2",
+          "surface-container-low": "#ecf5fe", "surface-container": "#e6eff8",
+          "outline-variant": "#c5c6ca", "outline": "#75777a",
+          "tertiary-container": "#191c1d", "on-secondary": "#ffffff", "background": "#f6faff"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "gutter": "24px", "unit": "8px", "section-gap": "120px",
+          "margin-desktop": "64px", "margin-mobile": "16px", "container-max": "1280px"
+        },
+        "fontFamily": {
+          "body-lg": ["Inter"], "body-md": ["Inter"], "headline-md": ["Inter"],
+          "label-bold": ["Inter"], "headline-lg-mobile": ["Inter"],
+          "display-lg": ["Inter"], "button": ["Inter"], "headline-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+          "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+          "button": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+    font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none;
+    display: inline-block; white-space: nowrap; direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body { background-color: #f6faff; color: #141d23; font-family: 'Inter', sans-serif; }
+  .legal-section { border-top: 1px solid rgba(197,198,202,0.35); padding-top: 48px; margin-top: 48px; }
+  .legal-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .legal-h2 { font-family:'Playfair Display',Georgia,serif; font-size: 24px; font-weight: 400; color: #000; margin-bottom: 20px; }
+  .legal-h3 { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; margin-top: 28px; letter-spacing: 0.02em; }
+  .legal-p { font-size: 16px; line-height: 28px; color: #45474a; margin-bottom: 16px; }
+  .legal-ol { list-style: decimal; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ol li { margin-bottom: 10px; }
+  .legal-ul { list-style: disc; padding-left: 24px; color: #45474a; font-size: 16px; line-height: 28px; margin-bottom: 16px; }
+  .legal-ul li { margin-bottom: 8px; }
+  .toc-link { display: block; font-size: 14px; color: #45474a; text-decoration: none; padding: 6px 0; border-bottom: 1px solid rgba(197,198,202,0.2); transition: color 0.2s; }
+  .toc-link:hover { color: #0040e0; }
+  .highlight-box { background: #fff; border-left: 3px solid #0040e0; padding: 20px 24px; margin: 24px 0; }
+  .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  @media (max-width: 640px) { .rights-grid { grid-template-columns: 1fr; } }
+  .right-card { background: #fff; border: 1px solid rgba(197,198,202,0.3); padding: 20px; }
+  .right-card .icon { color: #0040e0; margin-bottom: 10px; }
+  .right-card h4 { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 6px; }
+  .right-card p { font-size: 14px; line-height: 22px; color: #45474a; margin: 0; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  .data-table th { background: #000; color: #fff; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .data-table td { padding: 12px 16px; border-bottom: 1px solid rgba(197,198,202,0.3); color: #45474a; vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: rgba(246,250,255,0.8); }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+
+<!-- Header -->
+<header class="w-full top-0 sticky z-30" style="background:#f6faff;border-bottom:1px solid rgba(20,29,35,0.1);">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+    <a style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;" href="code.html">StepForward</a>
+    <nav style="display:flex;gap:36px;">
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_1.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Мъже</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="code_2.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">Жени</a>
+      <a style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.5);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#0040e0'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">За нас</a>
+    </nav>
+    <div></div>
+  </div>
+</header>
+
+<main class="flex-grow">
+
+  <!-- Page Header -->
+  <div style="background:#fff;border-bottom:1px solid rgba(197,198,202,0.35);">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+      <nav style="display:flex;align-items:center;gap:8px;font-size:14px;color:#45474a;margin-bottom:24px;">
+        <a href="code.html" style="color:#45474a;text-decoration:none;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#45474a'">StepForward</a>
+        <span class="material-symbols-outlined" style="font-size:16px;">chevron_right</span>
+        <span style="color:#000;font-weight:500;">Политика за поверителност</span>
+      </nav>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4.5vw,58px);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:#000;margin-bottom:16px;">Политика за поверителност и GDPR</h1>
+      <p style="font-size:14px;color:#45474a;">Последна актуализация: 01 януари 2025 г. · Приложимо законодателство: Регламент (ЕС) 2016/679 (GDPR) и ЗЗЛД</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
+
+      <!-- Sidebar TOC -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <div style="position:sticky;top:100px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#45474a;margin-bottom:16px;">Съдържание</p>
+          <a class="toc-link" href="#g1">1. Администратор на данни</a>
+          <a class="toc-link" href="#g2">2. Какви данни събираме</a>
+          <a class="toc-link" href="#g3">3. Цели и правно основание</a>
+          <a class="toc-link" href="#g4">4. Срокове за съхранение</a>
+          <a class="toc-link" href="#g5">5. Вашите права</a>
+          <a class="toc-link" href="#g6">6. Трети страни</a>
+          <a class="toc-link" href="#g7">7. Прехвърляне извън ЕС</a>
+          <a class="toc-link" href="#g8">8. Бисквитки</a>
+          <a class="toc-link" href="#g9">9. Сигурност на данните</a>
+          <a class="toc-link" href="#g10">10. Надзорен орган</a>
+          <a class="toc-link" href="#g11">11. Промени в политиката</a>
+          <a class="toc-link" href="#g12">12. Контакт</a>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="lg:col-span-3">
+
+        <div class="highlight-box" style="margin-bottom:48px;">
+          <p class="legal-p" style="margin-bottom:8px;"><strong>Вашата поверителност е наш приоритет.</strong></p>
+          <p class="legal-p" style="margin-bottom:0;">Настоящата политика обяснява как StepForward събира, използва, съхранява и защитава вашите лични данни в съответствие с Регламент (ЕС) 2016/679 (GDPR) и Закона за защита на личните данни (ЗЗЛД) на Република България. Моля, прочетете я внимателно.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="g1" class="legal-section">
+          <h2 class="legal-h2">1. Администратор на лични данни</h2>
+          <p class="legal-p">Администратор на вашите лични данни е:</p>
+          <ul class="legal-ul">
+            <li><strong>Марка:</strong> StepForward</li>
+            <li><strong>Физическо лице – управител:</strong> [ИМЕ И ФАМИЛИЯ]</li>
+            <li><strong>Адрес:</strong> [АДРЕС], България</li>
+            <li><strong>Имейл за защита на данни:</strong> [EMAIL]</li>
+            <li><strong>Телефон:</strong> [ТЕЛЕФОН]</li>
+          </ul>
+          <p class="legal-p">Като физическо лице, осъществяващо търговска дейност, StepForward е задължено да спазва изискванията на GDPR при обработването на личните данни на своите клиенти и посетители на уебсайта.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="g2" class="legal-section">
+          <h2 class="legal-h2">2. Какви лични данни събираме</h2>
+
+          <h3 class="legal-h3">2.1 Данни, предоставени от вас</h3>
+          <p class="legal-p">При поръчка или контакт с нас събираме следните категории лични данни:</p>
+
+          <div style="overflow-x:auto;margin:20px 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Категория данни</th>
+                  <th>Конкретни данни</th>
+                  <th>Кога се събират</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Идентификационни</strong></td>
+                  <td>Три имена</td>
+                  <td>При поръчка</td>
+                </tr>
+                <tr>
+                  <td><strong>Данни за контакт</strong></td>
+                  <td>Имейл адрес, телефонен номер</td>
+                  <td>При поръчка или запитване</td>
+                </tr>
+                <tr>
+                  <td><strong>Адресни данни</strong></td>
+                  <td>Адрес за доставка (улица, град, пощенски код)</td>
+                  <td>При поръчка</td>
+                </tr>
+                <tr>
+                  <td><strong>Финансови данни</strong></td>
+                  <td>Метод на плащане (без данни за карта)</td>
+                  <td>При завършване на поръчка</td>
+                </tr>
+                <tr>
+                  <td><strong>Данни за поръчка</strong></td>
+                  <td>История на поръчките, закупени продукти, суми</td>
+                  <td>При всяка поръчка</td>
+                </tr>
+                <tr>
+                  <td><strong>Комуникация</strong></td>
+                  <td>Съдържание на имейли и съобщения</td>
+                  <td>При контакт с нас</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="legal-h3">2.2 Данни, събирани автоматично</h3>
+          <p class="legal-p">При посещение на нашия уебсайт автоматично се събират технически данни:</p>
+          <ul class="legal-ul">
+            <li>IP адрес и приблизително географско местоположение;</li>
+            <li>Тип и версия на браузъра;</li>
+            <li>Операционна система;</li>
+            <li>Посетени страници и времеви марки;</li>
+            <li>Референтен URL (откъде сте дошли на сайта);</li>
+            <li>Данни от бисквитки (вижте нашата <a href="cookies.html" style="color:#0040e0;text-decoration:none;">Политика за бисквитки</a>).</li>
+          </ul>
+
+          <h3 class="legal-h3">2.3 Специални категории данни</h3>
+          <p class="legal-p">StepForward <strong>не събира и не обработва</strong> специални категории лични данни по смисъла на чл. 9 от GDPR (здравни данни, биометрични данни, данни за расов или етнически произход и др.).</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="g3" class="legal-section">
+          <h2 class="legal-h2">3. Цели и правно основание за обработване</h2>
+          <p class="legal-p">Обработваме вашите лични данни само за конкретни, изрично посочени цели и само когато е налице правно основание:</p>
+
+          <div style="overflow-x:auto;margin:20px 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Цел на обработване</th>
+                  <th>Правно основание (GDPR)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Обработване и изпълнение на поръчки</td>
+                  <td>Чл. 6(1)(б) – изпълнение на договор</td>
+                </tr>
+                <tr>
+                  <td>Комуникация относно поръчки и рекламации</td>
+                  <td>Чл. 6(1)(б) – изпълнение на договор</td>
+                </tr>
+                <tr>
+                  <td>Изпращане на потвърждения и фактури</td>
+                  <td>Чл. 6(1)(в) – спазване на законово задължение</td>
+                </tr>
+                <tr>
+                  <td>Счетоводна и данъчна отчетност</td>
+                  <td>Чл. 6(1)(в) – спазване на законово задължение</td>
+                </tr>
+                <tr>
+                  <td>Изпращане на маркетингови имейли</td>
+                  <td>Чл. 6(1)(а) – съгласие (opt-in)</td>
+                </tr>
+                <tr>
+                  <td>Подобряване на уебсайта и потребителското изживяване</td>
+                  <td>Чл. 6(1)(е) – легитимен интерес</td>
+                </tr>
+                <tr>
+                  <td>Предотвратяване на измами</td>
+                  <td>Чл. 6(1)(е) – легитимен интерес</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="highlight-box">
+            <p class="legal-p" style="margin-bottom:0;"><strong>Маркетингови съобщения:</strong> Ние ще ви изпращаме рекламни имейли единствено с ваше изрично предварително съгласие. Можете да оттеглите съгласието си по всяко време чрез бутона „Отписване" в имейла или като се свържете с нас.</p>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="g4" class="legal-section">
+          <h2 class="legal-h2">4. Срокове за съхранение на данните</h2>
+          <p class="legal-p">Съхраняваме вашите лични данни само толкова дълго, колкото е необходимо за конкретната цел или колкото изисква законодателството:</p>
+          <ul class="legal-ul">
+            <li><strong>Данни за поръчки и фактури:</strong> 10 години съгласно Закона за счетоводството;</li>
+            <li><strong>Данни за доставка:</strong> 2 години след изпълнение на поръчката (за цели на рекламации);</li>
+            <li><strong>Данни за комуникация:</strong> 3 години от последния контакт;</li>
+            <li><strong>Маркетингови данни:</strong> До оттегляне на съгласието или 3 години от последна активност;</li>
+            <li><strong>Технически данни (логове):</strong> До 12 месеца.</li>
+          </ul>
+          <p class="legal-p">След изтичане на посочените срокове данните се изтриват или анонимизират по сигурен начин.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="g5" class="legal-section">
+          <h2 class="legal-h2">5. Вашите права като субект на данни</h2>
+          <p class="legal-p">Съгласно GDPR, имате следните права по отношение на вашите лични данни:</p>
+
+          <div class="rights-grid">
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">visibility</span></div>
+              <h4>Право на достъп</h4>
+              <p>Право да получите потвърждение дали обработваме ваши данни и копие от тях (чл. 15 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">edit</span></div>
+              <h4>Право на коригиране</h4>
+              <p>Право да поискате коригиране на неточни или непълни лични данни (чл. 16 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">delete</span></div>
+              <h4>Право на изтриване</h4>
+              <p>Право да поискате изтриване на данните ви („право да бъдеш забравен") при определени условия (чл. 17 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">pause_circle</span></div>
+              <h4>Право на ограничаване</h4>
+              <p>Право да поискате ограничаване на обработването при оспорване на точността или законосъобразността (чл. 18 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">download</span></div>
+              <h4>Право на преносимост</h4>
+              <p>Право да получите данните си в структуриран, машинно четим формат и да ги прехвърлите на друг администратор (чл. 20 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">block</span></div>
+              <h4>Право на възражение</h4>
+              <p>Право да се противопоставите на обработването, основано на легитимен интерес или за маркетингови цели (чл. 21 GDPR).</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">cancel</span></div>
+              <h4>Право на оттегляне на съгласие</h4>
+              <p>При обработване въз основа на съгласие — право да го оттеглите по всяко време, без да засяга законосъобразността на предходното обработване.</p>
+            </div>
+            <div class="right-card">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:28px;">gavel</span></div>
+              <h4>Право на жалба</h4>
+              <p>Право да подадете жалба до Комисията за защита на личните данни (КЗЛД) — надзорния орган в България.</p>
+            </div>
+          </div>
+
+          <h3 class="legal-h3">Как да упражните правата си</h3>
+          <p class="legal-p">Изпратете писмено искане на <strong>[EMAIL]</strong> с тема „Искане за упражняване на права – GDPR". Ще отговорим в срок до <strong>30 дни</strong> от получаване на искането. При сложност или голям брой искания срокът може да бъде удължен с още 60 дни, за което ще бъдете уведомени.</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="g6" class="legal-section">
+          <h2 class="legal-h2">6. Споделяне с трети страни</h2>
+          <p class="legal-p">StepForward <strong>не продава и не отдава под наем</strong> вашите лични данни на трети страни. Данните могат да бъдат споделени само в следните случаи:</p>
+          <ul class="legal-ul">
+            <li><strong>Куриерски фирми</strong> – за изпълнение на доставката (три имена, адрес, телефон);</li>
+            <li><strong>Доставчици на платежни услуги</strong> – за обработване на плащанията (само необходимите данни за транзакцията);</li>
+            <li><strong>Доставчици на имейл услуги</strong> – за изпращане на потвърждения и маркетингови съобщения (при съгласие);</li>
+            <li><strong>Счетоводни услуги</strong> – при необходимост от данъчна и счетоводна отчетност;</li>
+            <li><strong>Компетентни органи</strong> – при законово задължение (съд, прокуратура, КЗП, НАП).</li>
+          </ul>
+          <p class="legal-p">Всички обработващи лични данни от наше име са задължени с договор да спазват GDPR и да осигуряват адекватно ниво на защита.</p>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="g7" class="legal-section">
+          <h2 class="legal-h2">7. Прехвърляне на данни извън ЕС/ЕИП</h2>
+          <p class="legal-p">По принцип не прехвърляме лични данни извън Европейския съюз или Европейското икономическо пространство. В случай че ползваме услуги (напр. облачни услуги), при които данни могат да бъдат обработвани извън ЕС, ние гарантираме, че:</p>
+          <ul class="legal-ul">
+            <li>Получателят се намира в държава с адекватно ниво на защита (по решение на Европейската комисия); или</li>
+            <li>Прехвърлянето се извършва въз основа на Стандартни договорни клаузи (SCC), одобрени от ЕК.</li>
+          </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="g8" class="legal-section">
+          <h2 class="legal-h2">8. Бисквитки (Cookies)</h2>
+          <p class="legal-p">Уебсайтът използва бисквитки за подобряване на функционалността и потребителското изживяване. Подробна информация относно видовете бисквитки, тяхното предназначение и управление ще намерите в нашата <a href="cookies.html" style="color:#0040e0;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Политика за бисквитки</a>.</p>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="g9" class="legal-section">
+          <h2 class="legal-h2">9. Сигурност на данните</h2>
+          <p class="legal-p">Прилагаме подходящи технически и организационни мерки за защита на вашите лични данни от неоторизиран достъп, разкриване, промяна или унищожаване:</p>
+          <ul class="legal-ul">
+            <li>SSL/TLS криптиране на всички комуникации с уебсайта;</li>
+            <li>Сигурно съхранение на данните с ограничен достъп;</li>
+            <li>Редовни резервни копия на данните;</li>
+            <li>Достъп до лични данни само от оторизирани лица при необходимост.</li>
+          </ul>
+          <p class="legal-p">При нарушение на сигурността на личните данни, което представлява риск за вашите права и свободи, ще уведомим Комисията за защита на личните данни в срок до <strong>72 часа</strong> и вас — без неоправдано забавяне.</p>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="g10" class="legal-section">
+          <h2 class="legal-h2">10. Надзорен орган</h2>
+          <p class="legal-p">Надзорният орган по защита на личните данни в Република България е:</p>
+          <div style="background:#fff;border:1px solid rgba(197,198,202,0.35);padding:24px;margin:20px 0;">
+            <p style="font-size:16px;font-weight:700;color:#000;margin-bottom:12px;">Комисия за защита на личните данни (КЗЛД)</p>
+            <ul class="legal-ul" style="margin-bottom:0;">
+              <li><strong>Адрес:</strong> гр. София 1592, бул. „Проф. Цветан Лазаров" № 2</li>
+              <li><strong>Телефон:</strong> 02 915 3 518</li>
+              <li><strong>Имейл:</strong> kzld@cpdp.bg</li>
+              <li><strong>Уебсайт:</strong> <a href="https://cpdp.bg" style="color:#0040e0;" target="_blank" rel="noopener">https://cpdp.bg</a></li>
+            </ul>
+          </div>
+          <p class="legal-p">Имате право да подадете жалба до КЗЛД, ако смятате, че обработването на вашите лични данни нарушава приложимото законодателство. Преди това ви насърчаваме да се свържете директно с нас за разрешаване на въпроса.</p>
+        </section>
+
+        <!-- Section 11 -->
+        <section id="g11" class="legal-section">
+          <h2 class="legal-h2">11. Промени в Политиката за поверителност</h2>
+          <p class="legal-p">Можем да актуализираме настоящата политика периодично, за да отразим промени в нашите практики или в законодателството. При съществени промени ще публикуваме актуализирана версия на тази страница с нова дата и ще ви уведомим по имейл (ако разполагаме с вашия адрес).</p>
+          <p class="legal-p">Препоръчваме да преглеждате редовно тази страница за актуалности.</p>
+        </section>
+
+        <!-- Section 12 -->
+        <section id="g12" class="legal-section">
+          <h2 class="legal-h2">12. Контакт за въпроси относно поверителността</h2>
+          <p class="legal-p">При въпроси, притеснения или искания, свързани с обработването на вашите лични данни, моля, свържете се с нас:</p>
+          <ul class="legal-ul">
+            <li><strong>Имейл:</strong> [EMAIL]</li>
+            <li><strong>Адрес:</strong> [АДРЕС], България</li>
+            <li><strong>Телефон:</strong> [ТЕЛЕФОН]</li>
+          </ul>
+          <p class="legal-p">Ще се постараем да отговорим на всяко запитване в рамките на работния ден и при всички случаи в законоустановения 30-дневен срок.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#fff;border-top:1px solid rgba(0,0,0,0.06);margin-top:80px;">
+  <div style="max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;">
+    <div>
+      <a style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#000;text-decoration:none;letter-spacing:-0.02em;display:block;margin-bottom:16px;" href="code.html">StepForward</a>
+      <p style="font-size:13px;color:rgba(0,0,0,0.35);line-height:1.6;margin:0;">© 2025 StepForward.<br/>Всички права запазени.</p>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Обслужване</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Моите поръчки</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Доставка</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Плащане</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Замяна</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Информация</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="about.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">За нас</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="terms.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Общи условия</a>
+        <a style="font-size:14px;color:#0040e0;text-decoration:none;font-weight:600;" href="gdpr.html">GDPR</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="cookies.html" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Бисквитки</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.3);margin:0 0 20px;">Следвайте ни</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Instagram</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">Facebook</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">TikTok</a>
+        <a style="font-size:14px;color:rgba(0,0,0,0.55);text-decoration:none;transition:color 0.2s;" href="#" onmouseover="this.style.color='#000'" onmouseout="this.style.color='rgba(0,0,0,0.55)'">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+</script>
+</body></html>
