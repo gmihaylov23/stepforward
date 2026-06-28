@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: images/products
+public_folder: /images/products
+
+collections:
+  - name: products
+    label: Products
+    files:
+      - name: products
+        label: Products
+        file: products.json
+        fields:
+          - name: products
+            label: Products
+            widget: list
+            fields:
+              - name: id
+                label: ID
+                widget: string
+                hint: "Lowercase with dashes only, eg: hand-carved-bowl-01"
+              - name: name
+                label: Name
+                widget: string
+              - name: price
+                label: Price
+                widget: string
+              - name: category
+                label: Category
+                widget: string
+              - name: description
+                label: Description
+                widget: text
+              - name: images
+                label: Images
+                widget: list
+                field:
+                  name: image
+                  label: Image
+                  widget: image
+                hint: "Compress each photo at squoosh.app before uploading — WebP, quality 80, max 1200px"

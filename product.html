@@ -118,9 +118,7 @@
 
     <!-- Left: Visual -->
     <div style="position:sticky;top:100px;">
-      <div id="product-visual" style="background:#f5f5f3;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:64px;position:relative;overflow:hidden;opacity:0;animation:pFadeIn 0.8s ease 0.2s forwards;">
-        <!-- SVG injected by JS, with float animation wrapper -->
-      </div>
+      <div id="product-gallery" style="background:#f5f5f3;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:64px;position:relative;overflow:hidden;opacity:0;animation:pFadeIn 0.8s ease 0.2s forwards;"></div>
       <!-- Badge -->
       <div id="product-badge" style="display:none;position:absolute;top:20px;left:20px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;z-index:5;"></div>
     </div>
@@ -144,7 +142,7 @@
       <div style="height:1px;background:rgba(0,0,0,0.08);margin-bottom:28px;transform-origin:left;animation:pLineGrow 0.8s ease 0.6s both;"></div>
 
       <!-- Description -->
-      <p id="product-desc" style="font-size:15px;line-height:1.75;color:rgba(0,0,0,0.55);margin-bottom:28px;opacity:0;animation:pFadeIn 0.7s ease 0.65s forwards;"></p>
+      <p id="product-description" style="font-size:15px;line-height:1.75;color:rgba(0,0,0,0.55);margin-bottom:28px;opacity:0;animation:pFadeIn 0.7s ease 0.65s forwards;"></p>
 
       <!-- Features -->
       <ul id="product-features" style="margin-bottom:36px;display:flex;flex-direction:column;gap:10px;opacity:0;animation:pFadeIn 0.7s ease 0.75s forwards;"></ul>
@@ -273,39 +271,11 @@
 </footer>
 
 <script>
-// ── Products DB ──────────────────────────────────────────────────────────────
-const PRODUCTS={
-  'SF-M-01':{id:'SF-M-01',name:'City Runner',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:240,badge:'Ново',desc:'Перфектната обувка за динамичния градски живот. Леко тегло, изключителен комфорт за всеки ден.',features:['Технология за амортизация CloudStep','Дишаща мрежеста горна часта','Гумена противохлъзгаща подметка','Тегло: 285г'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 50,80 L 70,50"/><path stroke="#141d23" stroke-width="1.2" d="M 80,80 L 100,40"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="1" x1="0" x2="200" y1="90" y2="90"/></svg>`},
-  'SF-M-02':{id:'SF-M-02',name:'Urban Oxford',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:320,badge:'',desc:'Класическа елегантност в модерна интерпретация. Идеален за делови срещи и официални поводи.',features:['Естествена телешка кожа','Ръчно зашити детайли','Кожена стелка с памет','Микрофибърна подплата'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:280px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 120 160" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 25,25 L 95,25 L 105,145 L 15,145 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 22,65 L 98,65"/><path stroke="#141d23" stroke-width="1.2" d="M 18,130 L 102,130"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="25" x2="95" y1="44" y2="44"/></svg>`},
-  'SF-M-03':{id:'SF-M-03',name:'Horizon Trek',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:280,badge:'',desc:'Стабилност и издръжливост за дълги разходки. Создадена за хора, покоряващи нови хоризонти.',features:['Водоустойчива мембрана','Подсилена пета и нос','GripTech подметка','Ortholite стелка'],sizes:[40,41,42,43,44,45,46],svg:`<svg style="width:100%;max-width:360px;animation:pFloat 10s ease-in-out infinite;" viewBox="0 0 300 110" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path stroke="#0040e0" stroke-width="1" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.5"/><line stroke="#141d23" stroke-dasharray="5 4" stroke-width="0.8" x1="12" x2="285" y1="105" y2="105"/></svg>`},
-  'SF-M-04':{id:'SF-M-04',name:'Velocity Knit',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:210,badge:'',desc:'Максимална скорост, минимални ограничения. Едноцветна трикотажна тъкан за перфектно прилягане.',features:['Едноцветна трикотажна горна часта','Реактивна EVA пяна','Безшевна конструкция','Машинно миеща се'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;transform:scaleX(-1);animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 50,80 L 70,50"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="1" x1="0" x2="200" y1="90" y2="90"/></svg>`},
-  'SF-M-05':{id:'SF-M-05',name:'Classic Derby',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:340,badge:'Топ',desc:'Безвременна класика, прецизно изработена. Символ на елегантност и финес.',features:['Пълнозърнеста телешка кожа','Goodyear welt конструкция','Дъбова кожена подметка','Ортопедична вложка'],sizes:[39,40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:280px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 120 160" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 32,22 L 88,22 L 98,148 L 22,148 Z"/><path stroke="#141d23" stroke-width="1.2" d="M 22,72 L 98,72"/><path stroke="#141d23" stroke-width="1.2" d="M 18,125 L 102,125"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="32" x2="88" y1="44" y2="44"/></svg>`},
-  'SF-M-06':{id:'SF-M-06',name:'Aero Dash',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:260,badge:'',desc:'Скорост и стил в едно. Аеродинамичен профил за максимална производителност.',features:['Аеродинамичен профил','Carbon fiber плоча','Дишащи вентилационни канали','Рефлективни детайли'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:360px;transform:scaleX(-1);animation:pFloat 10s ease-in-out infinite;" viewBox="0 0 300 110" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path stroke="#0040e0" stroke-width="1" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.5"/></svg>`},
-  'SF-M-07':{id:'SF-M-07',name:'Street Pulse',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:225,badge:'',desc:'Ритъмът на улицата в твоите крака. Енергията на града превърната в комфорт.',features:['Градски дизайн','Амортизационна зона в петата','Издръжлива външна подметка','Лесно обуване'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 10,68 Q 40,20 90,40 Q 140,60 190,28"/><path stroke="#141d23" stroke-width="1.2" d="M 10,80 L 190,80"/><line stroke="#0040e0" stroke-dasharray="2 3" stroke-width="0.8" x1="10" x2="190" y1="90" y2="90"/></svg>`},
-  'SF-M-08':{id:'SF-M-08',name:'Terra Flow',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:295,badge:'',desc:'Следвай пътя независимо от терена. Terra Flow се адаптира към всяка повърхност.',features:['Multi-terrain подметка','Усилена мезоподметка','Защита от отломки','Бързосъхнеща тъкан'],sizes:[40,41,42,43,44,45,46],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 15,75 L 50,28 L 100,53 L 150,18 L 185,48"/><path stroke="#141d23" stroke-width="1.2" d="M 15,87 L 185,87"/><circle stroke="#141d23" stroke-width="1" cx="50" cy="28" r="4" stroke-dasharray="2 2"/><circle stroke="#141d23" stroke-width="1" cx="150" cy="18" r="4" stroke-dasharray="2 2"/></svg>`},
-  'SF-M-09':{id:'SF-M-09',name:'Night Stride',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:310,badge:'Лимитиран',desc:'Проектирана за нощния град. Стелт естетика с видимост и безопасност.',features:['360° рефлективни панели','Светлопоглъщащо покритие','Премиум EVA пяна','Лимитирана серия'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><rect stroke="#141d23" stroke-width="1.5" x="20" y="15" width="160" height="65" rx="8"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="47" y2="47"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="15" y2="80"/><circle cx="60" cy="32" r="4" fill="#0040e0" opacity="0.6"/><circle cx="140" cy="63" r="4" fill="#0040e0" opacity="0.6"/></svg>`},
-  'SF-M-10':{id:'SF-M-10',name:'Metro Glide',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:235,badge:'',desc:'Плавно движение из метрополиса. Вашият ежедневен спътник за безпроблемно придвижване.',features:['Slip-on дизайн','Memory foam стелка','Flex-groove подметка','Еластична горна тъкан'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,58 Q 60,8 100,48 Q 140,88 180,38"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="76" y2="76" stroke-dasharray="6 3"/></svg>`},
-  'SF-M-11':{id:'SF-M-11',name:'Peak Runner',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:275,badge:'',desc:'Достигни върха. Peak Runner за тези, които не приемат компромиси в представянето.',features:['Race-proven технология','Ultra-light конструкция','Асиметрична горна часта','Precision fit ласет'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><polygon stroke="#141d23" stroke-width="1.5" points="100,10 185,88 15,88"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="10" y2="88" stroke-dasharray="3 3"/><line stroke="#141d23" stroke-width="1" x1="15" x2="185" y1="60" y2="60" stroke-dasharray="3 3"/></svg>`},
-  'SF-M-12':{id:'SF-M-12',name:'Urban Step',category:'men',categoryLabel:'Мъже',categoryUrl:'code_1.html',price:190,badge:'',desc:'Стъпете в новия градски живот. Достъпна, функционална и стилна — без компромиси.',features:['Ежедневен комфорт','Издръжлива синтетична горна часта','Cushioned подметка','Лесна поддръжка'],sizes:[40,41,42,43,44,45],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 180,80"/><path stroke="#141d23" stroke-width="1.5" d="M 20,80 L 40,40 L 100,50 L 160,28 L 180,80"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="50" r="9" stroke-dasharray="3 3"/></svg>`},
-  'SF-W-01':{id:'SF-W-01',name:'Елеганс 01',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:189,badge:'Ново',desc:'Елегантност, превърната в движение. Въплъщение на изчистен минималистичен дизайн.',features:['Финна телешка кожа','Извит ток 5 см','Противохлъзгаща подметка','Мека кожена стелка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line stroke="#141d23" stroke-width="1.2" x1="20" x2="180" y1="85" y2="85"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="20" x2="180" y1="93" y2="93"/></svg>`},
-  'SF-W-02':{id:'SF-W-02',name:'Комфорт',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:145,badge:'',desc:'Ден след ден, крачка след крачка. Ежедневната обувка, която никога не разочарова.',features:['Memory foam стелка','Широко ходило','Анти-умора технология','Лека конструкция'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><ellipse stroke="#141d23" stroke-width="1.5" cx="100" cy="55" rx="75" ry="24"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="31" y2="79" stroke-dasharray="3 3"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="25" x2="175" y1="88" y2="88"/></svg>`},
-  'SF-W-03':{id:'SF-W-03',name:'Урбан',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:220,badge:'',desc:'Градски дух в женска форма. Остри линии и безкомпромисен стил.',features:['Геометричен дизайн','Платформена подметка 3 см','Естествен велур','Side-zip закопчаване'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,82 L 60,18 L 140,18 L 180,82 Z"/><line stroke="#141d23" stroke-width="1" x1="40" x2="160" y1="53" y2="53" stroke-dasharray="4 3"/></svg>`},
-  'SF-W-04':{id:'SF-W-04',name:'Стил 02',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:195,badge:'',desc:'Стилът не е опция, той е начин на живот. Ежедневна обувка с характер.',features:['Смесена тъкан и кожа','Мек ток 4 см','Дишаща стелка','Омекотена яка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 30,80 Q 80,8 130,48 Q 160,68 180,38"/><line stroke="#141d23" stroke-width="1.2" x1="20" x2="180" y1="90" y2="90"/><circle stroke="#141d23" stroke-width="1" cx="130" cy="48" r="6" stroke-dasharray="2 2"/></svg>`},
-  'SF-W-05':{id:'SF-W-05',name:'Минимал',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:130,badge:'',desc:'По-малкото е повече. Чистата есенция на дизайна — само функция и форма.',features:['Zero-distraction дизайн','Тъкана горна часта','Плоска подметка','Ежедневен комфорт'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="35" y2="35"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="55" y2="55"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="1" x1="20" x2="180" y1="78" y2="78"/></svg>`},
-  'SF-W-06':{id:'SF-W-06',name:'Класик',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:245,badge:'Топ',desc:'Класиката никога не остарява. Дамската обувка, която ще носите десетилетия.',features:['Телешка кожа от Тоскана','Ритуален ток 6 см','Кожена стелка','Ръчна изработка'],sizes:[35,36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><rect stroke="#141d23" stroke-width="1.5" x="25" y="22" width="150" height="52" rx="26"/><line stroke="#141d23" stroke-width="1" x1="25" x2="175" y1="48" y2="48"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="48" r="12" stroke-dasharray="3 2"/></svg>`},
-  'SF-W-07':{id:'SF-W-07',name:'Силует',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:210,badge:'',desc:'Откроете се с силует, достоен за вниманието. Всяка крачка е изявление.',features:['Контрастен дизайн','Формовано ходило','Прецизна кройка','Лека подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 100,12 Q 158,12 172,50 Q 158,88 100,88 Q 42,88 28,50 Q 42,12 100,12 Z"/><line stroke="#141d23" stroke-width="1" x1="100" x2="100" y1="12" y2="88" stroke-dasharray="4 4"/></svg>`},
-  'SF-W-08':{id:'SF-W-08',name:'Авант',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:265,badge:'Лимитиран',desc:'За жените, вървящи пред времето. Авангарден дизайн за дързостта да бъдеш различна.',features:['Авангарден дизайн','Ток скулптура 7 см','Лимитирани бои','Ексклузивна кожа'],sizes:[36,37,38,39,40],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,82 L 100,16 L 180,82"/><path stroke="#141d23" stroke-width="1" d="M 40,82 L 100,40 L 160,82" stroke-dasharray="4 3"/><circle stroke="#141d23" stroke-width="1.5" cx="100" cy="16" r="5"/></svg>`},
-  'SF-W-09':{id:'SF-W-09',name:'Граца',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:175,badge:'',desc:'Грация в движение. Балансът между женственост и съвременен минимализъм.',features:['Мека ламбска кожа','Нисък ток 3 см','Подплатена стелка','Закопчаване с катарама'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,70 Q 50,18 100,28 Q 150,38 180,68"/><path stroke="#141d23" stroke-width="1.2" d="M 20,82 L 180,82"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="60" x2="140" y1="48" y2="48"/></svg>`},
-  'SF-W-10':{id:'SF-W-10',name:'Нюанс',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:155,badge:'',desc:'Нюансите правят разликата. За жената с изтънчен вкус към детайла.',features:['Суед горна часта','Контрастна шевка','Подвижна стелка','Равна подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="28" y2="28"/><line stroke="#141d23" stroke-width="1" x1="20" x2="180" y1="50" y2="50" stroke-dasharray="5 3"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="72" y2="72"/><circle stroke="#141d23" stroke-width="1" cx="100" cy="50" r="14" stroke-dasharray="4 2"/></svg>`},
-  'SF-W-11':{id:'SF-W-11',name:'Форма',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:230,badge:'',desc:'Формата следва функцията, а функцията — красотата. Архитектурата на женската обувка.',features:['Скулптурна форма','Стабилизираща конструкция','Мека вътрешност','Издръжлива подметка'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 9s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 30,88 Q 30,14 100,14 Q 170,14 170,88"/><line stroke="#141d23" stroke-width="1.5" x1="30" x2="170" y1="88" y2="88"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="100" x2="100" y1="14" y2="88"/></svg>`},
-  'SF-W-12':{id:'SF-W-12',name:'Линия',category:'women',categoryLabel:'Жени',categoryUrl:'code_2.html',price:195,badge:'',desc:'Чистата линия е основата на красотата. Дефиниция на минималистичния женски стил.',features:['Геометричен акцент','Нисък профил','Двуцветна подметка','Тесен нос'],sizes:[36,37,38,39,40,41],svg:`<svg style="width:100%;max-width:340px;animation:pFloat 8s ease-in-out infinite;" viewBox="0 0 200 100" fill="none"><path stroke="#141d23" stroke-width="1.5" d="M 20,60 L 60,24 L 100,60 L 140,24 L 180,60"/><line stroke="#141d23" stroke-width="1.5" x1="20" x2="180" y1="80" y2="80"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="20" x2="180" y1="90" y2="90"/></svg>`}
-};
-
 // ── Contact config — fill these in ───────────────────────────────────────────
 const CONTACT = {
-  telegram:  '[TELEGRAM_USERNAME]',         // e.g. stepforward_bg
-  whatsapp:  '[WHATSAPP_NUMBER]',           // e.g. 359888123456 (no + or spaces)
-  email:     '[EMAIL]'                      // e.g. contact@stepforward.com
+  telegram: '[TELEGRAM_USERNAME]',
+  whatsapp: '[WHATSAPP_NUMBER]',
+  email:    '[EMAIL]'
 };
 
 // ── Delivery window (today + 14–21 days) ─────────────────────────────────────
@@ -313,11 +283,11 @@ function getDeliveryWindow() {
   const today = new Date();
   const start = new Date(today); start.setDate(start.getDate() + 14);
   const end   = new Date(today); end.setDate(end.getDate() + 21);
-  const fmt = d => String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth()+1).padStart(2,'0');
+  const fmt = d => String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0');
   return fmt(start) + ' – ' + fmt(end);
 }
 
-// ── Setup contact links with pre-filled product context ───────────────────────
+// ── Contact links ─────────────────────────────────────────────────────────────
 function setupContactLinks(product) {
   const msg = `Здравейте! Интересувам се от "${product.name}" (${product.id}) на цена ${product.price} лв. Бихте ли ми дали повече информация?`;
   const enc = encodeURIComponent(msg);
@@ -340,26 +310,25 @@ function setupContactLinks(product) {
     if (label) label.textContent = CONTACT.email;
   }
 
-  // Delivery window
   const dw = document.getElementById('delivery-window');
   if (dw) dw.textContent = getDeliveryWindow();
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
-let currentProduct = null;
-
-function renderRelated(product){
-  const all=Object.values(PRODUCTS).filter(p=>p.category===product.category&&p.id!==product.id);
-  const related=all.sort(()=>0.5-Math.random()).slice(0,3);
-  const svgs=[
+// ── Related products ──────────────────────────────────────────────────────────
+function renderRelated(product, allProducts) {
+  const svgs = [
     `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 200 100" fill="none"><path class="shoe-s" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/></svg>`,
     `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 200 100" fill="none"><path class="shoe-s" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line class="shoe-s" x1="20" x2="180" y1="85" y2="85"/></svg>`,
     `<svg class="w-full h-full" style="max-height:120px;" viewBox="0 0 300 110" fill="none"><path class="shoe-s" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/></svg>`
   ];
-  document.getElementById('related-grid').innerHTML=related.map((p,i)=>`
+  const related = allProducts
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+  document.getElementById('related-grid').innerHTML = related.map((p, i) => `
     <a href="product.html?id=${p.id}" class="rcard">
       <div class="rcard-img">
-        <div class="rcard-inner">${svgs[i%3]}</div>
+        <div class="rcard-inner">${svgs[i % 3]}</div>
         <span style="position:absolute;bottom:10px;right:14px;font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;">${p.id.slice(-2)}</span>
       </div>
       <div style="padding:18px 20px 20px;border-top:1px solid rgba(0,0,0,0.04);">
@@ -373,54 +342,95 @@ function renderRelated(product){
     </a>`).join('');
 }
 
-function initPage(){
-  document.getElementById('main-nav').style.display='flex';
-  const id=new URLSearchParams(window.location.search).get('id');
-  const product=id?PRODUCTS[id]:null;
-  if(!product){
-    document.getElementById('product-detail').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:80px 0;"><p style="font-family:Playfair Display,serif;font-size:48px;color:#000;margin-bottom:12px;">404</p><p style="color:rgba(0,0,0,0.4);margin-bottom:32px;">Продуктът не е намерен.</p><a href="code.html" style="color:#0040e0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">← Начало</a></div>';return;
+// ── Page initialisation ───────────────────────────────────────────────────────
+async function initPage() {
+  document.getElementById('main-nav').style.display = 'flex';
+
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id) { window.location.replace('index.html'); return; }
+
+  let product, allProducts;
+  try {
+    const res = await fetch('/products.json');
+    const data = await res.json();
+    allProducts = data.products;
+    product = allProducts.find(p => p.id === id);
+  } catch (_) {
+    window.location.replace('index.html');
+    return;
   }
-  currentProduct=product;
-  document.title=product.name+' - StepForward';
+
+  if (!product) { window.location.replace('index.html'); return; }
+
+  document.title = product.name + ' — StepForward';
+
+  // Gallery
+  const gallery = document.getElementById('product-gallery');
+  if (gallery && product.images && product.images.length) {
+    gallery.innerHTML = product.images.map((src, i) =>
+      `<img src="${src}" alt="${product.name}" loading="${i === 0 ? 'eager' : 'lazy'}" style="width:100%;height:100%;object-fit:cover;">`
+    ).join('');
+  }
+
+  // Badge
+  if (product.badge) {
+    const b = document.getElementById('product-badge');
+    b.textContent = product.badge;
+    b.style.display = 'block';
+    b.style.background = product.badge === 'Топ' ? '#0040e0' : '#000';
+  }
+
+  // Text fields
+  document.getElementById('product-sku').textContent          = product.id;
+  document.getElementById('product-category-label').textContent = product.categoryLabel || '';
+  document.getElementById('product-name').textContent         = product.name;
+  document.getElementById('product-price').textContent        = product.price + ' лв.';
+  document.getElementById('product-description').textContent  = product.description;
 
   // Breadcrumb
-  document.getElementById('bc-collection').textContent=product.categoryLabel;
-  document.getElementById('bc-collection').href=product.categoryUrl;
-  document.getElementById('bc-name').textContent=product.name;
+  const bcCol = document.getElementById('bc-collection');
+  bcCol.textContent = product.categoryLabel || '';
+  bcCol.href = product.categoryUrl || '#';
+  document.getElementById('bc-name').textContent = product.name;
 
   // Active nav link
-  if(product.category==='men'){const el=document.getElementById('nav-men');el.style.color='#0040e0';el.style.borderBottom='1.5px solid #0040e0';el.style.paddingBottom='3px';}
-  else{const el=document.getElementById('nav-women');el.style.color='#0040e0';el.style.borderBottom='1.5px solid #0040e0';el.style.paddingBottom='3px';}
+  const navEl = document.getElementById(product.category === 'men' ? 'nav-men' : 'nav-women');
+  if (navEl) { navEl.style.color = '#0040e0'; navEl.style.borderBottom = '1.5px solid #0040e0'; navEl.style.paddingBottom = '3px'; }
 
-  // Visual
-  const vis=document.getElementById('product-visual');
-  vis.innerHTML=`<div style="width:100%;display:flex;align-items:center;justify-content:center;">${product.svg}</div>`;
-  if(product.badge){const b=document.getElementById('product-badge');b.textContent=product.badge;b.style.display='block';b.style.background=product.badge==='Топ'?'#0040e0':'#000';}
+  // Features
+  if (product.features && product.features.length) {
+    document.getElementById('product-features').innerHTML = product.features.map(f => `
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(0,0,0,0.55);">
+        <div style="width:5px;height:5px;background:#0040e0;border-radius:50%;flex-shrink:0;"></div>${f}
+      </li>`).join('');
+  }
 
-  // Info
-  document.getElementById('product-sku').textContent=product.id;
-  document.getElementById('product-category-label').textContent=product.categoryLabel;
-  document.getElementById('product-name').textContent=product.name;
-  document.getElementById('product-price').textContent=product.price+' лв.';
-  document.getElementById('product-desc').textContent=product.desc;
+  document.getElementById('back-link').href = product.categoryUrl || '#';
 
-  document.getElementById('product-features').innerHTML=product.features.map(f=>`
-    <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(0,0,0,0.55);">
-      <div style="width:5px;height:5px;background:#0040e0;border-radius:50%;flex-shrink:0;"></div>${f}
-    </li>`).join('');
-
-  document.getElementById('back-link').href=product.categoryUrl;
   setupContactLinks(product);
-
-  renderRelated(product);
+  renderRelated(product, allProducts);
 }
 
-(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
-document.addEventListener('DOMContentLoaded',()=>{
+(function () {
+  var lastY = 0;
+  window.addEventListener('scroll', function () {
+    var nav = document.getElementById('site-nav');
+    if (!nav) return;
+    var y = window.scrollY;
+    if (y < 80) { nav.classList.remove('nav-hidden'); }
+    else if (y > lastY + 4) { nav.classList.add('nav-hidden'); }
+    else if (y < lastY - 4) { nav.classList.remove('nav-hidden'); }
+    lastY = y;
+  }, { passive: true });
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
   initPage();
-  const toggle=document.getElementById('mobile-toggle'),mmenu=document.getElementById('mobile-menu'),mclose=document.getElementById('menu-close');
-  toggle.addEventListener('click',()=>{mmenu.classList.add('open');document.body.style.overflow='hidden';});
-  mclose.addEventListener('click',()=>{mmenu.classList.remove('open');document.body.style.overflow='';});
+  const toggle = document.getElementById('mobile-toggle');
+  const mmenu  = document.getElementById('mobile-menu');
+  const mclose = document.getElementById('menu-close');
+  toggle.addEventListener('click', () => { mmenu.classList.add('open');    document.body.style.overflow = 'hidden'; });
+  mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
 });
 </script>
 </body></html>

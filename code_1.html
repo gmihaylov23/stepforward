@@ -25,6 +25,7 @@
   .pcard{text-decoration:none;display:block;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:transform 0.38s cubic-bezier(0.165,0.84,0.44,1),border-color 0.3s,box-shadow 0.38s;}
   .pcard:hover{transform:translateY(-5px);border-color:#0040e0;box-shadow:0 24px 60px rgba(0,64,224,0.1);}
   .pcard-img{padding-top:75%;position:relative;overflow:hidden;background:#f5f5f3;}
+  .pcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .pcard-overlay{position:absolute;inset:0;background:rgba(0,64,224,0);transition:background 0.3s;display:flex;align-items:flex-end;justify-content:flex-end;padding:16px;}
   .pcard:hover .pcard-overlay{background:rgba(0,64,224,0.04);}
   .pcard-arrow{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0040e0;opacity:0;transform:translateY(6px);transition:opacity 0.3s,transform 0.3s;}
@@ -157,192 +158,7 @@
 
 <!-- Product Grid -->
 <main style="max-width:1280px;margin:0 auto;padding:0 64px 120px;">
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-
-    <!-- 01 City Runner -->
-    <a href="product.html?id=SF-M-01" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-badge">Ново</div>
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path class="shoe-s" d="M 50,80 L 70,50"/><path class="shoe-s" d="M 80,80 L 100,40"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="0" x2="200" y1="90" y2="90" opacity="0.4"/></svg></div>
-        <span class="pcard-num">01</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-01</span><span class="pcard-price">240 лв.</span></div>
-        <h2 class="pcard-name">City Runner</h2>
-        <p class="pcard-cat">Градско бягане</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-01',name:'City Runner',price:240,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 02 Urban Oxford -->
-    <a href="product.html?id=SF-M-02" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 120 160" style="max-height:140px;"><path class="shoe-s" d="M 25,25 L 95,25 L 105,145 L 15,145 Z"/><path class="shoe-s" d="M 22,65 L 98,65"/><path class="shoe-s" d="M 18,130 L 102,130"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="25" x2="95" y1="45" y2="45" opacity="0.35"/></svg></div>
-        <span class="pcard-num">02</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-02</span><span class="pcard-price">320 лв.</span></div>
-        <h2 class="pcard-name">Urban Oxford</h2>
-        <p class="pcard-cat">Елегантни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-02',name:'Urban Oxford',price:320,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 03 Horizon Trek -->
-    <a href="product.html?id=SF-M-03" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 300 110" style="max-height:110px;"><path class="shoe-s" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path class="shoe-s" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.4"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="0.8" x1="12" x2="285" y1="105" y2="105" opacity="0.4"/></svg></div>
-        <span class="pcard-num">03</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-03</span><span class="pcard-price">280 лв.</span></div>
-        <h2 class="pcard-name">Horizon Trek</h2>
-        <p class="pcard-cat">Трекинг</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-03',name:'Horizon Trek',price:280,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 04 Velocity Knit -->
-    <a href="product.html?id=SF-M-04" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;transform:scaleX(-1);"><path class="shoe-s" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path class="shoe-s" d="M 50,80 L 70,50"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="0" x2="200" y1="90" y2="90" opacity="0.4"/></svg></div>
-        <span class="pcard-num">04</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-04</span><span class="pcard-price">210 лв.</span></div>
-        <h2 class="pcard-name">Velocity Knit</h2>
-        <p class="pcard-cat">Тренировъчни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-04',name:'Velocity Knit',price:210,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 05 Classic Derby -->
-    <a href="product.html?id=SF-M-05" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-badge blue">Топ</div>
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 120 160" style="max-height:140px;"><path class="shoe-s" d="M 32,22 L 88,22 L 98,148 L 22,148 Z"/><path class="shoe-s" d="M 22,72 L 98,72"/><path class="shoe-s" d="M 18,125 L 102,125"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="32" x2="88" y1="44" y2="44" opacity="0.35"/></svg></div>
-        <span class="pcard-num">05</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-05</span><span class="pcard-price">340 лв.</span></div>
-        <h2 class="pcard-name">Classic Derby</h2>
-        <p class="pcard-cat">Елегантни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-05',name:'Classic Derby',price:340,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 06 Aero Dash -->
-    <a href="product.html?id=SF-M-06" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 300 110" style="max-height:110px;transform:scaleX(-1);"><path class="shoe-s" d="M 12,98 L 152,98 L 282,35 L 252,12 L 102,55 Z"/><path class="shoe-s" d="M 55,78 L 205,25"/><circle cx="264" cy="84" r="5" fill="#0040e0" opacity="0.4"/></svg></div>
-        <span class="pcard-num">06</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-06</span><span class="pcard-price">260 лв.</span></div>
-        <h2 class="pcard-name">Aero Dash</h2>
-        <p class="pcard-cat">Спортни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-06',name:'Aero Dash',price:260,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 07 Street Pulse -->
-    <a href="product.html?id=SF-M-07" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 10,68 Q 40,20 90,40 Q 140,60 190,28"/><path class="shoe-s" d="M 10,80 L 190,80"/><line stroke="#0040e0" stroke-dasharray="2 3" stroke-width="0.8" x1="10" x2="190" y1="90" y2="90" opacity="0.4"/></svg></div>
-        <span class="pcard-num">07</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-07</span><span class="pcard-price">225 лв.</span></div>
-        <h2 class="pcard-name">Street Pulse</h2>
-        <p class="pcard-cat">Ежедневни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-07',name:'Street Pulse',price:225,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 08 Terra Flow -->
-    <a href="product.html?id=SF-M-08" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 15,75 L 50,28 L 100,53 L 150,18 L 185,48"/><path class="shoe-s" d="M 15,85 L 185,85"/><circle class="shoe-s" cx="50" cy="28" r="5" stroke-dasharray="2 2"/><circle class="shoe-s" cx="150" cy="18" r="5" stroke-dasharray="2 2"/></svg></div>
-        <span class="pcard-num">08</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-08</span><span class="pcard-price">295 лв.</span></div>
-        <h2 class="pcard-name">Terra Flow</h2>
-        <p class="pcard-cat">Терен</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-08',name:'Terra Flow',price:295,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 09 Night Stride -->
-    <a href="product.html?id=SF-M-09" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-badge">Лимитиран</div>
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><rect class="shoe-s" x="20" y="15" width="160" height="65" rx="8"/><line class="shoe-s" x1="20" x2="180" y1="47" y2="47"/><line class="shoe-s" x1="100" x2="100" y1="15" y2="80"/><circle cx="60" cy="32" r="4" fill="#0040e0" opacity="0.5"/><circle cx="140" cy="63" r="4" fill="#0040e0" opacity="0.5"/></svg></div>
-        <span class="pcard-num">09</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-09</span><span class="pcard-price">310 лв.</span></div>
-        <h2 class="pcard-name">Night Stride</h2>
-        <p class="pcard-cat">Вечерни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-09',name:'Night Stride',price:310,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 10 Metro Glide -->
-    <a href="product.html?id=SF-M-10" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,58 Q 60,8 100,48 Q 140,88 180,38"/><line class="shoe-s" x1="20" x2="180" y1="76" y2="76" stroke-dasharray="6 3"/></svg></div>
-        <span class="pcard-num">10</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-10</span><span class="pcard-price">235 лв.</span></div>
-        <h2 class="pcard-name">Metro Glide</h2>
-        <p class="pcard-cat">Ежедневни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-10',name:'Metro Glide',price:235,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 11 Peak Runner -->
-    <a href="product.html?id=SF-M-11" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><polygon class="shoe-s" points="100,10 185,88 15,88"/><line class="shoe-s" x1="100" x2="100" y1="10" y2="88" stroke-dasharray="3 3"/><line class="shoe-s" x1="15" x2="185" y1="60" y2="60" stroke-dasharray="3 3"/></svg></div>
-        <span class="pcard-num">11</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-11</span><span class="pcard-price">275 лв.</span></div>
-        <h2 class="pcard-name">Peak Runner</h2>
-        <p class="pcard-cat">Бягане</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-11',name:'Peak Runner',price:275,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-    <!-- 12 Urban Step -->
-    <a href="product.html?id=SF-M-12" class="pcard">
-      <div class="pcard-img">
-        <div class="pcard-inner"><svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:130px;"><path class="shoe-s" d="M 20,80 L 180,80"/><path class="shoe-s" d="M 20,80 L 40,40 L 100,50 L 160,28 L 180,80"/><circle class="shoe-s" cx="100" cy="50" r="9" stroke-dasharray="3 3"/></svg></div>
-        <span class="pcard-num">12</span>
-        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-      </div>
-      <div class="pcard-info">
-        <div class="pcard-meta"><span class="pcard-sku">SF-M-12</span><span class="pcard-price">190 лв.</span></div>
-        <h2 class="pcard-name">Urban Step</h2>
-        <p class="pcard-cat">Ежедневни</p>
-        <button class="pcard-btn" onclick="event.preventDefault();addToCart({id:'SF-M-12',name:'Urban Step',price:190,size:'42'})">Добави в количка</button>
-      </div>
-    </a>
-
-  </div>
+  <div id="products-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
 </main>
 
 <!-- Footer -->
@@ -383,16 +199,57 @@
 </footer>
 
 <script>
-(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
-document.addEventListener('DOMContentLoaded',()=>{
-  if(window.innerWidth>=768) document.getElementById('main-nav').style.display='flex';
-  const toggle=document.getElementById('mobile-toggle'),mmenu=document.getElementById('mobile-menu'),mclose=document.getElementById('menu-close');
-  toggle.addEventListener('click',()=>{mmenu.classList.add('open');document.body.style.overflow='hidden';});
-  mclose.addEventListener('click',()=>{mmenu.classList.remove('open');document.body.style.overflow='';});
-  document.querySelectorAll('.pcard-btn').forEach(btn=>{
-    btn.removeAttribute('onclick');
-    btn.textContent='Виж продукта';
-  });
+(function () {
+  var lastY = 0;
+  window.addEventListener('scroll', function () {
+    var nav = document.getElementById('site-nav');
+    if (!nav) return;
+    var y = window.scrollY;
+    if (y < 80) { nav.classList.remove('nav-hidden'); }
+    else if (y > lastY + 4) { nav.classList.add('nav-hidden'); }
+    else if (y < lastY - 4) { nav.classList.remove('nav-hidden'); }
+    lastY = y;
+  }, { passive: true });
+})();
+
+function thumbSrc(product) {
+  if (product.images && product.images.length) {
+    return product.images[0].replace(/\.[^.]+$/, '-thumb.webp');
+  }
+  return 'images/products/' + product.id.toLowerCase() + '-thumb.webp';
+}
+
+function renderCard(product) {
+  const badge = product.badge
+    ? `<div class="pcard-badge${product.badge === 'Топ' ? ' blue' : ''}">${product.badge}</div>`
+    : '';
+  return `<a href="/product.html?id=${product.id}" class="pcard">
+      <div class="pcard-img">
+        ${badge}
+        <img src="${thumbSrc(product)}" alt="${product.name}" loading="lazy">
+        <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+      </div>
+      <div class="pcard-info">
+        <h3 class="pcard-name">${product.name}</h3>
+        <p class="pcard-price">${product.price} лв.</p>
+      </div>
+    </a>`;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  if (window.innerWidth >= 768) document.getElementById('main-nav').style.display = 'flex';
+  const toggle = document.getElementById('mobile-toggle');
+  const mmenu  = document.getElementById('mobile-menu');
+  const mclose = document.getElementById('menu-close');
+  toggle.addEventListener('click', () => { mmenu.classList.add('open');    document.body.style.overflow = 'hidden'; });
+  mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
+
+  try {
+    const res  = await fetch('/products.json');
+    const data = await res.json();
+    const products = data.products.filter(p => p.category === 'men');
+    document.getElementById('products-grid').innerHTML = products.map(renderCard).join('');
+  } catch (_) {}
 });
 </script>
 </body></html>
