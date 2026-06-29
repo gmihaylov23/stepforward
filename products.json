@@ -1,1 +1,13 @@
-{"products": []}
+{
+  "products": [
+    {
+      "id": "0001",
+      "name": "Giuseppe Zanotti",
+      "price": "181€",
+      "category": "Man Shoes",
+      "images": [
+        "/images/products/16363342_31635573_1000.jpg"
+      ]
+    }
+  ]
+}
