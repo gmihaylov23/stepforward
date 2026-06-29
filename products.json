@@ -1,13 +1,3 @@
 {
-  "products": [
-    {
-      "category": "men",
-      "id": "0001",
-      "name": "Giuseppe Zanotti",
-      "price": "181€",
-      "images": [
-        "/images/products/16363342_31635573_1000.jpg"
-      ]
-    }
-  ]
+  "products": []
 }
