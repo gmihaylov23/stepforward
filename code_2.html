@@ -199,19 +199,22 @@
 
 function thumbSrc(product) {
   if (product.images && product.images.length) {
-    return product.images[0].replace(/\.[^.]+$/, '-thumb.webp');
+    return product.images[0];
   }
-  return 'images/products/' + product.id.toLowerCase() + '-thumb.webp';
+  return '';
 }
 
 function renderCard(product) {
   const badge = product.badge
     ? `<div class="pcard-badge${product.badge === 'Топ' ? ' blue' : ''}">${product.badge}</div>`
     : '';
+  const img = thumbSrc(product)
+    ? `<img src="${thumbSrc(product)}" alt="${product.name}" loading="lazy">`
+    : '';
   return `<a href="/product.html?id=${product.id}" class="pcard">
       <div class="pcard-img">
         ${badge}
-        <img src="${thumbSrc(product)}" alt="${product.name}" loading="lazy">
+        ${img}
         <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
       </div>
       <div class="pcard-info">
@@ -220,6 +223,8 @@ function renderCard(product) {
       </div>
     </a>`;
 }
+
+const WOMEN_CATEGORIES = ['women', 'woman', 'жени', 'жена'];
 
 document.addEventListener('DOMContentLoaded', async () => {
   if (window.innerWidth >= 768) document.getElementById('main-nav').style.display = 'flex';
@@ -232,7 +237,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const res  = await fetch('/products.json');
     const data = await res.json();
-    const products = data.products.filter(p => p.category === 'women');
+    const products = data.products.filter(p => WOMEN_CATEGORIES.includes((p.category || '').toLowerCase()));
     document.getElementById('products-grid').innerHTML = products.map(renderCard).join('');
   } catch (_) {}
 });

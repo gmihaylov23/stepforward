@@ -518,48 +518,7 @@
     </a>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-
-    <a href="product.html?id=SF-M-01" class="hocard">
-      <div class="hocard-img">
-        <div style="position:absolute;top:16px;left:16px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;">Ново</div>
-        <div class="hocard-inner"><svg style="width:100%;max-height:140px;" viewBox="0 0 200 100" fill="none"><path class="ho-svg-s" d="M 20,80 L 160,80 C 180,80 180,60 160,50 C 140,40 100,20 80,30 C 60,40 40,50 30,70 Z"/><path class="ho-svg-s" d="M 50,80 L 70,50"/><path class="ho-svg-s" d="M 80,80 L 100,40"/><line stroke="#0040e0" stroke-dasharray="5 4" stroke-width="0.8" x1="0" x2="200" y1="90" y2="90" opacity="0.4"/></svg></div>
-        <span class="hocard-num">01</span>
-      </div>
-      <div style="padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);">SF-M-01</span><span style="font-size:17px;font-weight:700;color:#000;">240 лв.</span></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;">City Runner</h3>
-        <p style="font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:0;">Градско бягане</p>
-      </div>
-    </a>
-
-    <a href="product.html?id=SF-M-05" class="hocard" style="margin-top:32px;">
-      <div class="hocard-img">
-        <div style="position:absolute;top:16px;left:16px;background:#0040e0;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;">Топ</div>
-        <div class="hocard-inner"><svg style="width:90%;max-height:150px;" viewBox="0 0 120 160" fill="none"><path class="ho-svg-s" d="M 32,22 L 88,22 L 98,148 L 22,148 Z"/><path class="ho-svg-s" d="M 22,72 L 98,72"/><path class="ho-svg-s" d="M 18,125 L 102,125"/><line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="32" x2="88" y1="44" y2="44" opacity="0.4"/></svg></div>
-        <span class="hocard-num">02</span>
-      </div>
-      <div style="padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);">SF-M-05</span><span style="font-size:17px;font-weight:700;color:#000;">340 лв.</span></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;">Classic Derby</h3>
-        <p style="font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:0;">Елегантни</p>
-      </div>
-    </a>
-
-    <a href="product.html?id=SF-W-01" class="hocard">
-      <div class="hocard-img">
-        <div style="position:absolute;top:16px;left:16px;background:#000;color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;">Ограничен</div>
-        <div class="hocard-inner"><svg style="width:100%;max-height:140px;" viewBox="0 0 200 100" fill="none"><path class="ho-svg-s" d="M 20,75 Q 60,28 100,53 Q 140,78 180,43"/><line class="ho-svg-s" x1="20" x2="180" y1="85" y2="85"/><line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.7" x1="20" x2="180" y1="93" y2="93" opacity="0.4"/></svg></div>
-        <span class="hocard-num">03</span>
-      </div>
-      <div style="padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);">SF-W-01</span><span style="font-size:17px;font-weight:700;color:#000;">189 лв.</span></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;">Елеганс 01</h3>
-        <p style="font-size:12px;color:rgba(0,0,0,0.38);margin-bottom:0;">Дамски</p>
-      </div>
-    </a>
-
-  </div>
+  <div id="hot-offers-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
 </section>
 
 <!-- Testimonials Section -->
@@ -647,15 +606,52 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
+
+function renderHotCard(product, index) {
+  const img = product.images && product.images.length
+    ? `<img src="${product.images[0]}" alt="${product.name}" loading="${index === 0 ? 'eager' : 'lazy'}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`
+    : '';
+  const badge = product.badge
+    ? `<div style="position:absolute;top:16px;left:16px;background:${product.badge === 'Топ' ? '#0040e0' : '#000'};color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;z-index:2;">${product.badge}</div>`
+    : '';
+  const offset = index === 1 ? 'margin-top:32px;' : '';
+  return `<a href="/product.html?id=${product.id}" class="hocard" style="${offset}">
+    <div class="hocard-img">
+      ${img}
+      ${badge}
+    </div>
+    <div style="padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);">${product.id}</span>
+        <span style="font-size:17px;font-weight:700;color:#000;">${product.price} лв.</span>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;">${product.name}</h3>
+    </div>
+  </a>`;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
   if (window.innerWidth >= 768) document.getElementById('main-nav').style.display = 'flex';
   const toggle = document.getElementById('mobile-toggle');
-  const mmenu = document.getElementById('mobile-menu');
+  const mmenu  = document.getElementById('mobile-menu');
   const mclose = document.getElementById('menu-close');
-  toggle.addEventListener('click', () => { mmenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  toggle.addEventListener('click', () => { mmenu.classList.add('open');    document.body.style.overflow = 'hidden'; });
   mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
+
+  try {
+    const res  = await fetch('/products.json');
+    const data = await res.json();
+    const all     = data.products || [];
+    const badged  = all.filter(p => p.badge);
+    const rest    = all.filter(p => !p.badge);
+    const hot     = [...badged, ...rest].slice(0, 3);
+    const grid    = document.getElementById('hot-offers-grid');
+    if (grid && hot.length) {
+      grid.innerHTML = hot.map(renderHotCard).join('');
+    }
+  } catch (_) {}
 });
-(function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
 </script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>

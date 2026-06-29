@@ -367,6 +367,7 @@ async function initPage() {
   // Gallery
   const gallery = document.getElementById('product-gallery');
   if (gallery && product.images && product.images.length) {
+    gallery.style.padding = '0';
     gallery.innerHTML = product.images.map((src, i) =>
       `<img src="${src}" alt="${product.name}" loading="${i === 0 ? 'eager' : 'lazy'}" style="width:100%;height:100%;object-fit:cover;">`
     ).join('');
