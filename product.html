@@ -147,6 +147,13 @@
       <!-- Features -->
       <ul id="product-features" style="margin-bottom:36px;display:flex;flex-direction:column;gap:10px;opacity:0;animation:pFadeIn 0.7s ease 0.75s forwards;"></ul>
 
+      <!-- Sizes -->
+      <div id="product-sizes-section" style="display:none;margin-bottom:28px;opacity:0;animation:pFadeIn 0.7s ease 0.8s forwards;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-bottom:12px;">Размер (EU)</p>
+        <div id="product-sizes" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+        <p id="size-hint" style="display:none;font-size:12px;color:#0040e0;margin-top:10px;">Моля, изберете размер преди да се свържете с нас.</p>
+      </div>
+
       <!-- Delivery Window -->
       <div style="background:#f5f5f3;padding:20px 22px;margin-bottom:16px;opacity:0;animation:pFadeIn 0.7s ease 0.85s forwards;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
@@ -289,29 +296,59 @@ function getDeliveryWindow() {
 
 // ── Contact links ─────────────────────────────────────────────────────────────
 function setupContactLinks(product) {
-  const msg = `Здравейте! Интересувам се от "${product.name}" (${product.id}) на цена ${product.price} лв. Бихте ли ми дали повече информация?`;
-  const enc = encodeURIComponent(msg);
+  const dw = document.getElementById('delivery-window');
+  if (dw) dw.textContent = getDeliveryWindow();
 
   const tg = document.getElementById('contact-telegram');
+  const wa = document.getElementById('contact-whatsapp');
+  const em = document.getElementById('contact-email');
+
   if (tg) {
     tg.href = 'https://t.me/' + CONTACT.telegram;
     const handle = tg.querySelector('#tg-handle');
     if (handle) handle.textContent = '@' + CONTACT.telegram;
   }
-
-  const wa = document.getElementById('contact-whatsapp');
-  if (wa) wa.href = 'https://wa.me/' + CONTACT.whatsapp + '?text=' + enc;
-
-  const em = document.getElementById('contact-email');
   if (em) {
-    const subj = encodeURIComponent('Запитване: ' + product.name + ' (' + product.id + ')');
-    em.href = 'mailto:' + CONTACT.email + '?subject=' + subj + '&body=' + enc;
     const label = em.querySelector('p:last-of-type');
     if (label) label.textContent = CONTACT.email;
   }
 
-  const dw = document.getElementById('delivery-window');
-  if (dw) dw.textContent = getDeliveryWindow();
+  function buildMessage() {
+    const activeSize = document.querySelector('#product-sizes .size-btn.active');
+    const sizeText = activeSize ? `, размер ${activeSize.dataset.size}` : '';
+    return `Здравейте! Интересувам се от "${product.name}" (${product.id})${sizeText} на цена ${product.price}. Бихте ли ми дали повече информация?`;
+  }
+
+  function requireSize(e) {
+    const hasSizes = document.querySelectorAll('#product-sizes .size-btn').length > 0;
+    const hasSelected = !!document.querySelector('#product-sizes .size-btn.active');
+    if (hasSizes && !hasSelected) {
+      e.preventDefault();
+      const hint = document.getElementById('size-hint');
+      const section = document.getElementById('product-sizes-section');
+      if (hint) hint.style.display = 'block';
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return true;
+    }
+    return false;
+  }
+
+  if (tg) tg.addEventListener('click', e => { requireSize(e); });
+
+  if (wa) {
+    wa.addEventListener('click', e => {
+      if (requireSize(e)) return;
+      wa.href = 'https://wa.me/' + CONTACT.whatsapp + '?text=' + encodeURIComponent(buildMessage());
+    });
+  }
+
+  if (em) {
+    em.addEventListener('click', e => {
+      if (requireSize(e)) return;
+      const subj = encodeURIComponent('Запитване: ' + product.name + ' (' + product.id + ')');
+      em.href = 'mailto:' + CONTACT.email + '?subject=' + subj + '&body=' + encodeURIComponent(buildMessage());
+    });
+  }
 }
 
 // ── Related products ──────────────────────────────────────────────────────────
@@ -334,7 +371,7 @@ function renderRelated(product, allProducts) {
       <div style="padding:18px 20px 20px;border-top:1px solid rgba(0,0,0,0.04);">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
           <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.25);">${p.id}</span>
-          <span style="font-size:15px;font-weight:700;color:#000;">${p.price} лв.</span>
+          <span style="font-size:15px;font-weight:700;color:#000;">${p.price}</span>
         </div>
         <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:#000;margin:4px 0 14px;">${p.name}</h3>
         <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);border:1px solid rgba(0,0,0,0.1);padding:11px;text-align:center;transition:all 0.25s;" onmouseover="this.style.background='#000';this.style.color='#fff';this.style.borderColor='#000'" onmouseout="this.style.background='';this.style.color='rgba(0,0,0,0.45)';this.style.borderColor='rgba(0,0,0,0.1)'">Виж продукта</div>
@@ -369,7 +406,7 @@ async function initPage() {
   if (gallery && product.images && product.images.length) {
     gallery.style.padding = '0';
     gallery.innerHTML = product.images.map((src, i) =>
-      `<img src="${src}" alt="${product.name}" loading="${i === 0 ? 'eager' : 'lazy'}" style="width:100%;height:100%;object-fit:cover;">`
+      `<img src="${src}" alt="${product.name}" loading="${i === 0 ? 'eager' : 'lazy'}" style="width:100%;height:100%;object-fit:contain;">`
     ).join('');
   }
 
@@ -385,8 +422,8 @@ async function initPage() {
   document.getElementById('product-sku').textContent          = product.id;
   document.getElementById('product-category-label').textContent = product.categoryLabel || '';
   document.getElementById('product-name').textContent         = product.name;
-  document.getElementById('product-price').textContent        = product.price + ' лв.';
-  document.getElementById('product-description').textContent  = product.description;
+  document.getElementById('product-price').textContent        = product.price;
+  document.getElementById('product-description').textContent  = product.description || '';
 
   // Breadcrumb
   const bcCol = document.getElementById('bc-collection');
@@ -407,6 +444,23 @@ async function initPage() {
   }
 
   document.getElementById('back-link').href = product.categoryUrl || '#';
+
+  // Sizes
+  if (product.sizes && product.sizes.length) {
+    const section = document.getElementById('product-sizes-section');
+    const container = document.getElementById('product-sizes');
+    section.style.display = 'block';
+    container.innerHTML = product.sizes.map(s =>
+      `<button class="size-btn" type="button" data-size="${s}">${s}</button>`
+    ).join('');
+    container.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('size-hint').style.display = 'none';
+      });
+    });
+  }
 
   setupContactLinks(product);
   renderRelated(product, allProducts);

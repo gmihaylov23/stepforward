@@ -518,7 +518,20 @@
     </a>
   </div>
 
-  <div id="hot-offers-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+  <div style="position:relative;overflow:hidden;">
+    <div id="featured-track" style="display:flex;gap:20px;transition:transform 0.45s cubic-bezier(0.22,1,0.36,1);will-change:transform;"></div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:28px;">
+    <div id="slider-dots" style="display:flex;gap:8px;align-items:center;"></div>
+    <div style="display:flex;gap:8px;">
+      <button id="slider-prev" aria-label="Предишен" style="width:44px;height:44px;border:1px solid rgba(0,0,0,0.12);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s;opacity:0.35;" onmouseover="this.style.borderColor='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)'">
+        <span class="material-symbols-outlined" style="font-size:18px;color:#000;">arrow_back</span>
+      </button>
+      <button id="slider-next" aria-label="Следващ" style="width:44px;height:44px;border:1px solid rgba(0,0,0,0.12);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#0040e0'" onmouseout="this.style.borderColor='rgba(0,0,0,0.12)'">
+        <span class="material-symbols-outlined" style="font-size:18px;color:#000;">arrow_forward</span>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- Testimonials Section -->
@@ -608,15 +621,19 @@
 <script>
 (function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
 
-function renderHotCard(product, index) {
+// ── Slider ────────────────────────────────────────────────────────────────────
+let sliderCurrent = 0;
+let sliderTotal   = 0;
+let sliderPerView = 3;
+
+function renderFeaturedCard(product) {
   const img = product.images && product.images.length
-    ? `<img src="${product.images[0]}" alt="${product.name}" loading="${index === 0 ? 'eager' : 'lazy'}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`
+    ? `<img src="${product.images[0]}" alt="${product.name}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:16px;">`
     : '';
   const badge = product.badge
     ? `<div style="position:absolute;top:16px;left:16px;background:${product.badge === 'Топ' ? '#0040e0' : '#000'};color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;z-index:2;">${product.badge}</div>`
     : '';
-  const offset = index === 1 ? 'margin-top:32px;' : '';
-  return `<a href="/product.html?id=${product.id}" class="hocard" style="${offset}">
+  return `<a href="/product.html?id=${product.id}" class="hocard" style="flex-shrink:0;width:var(--card-w);">
     <div class="hocard-img">
       ${img}
       ${badge}
@@ -624,11 +641,58 @@ function renderHotCard(product, index) {
     <div style="padding:20px 22px 22px;border-top:1px solid rgba(0,0,0,0.04);">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
         <span style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.25);">${product.id}</span>
-        <span style="font-size:17px;font-weight:700;color:#000;">${product.price} лв.</span>
+        <span style="font-size:17px;font-weight:700;color:#000;">${product.price}</span>
       </div>
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#000;margin:5px 0 3px;">${product.name}</h3>
     </div>
   </a>`;
+}
+
+function goToSlide(index) {
+  const max = Math.max(0, sliderTotal - sliderPerView);
+  sliderCurrent = Math.max(0, Math.min(index, max));
+  const track = document.getElementById('featured-track');
+  if (!track || !track.children.length) return;
+  const cardW = track.children[0].offsetWidth + 20;
+  track.style.transform = `translateX(-${sliderCurrent * cardW}px)`;
+  const prev = document.getElementById('slider-prev');
+  const next = document.getElementById('slider-next');
+  if (prev) prev.style.opacity = sliderCurrent === 0 ? '0.35' : '1';
+  if (next) next.style.opacity = sliderCurrent >= max ? '0.35' : '1';
+  const currentPage = Math.floor(sliderCurrent / sliderPerView);
+  document.querySelectorAll('#slider-dots button').forEach((btn, i) => {
+    btn.style.width      = i === currentPage ? '24px' : '8px';
+    btn.style.background = i === currentPage ? '#000' : 'rgba(0,0,0,0.15)';
+  });
+}
+
+function initSlider(products) {
+  sliderTotal   = products.length;
+  sliderPerView = window.innerWidth < 768 ? 1 : 3;
+  const gap     = 20;
+  const cardW   = sliderPerView === 1
+    ? '100%'
+    : `calc((100% - ${(sliderPerView - 1) * gap}px) / ${sliderPerView})`;
+
+  const track = document.getElementById('featured-track');
+  track.parentElement.style.setProperty('--card-w', cardW);
+  track.innerHTML = products.map(renderFeaturedCard).join('');
+
+  const pages = Math.ceil(sliderTotal / sliderPerView);
+  const dots  = document.getElementById('slider-dots');
+  dots.innerHTML = Array.from({ length: pages }, (_, i) =>
+    `<button data-page="${i}" style="width:${i===0?'24px':'8px'};height:8px;border-radius:4px;border:none;background:${i===0?'#000':'rgba(0,0,0,0.15)'};cursor:pointer;transition:all 0.3s;padding:0;"></button>`
+  ).join('');
+  dots.querySelectorAll('button').forEach(btn =>
+    btn.addEventListener('click', () => goToSlide(+btn.dataset.page * sliderPerView))
+  );
+
+  document.getElementById('slider-prev')
+    .addEventListener('click', () => goToSlide(sliderCurrent - sliderPerView));
+  document.getElementById('slider-next')
+    .addEventListener('click', () => goToSlide(sliderCurrent + sliderPerView));
+
+  goToSlide(0);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -640,16 +704,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
 
   try {
-    const res  = await fetch('/products.json');
-    const data = await res.json();
-    const all     = data.products || [];
-    const badged  = all.filter(p => p.badge);
-    const rest    = all.filter(p => !p.badge);
-    const hot     = [...badged, ...rest].slice(0, 3);
-    const grid    = document.getElementById('hot-offers-grid');
-    if (grid && hot.length) {
-      grid.innerHTML = hot.map(renderHotCard).join('');
-    }
+    const res      = await fetch('/products.json');
+    const data     = await res.json();
+    const featured = (data.products || []).filter(p => p.featured);
+    if (featured.length) initSlider(featured);
   } catch (_) {}
 });
 </script>

@@ -33,6 +33,19 @@ collections:
               - name: description
                 label: Description
                 widget: text
+              - name: featured
+                label: Featured on Homepage
+                widget: boolean
+                default: false
+                hint: "Show this product in the homepage slider"
+              - name: sizes
+                label: Available Sizes (EU)
+                widget: list
+                field:
+                  name: size
+                  label: Size
+                  widget: string
+                hint: "Add each EU size separately, e.g. 40, 41, 42, 43"
               - name: images
                 label: Images
                 widget: list
