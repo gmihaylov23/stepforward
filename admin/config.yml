@@ -38,6 +38,12 @@ collections:
                 widget: boolean
                 default: false
                 hint: "Show this product in the homepage slider"
+              - name: gender
+                label: Gender
+                widget: select
+                options: ["all", "men", "women"]
+                default: "all"
+                hint: "Used for filtering on bags and accessories pages"
               - name: sizes
                 label: Available Sizes (EU)
                 widget: list

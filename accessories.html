@@ -69,6 +69,7 @@
   .filter-btn.active{background:#000;color:#fff;border-color:#000;}
   .filter-btn:hover:not(.active){border-color:#0040e0;color:#0040e0;}
   .product-item.hidden{display:none;}
+  .pcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:16px;}
 </style>
 </head>
 <body>
@@ -165,182 +166,7 @@
 
 <!-- Product Grid -->
 <main style="max-width:1280px;margin:0 auto;padding:0 64px 120px;">
-  <div id="product-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-
-    <!-- Acc 01 — Men — Belt -->
-    <div class="product-item" data-gender="men">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-badge">Ново</div>
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:120px;" fill="none">
-              <!-- Belt -->
-              <rect class="shoe-s" x="10" y="38" width="180" height="24" rx="3"/>
-              <!-- Buckle -->
-              <rect class="shoe-s" x="82" y="30" width="36" height="40" rx="2"/>
-              <line class="shoe-s" x1="98" x2="102" y1="38" y2="70"/>
-              <!-- Holes -->
-              <circle class="shoe-s" cx="145" cy="50" r="3"/>
-              <circle class="shoe-s" cx="158" cy="50" r="3"/>
-              <circle class="shoe-s" cx="171" cy="50" r="3"/>
-              <line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="10" x2="190" y1="90" y2="90" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">01</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-01</span><span class="pcard-price">95 лв.</span></div>
-          <h2 class="pcard-name">Classic Belt</h2>
-          <p class="pcard-cat">Мъжки · Колан</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Acc 02 — Women — Scarf -->
-    <div class="product-item" data-gender="women" style="margin-top:28px;">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-badge blue">Топ</div>
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 120" style="max-height:120px;" fill="none">
-              <!-- Silk scarf / shawl wavy lines -->
-              <path class="shoe-s" d="M 15,30 Q 55,10 100,30 Q 145,50 185,30"/>
-              <path class="shoe-s" d="M 15,55 Q 55,35 100,55 Q 145,75 185,55"/>
-              <path class="shoe-s" d="M 15,80 Q 55,60 100,80 Q 145,100 185,80"/>
-              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.8" x1="15" x2="185" y1="100" y2="100" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">02</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-01</span><span class="pcard-price">85 лв.</span></div>
-          <h2 class="pcard-name">Копринен Шал</h2>
-          <p class="pcard-cat">Дамски · Шал</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Acc 03 — Men — Wallet -->
-    <div class="product-item" data-gender="men">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
-              <!-- Bifold wallet -->
-              <rect class="shoe-s" x="30" y="30" width="140" height="85" rx="4"/>
-              <line class="shoe-s" x1="100" x2="100" y1="30" y2="115"/>
-              <!-- Card slots -->
-              <rect class="shoe-s" x="40" y="45" width="50" height="30" rx="2"/>
-              <rect class="shoe-s" x="40" y="82" width="50" height="22" rx="2"/>
-              <!-- Coin pocket -->
-              <circle class="shoe-s" cx="145" cy="72" r="22"/>
-              <line stroke="#0040e0" stroke-dasharray="4 3" stroke-width="0.8" x1="30" x2="170" y1="120" y2="120" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">03</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-02</span><span class="pcard-price">110 лв.</span></div>
-          <h2 class="pcard-name">Slim Wallet</h2>
-          <p class="pcard-cat">Мъжки · Портфейл</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Acc 04 — Women — Belt thin -->
-    <div class="product-item" data-gender="women">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 100" style="max-height:120px;" fill="none">
-              <!-- Thin women's belt -->
-              <rect class="shoe-s" x="10" y="44" width="180" height="12" rx="6"/>
-              <!-- Small oval buckle -->
-              <ellipse class="shoe-s" cx="100" cy="50" rx="18" ry="12"/>
-              <line class="shoe-s" x1="100" x2="100" y1="38" y2="62"/>
-              <!-- Tassel detail at end -->
-              <line class="shoe-s" x1="185" x2="185" y1="44" y2="60"/>
-              <line class="shoe-s" x1="188" x2="188" y1="50" y2="62"/>
-              <line class="shoe-s" x1="182" x2="182" y1="47" y2="63"/>
-              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="10" x2="190" y1="85" y2="85" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">04</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-02</span><span class="pcard-price">75 лв.</span></div>
-          <h2 class="pcard-name">Тънък Колан</h2>
-          <p class="pcard-cat">Дамски · Колан</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Acc 05 — Men — Card holder -->
-    <div class="product-item" data-gender="men" style="margin-top:28px;">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
-              <!-- Card holder -->
-              <rect class="shoe-s" x="50" y="25" width="100" height="70" rx="4"/>
-              <!-- Cards fanning out -->
-              <rect class="shoe-s" x="42" y="20" width="96" height="65" rx="4" style="transform:rotate(-5deg);transform-origin:50% 50%"/>
-              <rect class="shoe-s" x="58" y="28" width="96" height="65" rx="4" style="transform:rotate(5deg);transform-origin:50% 50%"/>
-              <!-- Emboss line -->
-              <line class="shoe-s" x1="60" x2="140" y1="60" y2="60" stroke-dasharray="3 2"/>
-              <line stroke="#0040e0" stroke-dasharray="4 4" stroke-width="0.8" x1="40" x2="160" y1="110" y2="110" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">05</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-M-03</span><span class="pcard-price">65 лв.</span></div>
-          <h2 class="pcard-name">Card Holder</h2>
-          <p class="pcard-cat">Мъжки · Картодържател</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Acc 06 — Women — Cardholder -->
-    <div class="product-item" data-gender="women">
-      <a href="order.html" class="pcard">
-        <div class="pcard-img">
-          <div class="pcard-badge">Лимитиран</div>
-          <div class="pcard-inner">
-            <svg class="w-full h-full" viewBox="0 0 200 140" style="max-height:130px;" fill="none">
-              <!-- Zip pouch / coin purse -->
-              <path class="shoe-s" d="M 50,40 Q 50,22 100,20 Q 150,22 150,40 L 155,115 Q 155,128 100,128 Q 45,128 45,115 Z"/>
-              <!-- Zip line -->
-              <path class="shoe-s" d="M 52,42 Q 100,52 148,42"/>
-              <!-- Zip pull -->
-              <line class="shoe-s" x1="100" x2="100" y1="38" y2="55"/>
-              <circle class="shoe-s" cx="100" cy="58" r="5"/>
-              <line stroke="#0040e0" stroke-dasharray="3 3" stroke-width="0.7" x1="45" x2="155" y1="130" y2="130" opacity="0.4"/>
-            </svg>
-          </div>
-          <span class="pcard-num">06</span>
-          <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
-        </div>
-        <div class="pcard-info">
-          <div class="pcard-meta"><span class="pcard-sku">SF-A-W-03</span><span class="pcard-price">90 лв.</span></div>
-          <h2 class="pcard-name">Zip Pouch</h2>
-          <p class="pcard-cat">Дамски · Портмоне</p>
-          <span class="pcard-btn">Поръчай</span>
-        </div>
-      </a>
-    </div>
-
-  </div>
+  <div id="products-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
 </main>
 
 <!-- Footer -->
@@ -382,39 +208,56 @@
 
 <script>
 (function(){var lastY=0;window.addEventListener('scroll',function(){var nav=document.getElementById('site-nav');if(!nav)return;var y=window.scrollY;if(y<80){nav.classList.remove('nav-hidden');}else if(y>lastY+4){nav.classList.add('nav-hidden');}else if(y<lastY-4){nav.classList.remove('nav-hidden');}lastY=y;},{passive:true});})();
-document.addEventListener('DOMContentLoaded',()=>{
-  if(window.innerWidth>=768) document.getElementById('main-nav').style.display='flex';
-  const toggle=document.getElementById('mobile-toggle'),mmenu=document.getElementById('mobile-menu'),mclose=document.getElementById('menu-close');
-  toggle.addEventListener('click',()=>{mmenu.classList.add('open');document.body.style.overflow='hidden';});
-  mclose.addEventListener('click',()=>{mmenu.classList.remove('open');document.body.style.overflow='';});
-});
+
+const ACC_CATEGORIES = ['accessories', 'accessory', 'аксесоари', 'аксесоар'];
+let allAccessories = [];
+
+function renderCard(product) {
+  const badge = product.badge
+    ? `<div class="pcard-badge${product.badge === 'Топ' ? ' blue' : ''}">${product.badge}</div>`
+    : '';
+  const img = product.images && product.images.length
+    ? `<img src="${product.images[0]}" alt="${product.name}" loading="lazy">`
+    : '';
+  return `<a href="/product.html?id=${product.id}" class="pcard">
+    <div class="pcard-img">
+      ${badge}${img}
+      <div class="pcard-overlay"><div class="pcard-arrow"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>Виж</div></div>
+    </div>
+    <div class="pcard-info">
+      <h3 class="pcard-name">${product.name}</h3>
+      <p class="pcard-price">${product.price}</p>
+    </div>
+  </a>`;
+}
 
 function setFilter(gender) {
-  const items = document.querySelectorAll('.product-item');
-  const btns = document.querySelectorAll('.filter-btn');
-
-  btns.forEach(b => {
-    b.classList.toggle('active', b.dataset.filter === gender);
-  });
-
-  let count = 0;
-  items.forEach(item => {
-    const show = gender === 'all' || item.dataset.gender === gender;
-    item.classList.toggle('hidden', !show);
-    if (show) count++;
-  });
-
-  let visIdx = 0;
-  items.forEach(item => {
-    if (!item.classList.contains('hidden')) {
-      item.style.marginTop = visIdx % 3 === 1 ? '28px' : '0';
-      visIdx++;
-    } else {
-      item.style.marginTop = '0';
-    }
-  });
-
-  document.getElementById('count-label').textContent = count + ' продукта';
+  document.querySelectorAll('.filter-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.filter === gender)
+  );
+  const filtered = gender === 'all'
+    ? allAccessories
+    : allAccessories.filter(p => (p.gender || 'all') === gender || (p.gender || 'all') === 'all');
+  document.getElementById('products-grid').innerHTML = filtered.map(renderCard).join('');
+  document.getElementById('count-label').textContent = filtered.length + ' продукта';
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  if (window.innerWidth >= 768) document.getElementById('main-nav').style.display = 'flex';
+  const toggle = document.getElementById('mobile-toggle');
+  const mmenu  = document.getElementById('mobile-menu');
+  const mclose = document.getElementById('menu-close');
+  toggle.addEventListener('click', () => { mmenu.classList.add('open');    document.body.style.overflow = 'hidden'; });
+  mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
+
+  try {
+    const res  = await fetch('/products.json');
+    const data = await res.json();
+    allAccessories = (data.products || []).filter(p =>
+      ACC_CATEGORIES.includes((p.category || '').toLowerCase())
+    );
+    setFilter('all');
+  } catch (_) {}
+});
 </script>
 </body></html>
