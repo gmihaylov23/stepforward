@@ -1,0 +1,72 @@
+[build]
+  publish = "."
+
+# ── Clean URL rewrites ──
+# Status 200 = rewrite (URL stays clean in browser)
+# force = true = applies even when the .html file exists
+
+[[redirects]]
+  from = "/home"
+  to   = "/code.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/man-shoes"
+  to   = "/code_1.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/women-shoes"
+  to   = "/code_2.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/bags"
+  to   = "/bags.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/accessories"
+  to   = "/accessories.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/about"
+  to   = "/about.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/order"
+  to   = "/order.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/terms"
+  to   = "/terms.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/gdpr"
+  to   = "/gdpr.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/cookies"
+  to   = "/cookies.html"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/product"
+  to   = "/product.html"
+  status = 200
+  force  = true
