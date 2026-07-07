@@ -7,56 +7,90 @@ public_folder: /images/products
 
 collections:
   - name: products
-    label: Products
+    label: Продукти
     files:
       - name: products
-        label: Products
+        label: Продукти
         file: products.json
         fields:
           - name: products
-            label: Products
+            label: Продукти
             widget: list
             fields:
               - name: id
                 label: ID
                 widget: string
-                hint: "Lowercase with dashes only, eg: hand-carved-bowl-01"
+                hint: "Само малки букви и тирета, напр: mazhki-casual-01"
+
               - name: name
-                label: Name
+                label: Име на продукта
                 widget: string
+
               - name: price
-                label: Price
+                label: Цена (лв.)
                 widget: string
-              - name: category
-                label: Category
-                widget: string
+                hint: "Само числото, напр: 189"
+
+              - name: page
+                label: Страница
+                widget: select
+                options:
+                  - { label: "Мъже", value: "men" }
+                  - { label: "Жени", value: "women" }
+                  - { label: "Чанти", value: "bags" }
+                  - { label: "Аксесоари", value: "accessories" }
+                hint: "На коя страница да се покаже продуктът"
+
+              - name: style
+                label: Стил
+                widget: select
+                condition:
+                  field: page
+                  value: [men, women]
+                options:
+                  - { label: "Casual", value: "casual" }
+                  - { label: "Спортни", value: "sport" }
+                default: "casual"
+                required: false
+                hint: "Секцията вътре в мъжката / женската страница"
+
+              - name: gender_filter
+                label: Пол
+                widget: select
+                condition:
+                  field: page
+                  value: [bags, accessories]
+                options:
+                  - { label: "И двата пола", value: "all" }
+                  - { label: "Мъже", value: "men" }
+                  - { label: "Жени", value: "women" }
+                default: "all"
+                required: false
+                hint: "За кой пол е предназначена тази чанта / аксесоар"
+
               - name: description
-                label: Description
+                label: Описание
                 widget: text
+
               - name: featured
-                label: Featured on Homepage
+                label: Покажи на началната страница
                 widget: boolean
                 default: false
-                hint: "Show this product in the homepage slider"
-              - name: gender
-                label: Gender
-                widget: select
-                options: ["all", "men", "women"]
-                default: "all"
-                hint: "Used for filtering on bags and accessories pages"
+
               - name: sizes
-                label: Available Sizes (EU)
+                label: Налични размери (EU)
                 widget: list
                 field:
                   name: size
-                  label: Size
+                  label: Размер
                   widget: string
-                hint: "Add each EU size separately, e.g. 40, 41, 42, 43"
+                hint: "Добавете всеки размер отделно, напр: 40, 41, 42"
+
               - name: images
-                label: Images
+                label: Снимки
                 widget: list
                 field:
                   name: image
-                  label: Image
+                  label: Снимка
                   widget: image
-                hint: "Compress each photo at squoosh.app before uploading — WebP, quality 80, max 1200px"
+                hint: "Компресирайте снимките на squoosh.app — WebP, качество 80, макс 1200px"

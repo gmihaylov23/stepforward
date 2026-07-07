@@ -134,16 +134,37 @@
   <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#f6faff);z-index:5;pointer-events:none;"></div>
 </section>
 
-<!-- Count strip -->
-<div style="max-width:1280px;margin:0 auto;padding:40px 64px 32px;display:flex;align-items:center;gap:20px;">
-  <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">12 продукта</span>
-  <div style="flex:1;height:1px;background:rgba(0,0,0,0.06);"></div>
-  <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.3);">SF — Жени</span>
-</div>
+<!-- Product Sections -->
+<main style="max-width:1280px;margin:0 auto;padding:40px 64px 120px;">
 
-<!-- Product Grid -->
-<main style="max-width:1280px;margin:0 auto;padding:0 64px 120px;">
-  <div id="products-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+  <!-- Casual Section -->
+  <section id="section-casual">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:32px;">
+      <div>
+        <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.28);margin:0 0 4px;">Жени</p>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:#000;margin:0;letter-spacing:-0.02em;">Casual</h2>
+      </div>
+      <div style="flex:1;height:1px;background:rgba(0,0,0,0.06);margin-left:24px;"></div>
+      <span id="count-casual" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.25);white-space:nowrap;"></span>
+    </div>
+    <div id="grid-casual" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+    <p id="empty-casual" style="display:none;font-size:14px;color:rgba(0,0,0,0.35);padding:40px 0;">Няма продукти в тази категория все още.</p>
+  </section>
+
+  <!-- Sport Section -->
+  <section id="section-sport" style="margin-top:80px;">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:32px;">
+      <div>
+        <p style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,0.28);margin:0 0 4px;">Жени</p>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:#000;margin:0;letter-spacing:-0.02em;"><em style="font-style:italic;color:rgba(0,0,0,0.65);">Спортни</em></h2>
+      </div>
+      <div style="flex:1;height:1px;background:rgba(0,0,0,0.06);margin-left:24px;"></div>
+      <span id="count-sport" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.25);white-space:nowrap;"></span>
+    </div>
+    <div id="grid-sport" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+    <p id="empty-sport" style="display:none;font-size:14px;color:rgba(0,0,0,0.35);padding:40px 0;">Няма продукти в тази категория все още.</p>
+  </section>
+
 </main>
 
 <!-- Footer -->
@@ -224,7 +245,25 @@ function renderCard(product) {
     </a>`;
 }
 
-const WOMEN_CATEGORIES = ['women', 'woman', 'жени', 'жена'];
+const WOMEN_MATCH = p => {
+  const pg  = (p.page     || '').toLowerCase();
+  const cat = (p.category || '').toLowerCase();
+  return pg === 'women' || (!pg && ['women','woman','жени','жена'].includes(cat));
+};
+
+function renderSection(gridId, emptyId, countId, products) {
+  const el = document.getElementById(gridId);
+  const em = document.getElementById(emptyId);
+  const ct = document.getElementById(countId);
+  if (!products.length) {
+    el.style.display = 'none';
+    em.style.display = 'block';
+    ct.textContent = '0 продукта';
+  } else {
+    el.innerHTML = products.map(renderCard).join('');
+    ct.textContent = products.length + ' ' + (products.length === 1 ? 'продукт' : 'продукта');
+  }
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   if (window.innerWidth >= 768) document.getElementById('main-nav').style.display = 'flex';
@@ -235,10 +274,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   mclose.addEventListener('click', () => { mmenu.classList.remove('open'); document.body.style.overflow = ''; });
 
   try {
-    const res  = await fetch('/products.json');
-    const data = await res.json();
-    const products = data.products.filter(p => WOMEN_CATEGORIES.includes((p.category || '').toLowerCase()));
-    document.getElementById('products-grid').innerHTML = products.map(renderCard).join('');
+    const res   = await fetch('/products.json');
+    const data  = await res.json();
+    const women = data.products.filter(WOMEN_MATCH);
+    const casual = women.filter(p => (p.style || '').toLowerCase() !== 'sport');
+    const sport  = women.filter(p => (p.style || '').toLowerCase() === 'sport');
+    renderSection('grid-casual', 'empty-casual', 'count-casual', casual);
+    renderSection('grid-sport',  'empty-sport',  'count-sport',  sport);
   } catch (_) {}
 });
 </script>
