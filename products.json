@@ -1,18 +1,3 @@
 {
-  "products": [
-    {
-      "featured": true,
-      "id": "000001",
-      "name": "test",
-      "price": "100",
-      "category": "man",
-      "description": "test",
-      "images": [
-        "/images/products/16363342_31635573_1000.jpg"
-      ],
-      "sizes": [
-        "33"
-      ]
-    }
-  ]
+  "products": []
 }
