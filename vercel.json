@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/home",        "destination": "/code.html" },
+    { "source": "/man-shoes",   "destination": "/code_1.html" },
+    { "source": "/women-shoes", "destination": "/code_2.html" },
+    { "source": "/bags",        "destination": "/bags.html" },
+    { "source": "/accessories", "destination": "/accessories.html" },
+    { "source": "/about",       "destination": "/about.html" },
+    { "source": "/order",       "destination": "/order.html" },
+    { "source": "/terms",       "destination": "/terms.html" },
+    { "source": "/gdpr",        "destination": "/gdpr.html" },
+    { "source": "/cookies",     "destination": "/cookies.html" },
+    { "source": "/product",     "destination": "/product.html" }
+  ]
+}
